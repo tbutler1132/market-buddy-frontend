@@ -40,6 +40,13 @@
 .home {
   display: flex;
   justify-content: center;
+  margin-top: 4%;
+}
+
+.buying_power-graph{
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 }
 
 .stock-list {
@@ -49,6 +56,5 @@
 }
 
 .stock-graph {
-  width: 40%;
   height: 325px;
 }

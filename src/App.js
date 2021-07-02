@@ -14,10 +14,11 @@ function App() {
   const [user, setUser] = useState(false)
 
   useEffect(() => {
-    axios(`http://localhost:7000/users/60de6a8b5a53799d58cbb91f`)
+    axios(`http://localhost:7000/users/60df7cc810b464fea7553a33`)
     .then(user => setUser(user.data))
   }, [])
 
+  if (!user) return <div>Loading..</div>
   return (
     <div className="App">
         <Nav />

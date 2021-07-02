@@ -1,15 +1,21 @@
 import React from 'react';
 
 import StockGraph from './StockGraph'
-import StockList from './StockList';
+import StockList from './StockListContainer';
 
 function Home(props) {
 
     const { user } = props
-    console.log(user)
+
+    //Lift stock API calls here
+
     return (
         <div className="home">
-            <StockGraph />
+            <div className="buying_power-graph">
+                <h1>Portfolio Value</h1>
+                <StockGraph />
+                <h3>Buying power: ${user.cash}</h3>
+            </div>
             <StockList user={user}/>
         </div>
     );
