@@ -1,6 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 function PortfolioList(props) {
+
+    useEffect(() => {
+        
+    })
+
+    const { user } = props
+
     return (
         <div>
             <h3>stocks</h3>

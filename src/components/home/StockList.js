@@ -4,9 +4,11 @@ import PortfolioList from './PortfolioList';
 import WatchList from './WatchList';
 
 function StockList(props) {
+    const { user } = props
+
     return (
         <div className="stock-list">
-            <PortfolioList />
+            <PortfolioList user={user}/>
             <hr></hr>
             <WatchList />
         </div>

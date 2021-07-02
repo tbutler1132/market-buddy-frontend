@@ -21,9 +21,7 @@ function StockGraph(props) {
         )
        
         return (
-          <div
-            className="stock-graph"
-          >
+          <div className="stock-graph">
             <Chart data={data} axes={axes} />
           </div>
         )
