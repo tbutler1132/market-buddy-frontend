@@ -2,8 +2,9 @@ import React from 'react';
 
 function Nav(props) {
     return (
-        <div>
-            <h1>Nav</h1>
+        <div className="nav">
+            <h1>Home</h1>
+            <h1>Search Bar</h1>
         </div>
     );
 }

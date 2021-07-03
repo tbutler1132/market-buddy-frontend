@@ -37,24 +37,42 @@
   }
 }
 
-.home {
+.nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.main-page {
   display: flex;
   justify-content: center;
   margin-top: 4%;
+  margin-right: 500px;
+  margin-left: 20%;
 }
 
-.buying_power-graph{
+.graph-buying_power{
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 70%;
+}
+
+.fixed-container {
+  position: fixed;
+  right: 200px;
+  /* bottom: 650px; */
+  top: 100px;
+  width: 250px;
+  height: 200px;
 }
 
 .stock-list {
-  width: 17%;
-  margin-left: 5%;
+  width: 100%;
+  height: 500px;
+  overflow: scroll;
   box-shadow: 0px 0px 5px rgb(107, 104, 104);
 }
-
+/* 
 .stock-graph {
   height: 325px;
-}
+} */
+

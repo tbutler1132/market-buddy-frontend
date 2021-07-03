@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Chart } from 'react-charts'
 
 function StockGraph(props) {
-        const data = React.useMemo(
+        const data = useMemo(
           () => [
             {
               label: 'Series 1',
@@ -12,7 +12,7 @@ function StockGraph(props) {
           []
         )
        
-        const axes = React.useMemo(
+        const axes = useMemo(
           () => [
             { primary: true, type: 'linear', position: 'bottom' },
             { type: 'linear', position: 'left' }
@@ -21,7 +21,7 @@ function StockGraph(props) {
         )
        
         return (
-          <div className="stock-graph">
+          <div >
             <Chart data={data} axes={axes} />
           </div>
         )
