@@ -4,7 +4,7 @@ import ConfirmationForm from './ConfirmationForm';
 
 function Transaction(props) {
 
-    const { stockPrice, user } = props
+    const { stockPrice, user, stockId, userPosition } = props
 
     const [buyOrSell, toggleBuyOrSell] = useState("Buy")
     const [numberOfShares, setNumberOfShares] = useState(0)
@@ -15,7 +15,6 @@ function Transaction(props) {
     }
 
     const estimatedCost = () => {
-
         return (numberOfShares * stockPrice).toFixed(2)
     }
 
@@ -28,7 +27,7 @@ function Transaction(props) {
             <hr></hr>
             <p>Estimated Cost: ${estimatedCost()}</p>
             <button onClick={() => !confirmationForm ? toggleConfirmationForm(true) : toggleConfirmationForm(false)}>Review order</button>
-            {confirmationForm ? <ConfirmationForm /> : null}
+            {confirmationForm ? <ConfirmationForm shares={numberOfShares} userPosition={userPosition} stockId={stockId} user={user} cost={estimatedCost()} /> : null}
             <hr></hr>
             <p>Buying Power: ${user.cash}</p>
         </div>

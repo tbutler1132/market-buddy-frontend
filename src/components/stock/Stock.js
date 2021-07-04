@@ -15,7 +15,6 @@ function Stock(props) {
     const [companyInfo, setCompanyInfo] = useState(false)
     const [latestPrice, setLatestPrice] = useState(false)
 
-
     useEffect(() => {
 
         axios(`${BASE_API}/stocks/company/${stockId}`)
@@ -29,6 +28,10 @@ function Stock(props) {
         .then(price => setLatestPrice(price.data))
     }, [stockId])
 
+    const userPosition = () => {
+        return user.portfolio.find(stock => stock.ticker === stockId.toUpperCase())
+    }
+
     if (!companyInfo || !latestPrice) return <div>Loading..</div>
     return (
         <div className="main-page">
@@ -39,7 +42,7 @@ function Stock(props) {
                 <p>{companyInfo.description}</p>
             </div>
             <div className="fixed-container">
-                <Transaction user={user} stockPrice={latestPrice}/>
+                <Transaction userPosition={userPosition()} stockId={stockId} user={user} stockPrice={latestPrice}/>
                 <h3>Add to lists</h3>
             </div>
         </div>
