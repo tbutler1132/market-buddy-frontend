@@ -3,18 +3,19 @@ import React from 'react';
 import PortfolioList from './StockList';
 
 function StockListContainer(props) {
-    const { user } = props
+    const { user, portfolio} = props
 
     //Render watch lists
     const renderLists = () => {
-        return user.lists.map(list => <PortfolioList title={list.title} user={user} stocks={list.stocks} key={list._id} />)
+        return user.lists.map(list => <PortfolioList list={true} title={list.title} user={user} stocks={list.stocks} key={list._id} />)
     }
 
+    //Send stock symbols as props
     const portfolioSymbols = () => {return user.portfolio.map(stock => stock.ticker)}
 
     return (
         <div className="stock-list">
-            <PortfolioList user={user} stocks={portfolioSymbols()}/>
+            <PortfolioList list={false} user={user} portfolio={portfolio} stocks={portfolioSymbols()}/>
             <hr></hr>
             {renderLists()}
         </div>
