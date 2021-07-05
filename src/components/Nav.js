@@ -1,7 +1,8 @@
 import React from 'react';
 import { useHistory } from "react-router-dom"
 
-// import SearchBar from './SearchBar';
+import SearchBar from './SearchBar';
+import AutoCompleteSearch from './AutoCompleteSearch';
 
 
 function Nav(props) {
@@ -9,7 +10,7 @@ function Nav(props) {
     return (
         <div className="nav">
             <h1 onClick={() => history.push('/')}>Home</h1>
-
+            <SearchBar />
         </div>
     );
 }

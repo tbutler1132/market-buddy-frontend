@@ -27,8 +27,7 @@ function SearchBar(props) {
         }
     }
 
-    const submitHandler = (event) => {
-        event.preventDefault()
+    const submitHandler = (event, value) => {
         history.push(`/stocks/${event.target.value.toLowerCase()}`)
     }
 
@@ -39,8 +38,9 @@ function SearchBar(props) {
             <Autocomplete
                 id="combo-box-demo"
                 handleHomeEndKeys={false}
-                onSubmit={(event) => submitHandler(event)} 
+                onSubmit={(event) => submitHandler(event)}  
                 options={suggestions}
+                onChange={(event, value) => history.push(`/stocks/${value.symbol.toLowerCase()}`)}
                 getOptionSelected={(option, value) => option.symbol === value.symbol}
                 getOptionLabel={(suggestion) => suggestion.symbol}
                 onInputChange={fetchResults}
