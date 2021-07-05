@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {useDispatch} from 'react-redux'
 
-import {adjustStockHoldings, buyNewStock} from '../../redux/actions'
+import {buyNewStock, adjustUserCash} from '../../redux/actions'
 
 function ConfirmationForm(props) {
 
-    const { cost, position, shares, stockId } = props
+    const { cost, position, shares, stockId, user } = props
     const dispatch = useDispatch()
 
     const reqType = () => {
         if (!position){
             const newStockObj = 
             {
-                ticker: stockId,
+                ticker: stockId.toUpperCase(),
                 shares: parseInt(shares)
             }
 
@@ -20,10 +20,21 @@ function ConfirmationForm(props) {
         }
     }
 
+    const calculateCash = () => {
+        const newBuyingPower = user.cash - parseInt(cost)
+        return newBuyingPower
+    }
+
+    const confirmHandler = () => {
+        dispatch(reqType())
+        dispatch(adjustUserCash(calculateCash(), user._id))
+
+    }
+
     return (
         <div>
             <p>You're order total is: ${cost}</p>
-            <button onClick={() => dispatch(reqType())}>Confirm</button>
+            <button onClick={confirmHandler}>Confirm</button>
             <button>Cancel</button>
         </div>
     );

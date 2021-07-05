@@ -1,12 +1,12 @@
-import { FETCH_USER, FETCH_USER_STOCKS } from "../constants/action_types";
+import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH } from "../constants/action_types";
+import axios from 'axios'
 
-import { fetchUser, updateStockHoldings, postStock } from '../api/index.js'
+import { postStock } from '../api/index.js'
 
-export const getUser = () => async (dispatch) => {
+export const getUser = (userObj) => async (dispatch) => {
     try {
-        const user = await fetchUser
 
-        dispatch({ type: FETCH_USER, payload: user.data })
+        dispatch({ type: FETCH_USER, payload: userObj.data })
     } catch (error) {
         console.log(error)
     }
@@ -17,11 +17,9 @@ export const getStockInfo = (stockArr) => async (dispatch) => {
 }
 
 export const buyNewStock = (stockObj) => async (dispatch) => {
-    console.log(stockObj)
     try {
         const stock = await postStock(stockObj)
-
-        console.log(stock)
+        dispatch({type: ADD_USER_STOCK, payload: stock.data})
     } catch (error) {
         
     }
@@ -29,11 +27,22 @@ export const buyNewStock = (stockObj) => async (dispatch) => {
 
 export const adjustStockHoldings = (id, updatedStock) => async (dispatch) => {
     try {
-        const stock = await updateStockHoldings(id, updatedStock)
+        // const stock = await updateStockHoldings(id, updatedStock)
 
-        console.log(stock)
+
     } catch (error) {
         
+    }
+}
+
+export const adjustUserCash = (newBuyingPower, userId) => async (dispatch) => {
+    console.log("IM HIT", newBuyingPower)
+    try {
+        const user = await axios.patch(`http://localhost:7000/users/${userId}/cash`, {cash: newBuyingPower})
+        console.log(user.data.cash)
+        dispatch({type: UPDATE_USER_CASH, payload: user.data.cash})
+    } catch (error) {
+        console.log(error)
     }
 }
 

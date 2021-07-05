@@ -41,7 +41,6 @@ function Home(props) {
 
     const portfolioValue = () => {
         let totalValue = 0
-
         user.portfolio.forEach(stock => {
             totalValue = totalValue + (stockMap[stock.ticker].open * stock.shares)
         })

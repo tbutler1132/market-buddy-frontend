@@ -3,10 +3,11 @@ import {useSelector} from 'react-redux'
 
 function PortfolioList(props) {
 
-    const { stocks, title} = props
+    const { stocks, title, user, list} = props
     const stockTest = useSelector((state) => state.stocks)
 
- 
+    console.log(stocks)
+
     const displayData = () => {
         const testArr = []
         stocks.forEach(stock => {
@@ -14,12 +15,38 @@ function PortfolioList(props) {
                 testArr.push(stockTest[stock])
             }
         })
+        if (!list){
+            const table = Object.fromEntries(user.portfolio.map(stock => [stock.ticker, stock.shares]))
+            testArr.forEach(stock => {
+                if(stock['symbol'] in table){
+                    stock['shares'] = table[stock['symbol']]
+                }
+            })
+        }
+
         return testArr
     }
 
+    // const test = () => {
+    //     const table = Object.fromEntries(user.portfolio.map(stock => [stock.ticker, stock.shares]))
+    //     const newData = [...displayData()]
+
+    //     newData.forEach(stock => {
+    //         if(stock['symbol'] in table){
+    //             stock['shares'] = table[stock['symbol']]
+    //         }
+    //     })
+
+    //     return newData
+    // }
+
+    // console.log(test())
+    console.log(displayData())
+
+
     //Render user's portfolio info
     const renderStocks = () => {
-        return displayData().map(stock => <h4 key={stock.symbol}>{`${stock.symbol}: $${stock.uClose}`}</h4>)
+        return displayData().map(stock => <h4 key={stock.symbol}>{`${stock.symbol}: ${stock.shares}, $${stock.uClose}`}</h4>)
     }
 
 
