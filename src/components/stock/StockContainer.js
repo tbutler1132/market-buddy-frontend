@@ -7,6 +7,8 @@ from 'react-router-dom'
 
 import Stock from './Stock'
 
+//Render the stock show pages
+
 function StockContainer(props) {
     const { user } = props
     let match = useRouteMatch()

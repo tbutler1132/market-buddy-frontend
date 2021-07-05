@@ -1,4 +1,4 @@
-import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH } from "../constants/action_types";
+import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH, DELETE_USER_STOCK, UPDATE_USER_SHARES } from "../constants/action_types";
 import axios from 'axios'
 
 import { postStock } from '../api/index.js'
@@ -25,11 +25,22 @@ export const buyNewStock = (stockObj) => async (dispatch) => {
     }
 }
 
-export const adjustStockHoldings = (id, updatedStock) => async (dispatch) => {
+export const sellAllShares = (userId, stockId) => async (dispatch) => {
+    console.log(userId, stockId)
     try {
-        // const stock = await updateStockHoldings(id, updatedStock)
+        const user = await axios.delete(`http://localhost:7000/users/${userId}/stocks/${stockId}`)
+        dispatch({type: DELETE_USER_STOCK, payload: user.data})
+    } catch (error) {
+        
+    }
+}
 
-
+export const adjustStockHoldings = (userId, stockId, updatedStock) => async (dispatch) => {
+    console.log("Hit", updatedStock)
+    try {
+        const user = await axios.patch(`http://localhost:7000/users/${userId}/stocks/${stockId}`, {stock: updatedStock})
+        console.log("User", user)
+        dispatch({type: UPDATE_USER_SHARES, payload: user.data})
     } catch (error) {
         
     }

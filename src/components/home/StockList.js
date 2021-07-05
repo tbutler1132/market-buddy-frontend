@@ -4,15 +4,18 @@ import {useSelector} from 'react-redux'
 function PortfolioList(props) {
 
     const { stocks, title, user, list} = props
-    const stockTest = useSelector((state) => state.stocks)
 
-    console.log(stocks)
+    //Neato table from external stock api
+    const stockTable = useSelector((state) => state.stocks)
 
+
+    //Look into refactor, as of now it uses the stocks passed down as props to identify which stocks in our stocktable the list needs to know about.
+    //If the list is a portfolio list, it also adds a "shares" key
     const displayData = () => {
         const testArr = []
         stocks.forEach(stock => {
-            if (stock in stockTest){
-                testArr.push(stockTest[stock])
+            if (stock in stockTable){
+                testArr.push(stockTable[stock])
             }
         })
         if (!list){
@@ -27,24 +30,8 @@ function PortfolioList(props) {
         return testArr
     }
 
-    // const test = () => {
-    //     const table = Object.fromEntries(user.portfolio.map(stock => [stock.ticker, stock.shares]))
-    //     const newData = [...displayData()]
 
-    //     newData.forEach(stock => {
-    //         if(stock['symbol'] in table){
-    //             stock['shares'] = table[stock['symbol']]
-    //         }
-    //     })
-
-    //     return newData
-    // }
-
-    // console.log(test())
-    console.log(displayData())
-
-
-    //Render user's portfolio info
+    //Render stock info
     const renderStocks = () => {
         return displayData().map(stock => <h4 key={stock.symbol}>{`${stock.symbol}: ${stock.shares}, $${stock.uClose}`}</h4>)
     }

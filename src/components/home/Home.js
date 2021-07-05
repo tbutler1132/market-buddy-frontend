@@ -15,6 +15,7 @@ function Home(props) {
     //Fetch real time Stock Data from external API
     useEffect(() => {
         
+        //Create an array of all symbols to use for batch request
         const stocks = () => {
             const stocks = []
             const portfolio = user.portfolio.map(stock => stock.ticker)
@@ -24,6 +25,7 @@ function Home(props) {
         }
 
 
+        //Create the url for batch request
         let url = `http://localhost:7000/stocks/`
         for (let i = 0; i < stocks().length; i++) {
             if (i === stocks().length - 1){
@@ -34,11 +36,12 @@ function Home(props) {
             
         }
 
+        //Make request to external API for stock data, dispatch to redux store
         axios(url)
         .then(stock => dispatch(getStockInfo(stock.data)))
     }, [dispatch, user.lists, user.portfolio])
 
-
+    //Calculate the value of the user's portfolio, all holdings + cash
     const portfolioValue = () => {
         let totalValue = 0
         user.portfolio.forEach(stock => {

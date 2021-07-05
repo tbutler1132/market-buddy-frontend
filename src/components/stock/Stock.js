@@ -12,9 +12,12 @@ function Stock(props) {
 
     const { user } = props
 
+    //Consider refactor into Redux, though this is fairly specific to this component
     const [companyInfo, setCompanyInfo] = useState(false)
     const [latestPrice, setLatestPrice] = useState(false)
 
+
+    //Fetch company information from external API
     useEffect(() => {
 
         axios(`${BASE_API}/stocks/company/${stockId}`)
@@ -22,14 +25,18 @@ function Stock(props) {
 
     }, [stockId])
 
+    //Fetch up to date price from external API
+    //<<<<------ FIND A DIFFERENT ENDPOINT -------->>>>//
     useEffect(() => {
 
         axios(`${BASE_API}/stocks/latestPrice/${stockId}`)
         .then(price => setLatestPrice(price.data))
     }, [stockId])
 
+    //Find the users position in the currently displayed stock
+    //<<<<----- Would likely be faster to grab the stock table from redux and look up symbol: O(1) vs O(N)
     const userPosition = () => {
-        return user.portfolio.find(stock => stock.ticker === stockId.toUpperCase())
+        return user.portfolio?.find(stock => stock.ticker === stockId.toUpperCase())
     }
 
     if (!companyInfo || !latestPrice) return <div>Loading..</div>

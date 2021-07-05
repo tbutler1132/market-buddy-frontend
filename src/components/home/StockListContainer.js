@@ -10,7 +10,7 @@ function StockListContainer(props) {
         return user.lists.map(list => <PortfolioList list={true} title={list.title} user={user} stocks={list.stocks} key={list._id} />)
     }
 
-    //Send stock symbols as props
+    //Create an array of stock symbols in user's portfolio to send down as props
     const portfolioSymbols = () => {return user.portfolio.map(stock => stock.ticker)}
 
     return (

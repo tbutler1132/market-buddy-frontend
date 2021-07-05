@@ -1,35 +1,67 @@
 import React from 'react';
 import {useDispatch} from 'react-redux'
 
-import {buyNewStock, adjustUserCash} from '../../redux/actions'
+import {buyNewStock, adjustUserCash, sellAllShares, adjustStockHoldings} from '../../redux/actions'
 
 function ConfirmationForm(props) {
 
-    const { cost, position, shares, stockId, user } = props
+    const { cost, userPosition, shares, stockId, user, type } = props
     const dispatch = useDispatch()
 
-    const reqType = () => {
-        if (!position){
-            const newStockObj = 
-            {
-                ticker: stockId.toUpperCase(),
-                shares: parseInt(shares)
-            }
+    const calculateNewBuyingPower = () => {
+        return type === "Buy" ? user.cash - parseInt(cost) : user.cash + parseInt(cost)
+    }
 
-            return buyNewStock(newStockObj)
+    console.log(calculateNewBuyingPower())
+
+    //Buy New Stock
+    const buyStock = () => {
+        const newStockObj = 
+        {
+            ticker: stockId.toUpperCase(),
+            shares: parseInt(shares)
         }
+        dispatch(buyNewStock(newStockObj))
     }
 
-    const calculateCash = () => {
-        const newBuyingPower = user.cash - parseInt(cost)
-        return newBuyingPower
+    //Sell all shares
+    const sellAllHoldings = () => {
+        dispatch(sellAllShares(user._id, userPosition._id))
     }
 
+    //Adjust holdings
+    const adjustHoldings = () => {
+
+        let newShares = 0
+
+        if (type === "Buy"){
+            newShares = userPosition.shares + Number(shares)
+        } else {
+            newShares = userPosition.shares - Number(shares)
+        }
+
+        const updatedStockObj = {
+            ticker: stockId.toUpperCase(),
+            shares: newShares
+        }
+
+        dispatch(adjustStockHoldings(user._id, userPosition._id, updatedStockObj))
+    }
+
+
+    //Confirm Handler
     const confirmHandler = () => {
-        dispatch(reqType())
-        dispatch(adjustUserCash(calculateCash(), user._id))
-
+        if (type === "Buy" && !userPosition){
+            buyStock()
+        }else if (type === "Sell" && Number(shares) === userPosition.shares){
+            sellAllHoldings()
+        }else{
+            adjustHoldings()
+        }
+        dispatch(adjustUserCash(calculateNewBuyingPower(), user._id))
     }
+
+    //Sell Handler
 
     return (
         <div>

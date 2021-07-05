@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux'
-import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH } from '../constants/action_types'
+import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH, DELETE_USER_STOCK, UPDATE_USER_SHARES } from '../constants/action_types'
 
 const defaultState = {
     currentUser: false,
@@ -14,6 +14,14 @@ function userReducer(currentState = defaultState.currentUser, action){
             const clone = {...currentState}
             clone['portfolio'] = action.payload['portfolio']
             return clone
+        case DELETE_USER_STOCK:
+            const clone3 = {...currentState}
+            clone3['portfolio'] = action.payload['portfolio']
+            return clone3
+        case UPDATE_USER_SHARES:
+            const clone4 = {...currentState}
+            clone4['portfolio'] = action.payload['portfolio']
+            return clone4
         case UPDATE_USER_CASH:
             const clone2 = {...currentState}
             clone2['cash'] = action.payload
