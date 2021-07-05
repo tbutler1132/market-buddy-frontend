@@ -34,12 +34,14 @@ function Transaction(props) {
         }
     }
 
+    console.log(user.cash / stockPrice, estimatedCost(), stockPrice)
+
     return (
         <div className="stock-list">
             <button onClick={ () => buyOrSell === "Buy" ? toggleBuyOrSell("Sell") : toggleBuyOrSell("Buy")}>{buyOrSell}</button>
             <hr></hr>
             {buyOrSell === "Buy" ? 
-            <p>Shares: <input onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0"/></p> : 
+            <p>Shares: <input onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0" max={user.cash / stockPrice}/></p> : 
             <p>Shares: <input onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0" max={userPosition?.shares}/></p>}
             <p>Market Price: ${stockPrice}</p>
             <hr></hr>
