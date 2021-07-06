@@ -74,16 +74,18 @@ function Home(props) {
 
     if(!stockMap) return <div>Loading ...</div>
     return (
-        <div>
-            <div>
-                <div>
+        <div className="main-container">
+            <div className="row">
+                <div className="col-12">
                     {portfolioValue() ? <h1>${portfolioValue().toFixed(2)}</h1> : null}
                     <StockGraph type="value" data={preparedUserData()} user={user}/>
-                    <h3>Buying power: ${user.cash}</h3>
+                    <div className="css-1">
+                        <h3>Buying power: ${user.cash}</h3>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <StockListContainer user={user}/>
+                <div className="col-5">
+                    <StockListContainer user={user}/>
+                </div>
             </div>
         </div>
     );

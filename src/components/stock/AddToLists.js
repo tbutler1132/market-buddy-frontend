@@ -8,6 +8,7 @@ function AddToLists(props) {
     const {lists, user, stockSymbol, add} = props
     const dispatch = useDispatch()
 
+    const [open, setOpen] = useState(false)
     const [selected, setSelect] = useState([])
 
 
@@ -59,7 +60,7 @@ function AddToLists(props) {
 
     return (
         <div >
-            <button>Add to lists</button>
+            <button>{add ? 'Add to list' : 'Remove From List'}</button>
             <form onSubmit={submitHandler}>
                 {renderPresentLists()}
                 <button type="submit">Confirm</button>

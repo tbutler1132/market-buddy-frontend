@@ -1,5 +1,6 @@
 import React from 'react';
 import {useDispatch} from 'react-redux'
+import { useHistory } from 'react-router';
 
 import {buyNewStock, adjustUserCash, sellAllShares, adjustStockHoldings} from '../../redux/actions'
 
@@ -7,6 +8,7 @@ function ConfirmationForm(props) {
 
     const { cost, userPosition, shares, stockId, user, type } = props
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const calculateNewBuyingPower = () => {
         return type === "Buy" ? user.cash - parseInt(cost) : user.cash + parseInt(cost)
@@ -57,6 +59,7 @@ function ConfirmationForm(props) {
             adjustHoldings()
         }
         dispatch(adjustUserCash(calculateNewBuyingPower(), user._id))
+        history.push('/')
     }
 
     //Sell Handler
