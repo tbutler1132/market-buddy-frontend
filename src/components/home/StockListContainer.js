@@ -1,6 +1,7 @@
 import React from 'react';
 
 import PortfolioList from './StockList';
+import AddList from './AddList';
 
 function StockListContainer(props) {
     const { user, portfolio} = props
@@ -16,7 +17,7 @@ function StockListContainer(props) {
     return (
         <div className="stock-list">
             <PortfolioList list={false} user={user} portfolio={portfolio} stocks={portfolioSymbols()}/>
-            <h3>Lists</h3>
+            <h3>Lists</h3><AddList user={user}/>
             <hr></hr>
             {renderLists()}
         </div>
