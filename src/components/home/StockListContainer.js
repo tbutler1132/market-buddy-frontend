@@ -15,7 +15,7 @@ function StockListContainer(props) {
     const portfolioSymbols = () => {return user.portfolio.map(stock => stock.ticker)}
 
     return (
-        <div className="stock-list">
+        <div className="side-bar">
             <PortfolioList list={false} user={user} portfolio={portfolio} stocks={portfolioSymbols()}/>
             <h3>Lists</h3><AddList user={user}/>
             <hr></hr>

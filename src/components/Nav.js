@@ -7,9 +7,15 @@ import SearchBar from './SearchBar';
 function Nav(props) {
     const history = useHistory()
     return (
-        <div className="nav">
-            <h1 onClick={() => history.push('/')}>Home</h1>
-            <SearchBar />
+        <div>
+            <nav className="nav">
+            <div className="home-button">
+                <h1 onClick={() => history.push('/')}>Home</h1>
+            </div>
+            <div className="search">
+                <SearchBar />
+            </div>
+            </nav>
         </div>
     );
 }

@@ -46,7 +46,6 @@ export const adjustStockHoldings = (userId, stockId, updatedStock) => async (dis
 export const adjustUserCash = (newBuyingPower, userId) => async (dispatch) => {
     try {
         const user = await axios.patch(`http://localhost:7000/users/${userId}/cash`, {cash: newBuyingPower})
-        console.log(user.data.cash)
         dispatch({type: UPDATE_USER_CASH, payload: user.data.cash})
     } catch (error) {
         console.log(error)
@@ -68,8 +67,6 @@ export const RemoveStockFromAList = (userId, listId, stock) => async (dispatch) 
     console.log(listId, stock)
     try {
         const user = await axios.delete(`http://localhost:7000/users/${userId}/lists/${listId}/${stock}`)
-
-        console.log(user)
 
         dispatch({type: ADD_STOCK_TO_LIST, payload: user.data.lists})
     } catch (error) {

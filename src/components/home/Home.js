@@ -24,7 +24,6 @@ function Home(props) {
             return stocks.flat()
         }
 
-
         //Create the url for batch request
         let url = `http://localhost:7000/stocks/`
         for (let i = 0; i < stocks().length; i++) {
@@ -45,7 +44,7 @@ function Home(props) {
     const portfolioValue = () => {
         let totalValue = 0
         user.portfolio.forEach(stock => {
-            totalValue = totalValue + (stockMap[stock.ticker].open * stock.shares)
+            totalValue = totalValue + (stockMap[stock.ticker]?.open * stock.shares)
         })
 
         return totalValue + user.cash
@@ -76,14 +75,14 @@ function Home(props) {
     if(!stockMap) return <div>Loading ...</div>
     return (
         <div>
-            <div className="main-page">
-                <div className="graph-buying_power">
-                    <h1>Portfolio Value: ${portfolioValue()}</h1>
+            <div>
+                <div>
+                    {portfolioValue() ? <h1>${portfolioValue().toFixed(2)}</h1> : null}
                     <StockGraph type="value" data={preparedUserData()} user={user}/>
                     <h3>Buying power: ${user.cash}</h3>
                 </div>
             </div>
-            <div className="fixed-container">
+            <div>
                 <StockListContainer user={user}/>
             </div>
         </div>

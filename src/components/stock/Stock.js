@@ -78,14 +78,14 @@ function Stock(props) {
 
     if (!companyInfo || !latestPrice || !historicalData) return <div>Loading..</div>
     return (
-        <div className="main-page">
-            <div className="graph-buying_power">
+        <div>
+            <div>
                 <h1>{stockId}</h1>
                 <StockGraph type="price" data={preparedStockData()}/>
                 <h3>About</h3>
                 <p>{companyInfo.description}</p>
             </div>
-            <div className="fixed-container">
+            <div>
                 <Transaction userPosition={userPosition()} stockId={stockId} user={user} stockPrice={latestPrice}/>
                 <AddToLists add={true} lists={checkLists().notHasStock} stockSymbol={stockId} user={user}/>
                 <AddToLists add={false} lists={checkLists().hasStock} stockSymbol={stockId} user={user}/>

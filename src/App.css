@@ -1,5 +1,115 @@
 .App {
-  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -.1px;
+  line-height: 20px;
+  font-family: Capsule Sans Text,-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-text-size-adjust: none;
+  color: var(--rh__neutral-fg1);
+  --rh__primary-base: rgb(255,80,0);
+  --rh__primary-hover: rgba(230,72,0,1);
+  --rh__primary-pressed: rgba(204,64,0,1);
+  --rh__primary-light-base: rgba(255,80,0,0.3);
+  --rh__primary-lightest-base: rgba(255,80,0,0.1);
+  --rh__semantic-positive-base: rgb(0,200,5);
+  --rh__semantic-positive-light: rgba(0,200,5,0.3);
+  --rh__semantic-negative-base: rgb(255,80,0);
+  --rh__semantic-negative-light: rgba(255,80,0,0.3);
+  --rh__semantic-success-base: rgb(0,200,5);
+  --rh__semantic-success-light: rgba(0,200,5,0.3);
+  --rh__semantic-error-base: rgb(255,80,0);
+  --rh__semantic-error-light: rgba(255,80,0,0.3);
+  --rh__semantic-scary-base: rgb(255,80,0);
+  --rh__semantic-scary-light: rgba(255,80,0,0.3);
+  --rh__primary-textOverlay: var(--rh__neutral-bg1);
+  --rh__primary-light-textOverlay: var(--rh__primary-base);
+  --rh__primary-lightest-textOverlay: var(--rh__primary-base);
+  --rh-LEGACY__primary-color-hover: rgba(230,72,0,1);
+  --rh__neutral-fg1: rgb(0,0,0);
+  --rh__neutral-fg2: rgb(106,114,120);
+  --rh__neutral-fg3: rgb(180,189,194);
+  --rh__neutral-bg3: rgb(227,233,237);
+  --rh__neutral-bg2: rgb(245,248,250);
+  --rh__neutral-bg1: rgb(255,255,255);
+  --rh__neutral-hover-fg1: rgba(38,38,38,1);
+  --rh__neutral-hover-fg2: rgba(128,135,140,1);
+  --rh__neutral-hover-fg3: rgba(191,199,203,1);
+  --rh__neutral-hover-bg1: rgba(242,242,242,1);
+  --rh__neutral-hover-bg2: rgba(233,236,237,1);
+  --rh__neutral-hover-bg3: rgba(216,221,225,1);
+  --rh__neutral-pressed-fg1: rgba(64,64,64,1);
+  --rh__neutral-pressed-fg2: rgba(143,149,154,1);
+  --rh__neutral-pressed-fg3: rgba(199,206,209,1);
+  --rh__neutral-pressed-bg1: rgba(230,230,230,1);
+  --rh__neutral-pressed-bg2: rgba(221,223,225,1);
+  --rh__neutral-pressed-bg3: rgba(204,210,213,1);
+  --rh__text-color: rgb(0,0,0);
+  --rh__shadow__s1: rgba(0,0,0,0.06);
+  --rh__shadow__s2: rgba(0,0,0,0.02);
+  --rh__focus-inner-color: rgb(0,127,245);
+  --rh__focus-outer-color: rgba(0,127,245,0.25);
+  --rh__type-palette__textS__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textS__font-size: 13px;
+  --rh__type-palette__textS__font-weight: 400;
+  --rh__type-palette__textS__line-height: 20px;
+  --rh__type-palette__textS__letter-spacing: -0.1px;
+  --rh__type-palette__textSBold__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textSBold__font-size: 13px;
+  --rh__type-palette__textSBold__font-weight: 700;
+  --rh__type-palette__textSBold__line-height: 20px;
+  --rh__type-palette__textSBold__letter-spacing: -0.1px;
+  --rh__type-palette__textM__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textM__font-size: 15px;
+  --rh__type-palette__textM__font-weight: 400;
+  --rh__type-palette__textM__line-height: 24px;
+  --rh__type-palette__textM__letter-spacing: -0.1px;
+  --rh__type-palette__textMBold__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textMBold__font-size: 15px;
+  --rh__type-palette__textMBold__font-weight: 700;
+  --rh__type-palette__textMBold__line-height: 24px;
+  --rh__type-palette__textMBold__letter-spacing: -0.1px;
+  --rh__type-palette__textL__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textL__font-size: 18px;
+  --rh__type-palette__textL__font-weight: 400;
+  --rh__type-palette__textL__line-height: 28px;
+  --rh__type-palette__textL__letter-spacing: -0.25px;
+  --rh__type-palette__textLBold__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textLBold__font-size: 18px;
+  --rh__type-palette__textLBold__font-weight: 700;
+  --rh__type-palette__textLBold__line-height: 28px;
+  --rh__type-palette__textLBold__letter-spacing: -0.25px;
+  --rh__type-palette__displayS__stack: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__displayS__font-size: 21px;
+  --rh__type-palette__displayS__font-weight: 500;
+  --rh__type-palette__displayS__line-height: 28px;
+  --rh__type-palette__displayS__letter-spacing: -0.1px;
+  --rh__type-palette__displayM__stack: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__displayM__font-size: 24px;
+  --rh__type-palette__displayM__font-weight: 500;
+  --rh__type-palette__displayM__line-height: 32px;
+  --rh__type-palette__displayM__letter-spacing: -0.33px;
+  --rh__type-palette__displayL__stack: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__displayL__font-size: 32px;
+  --rh__type-palette__displayL__font-weight: 500;
+  --rh__type-palette__displayL__line-height: 40px;
+  --rh__type-palette__displayL__letter-spacing: -0.33px;
+  --rh__size-palette__gutterWidthXs: 4px;
+  --rh__size-palette__gutterWidthSm: 8px;
+  --rh__size-palette__gutterWidth: 12px;
+  --rh__size-palette__borderRadius: 4px;
+  --rh__size-palette__cellHeightSm: 36px;
+  --rh__size-palette__cellHeight: 48px;
+  --rh__size-palette__cellHeightLg: 60px;
+  --rh__size-palette__largeInputPadding: 20px;
+  --rh__size-palette___experimentalAnchorTableStickyHeaderZIndex: 1;
+  --rh__size-palette___experimentalToastZIndex: 600;
+  --rh__size-palette___experimentalNavBarZIndex: 100;
+  --rh__size-palette___experimentalPopoverZIndex: 1;
+  --rh__size-palette___experimentalModalZIndex: 301;
+  --rh__size-palette___experimentalSelectMenuZIndex: 500;
+  box-sizing: inherit;
+  display: block;
 }
 
 .App-logo {
@@ -38,39 +148,180 @@
 }
 
 .nav {
-  display: flex;
-  justify-content: space-around;
+  box-sizing: border-box;
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -0.1px;
+  line-height: 20px;
+  position: sticky;
+  text-size-adjust: 100%;
+  top: 0px;
+  width: 1133px;
+  z-index: 105;
 }
 
-.main-page {
+/* .home-button{
+
+} */
+
+.search{
+  -webkit-tap-highlight-color: transparent;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -.1px;
+  line-height: 20px;
+  font-family: Capsule Sans Text,-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-text-size-adjust: none;
+  color: var(--rh__neutral-fg1);
+  --rh-fixed-header-height: 64px;
+  box-sizing: inherit;
+  height: var(--rh__size-palette__cellHeightSm);
+  position: relative;
+} 
+
+.side-bar {
+  -webkit-tap-highlight-color: transparent;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: -.1px;
+  line-height: 20px;
+  font-family: Capsule Sans Text,-apple-system,BlinkMacSystemFont,sans-serif;
+  -webkit-text-size-adjust: none;
+  color: var(--rh__neutral-fg1);
+  --rh__primary-base: rgb(255,80,0);
+  --rh__primary-hover: rgba(230,72,0,1);
+  --rh__primary-pressed: rgba(204,64,0,1);
+  --rh__primary-light-base: rgba(255,80,0,0.3);
+  --rh__primary-lightest-base: rgba(255,80,0,0.1);
+  --rh__semantic-positive-base: rgb(0,200,5);
+  --rh__semantic-positive-light: rgba(0,200,5,0.3);
+  --rh__semantic-negative-base: rgb(255,80,0);
+  --rh__semantic-negative-light: rgba(255,80,0,0.3);
+  --rh__semantic-success-base: rgb(0,200,5);
+  --rh__semantic-success-light: rgba(0,200,5,0.3);
+  --rh__semantic-error-base: rgb(255,80,0);
+  --rh__semantic-error-light: rgba(255,80,0,0.3);
+  --rh__semantic-scary-base: rgb(255,80,0);
+  --rh__semantic-scary-light: rgba(255,80,0,0.3);
+  --rh__primary-textOverlay: var(--rh__neutral-bg1);
+  --rh__primary-light-textOverlay: var(--rh__primary-base);
+  --rh__primary-lightest-textOverlay: var(--rh__primary-base);
+  --rh-LEGACY__primary-color-hover: rgba(230,72,0,1);
+  --rh__neutral-fg1: rgb(0,0,0);
+  --rh__neutral-fg2: rgb(106,114,120);
+  --rh__neutral-fg3: rgb(180,189,194);
+  --rh__neutral-bg3: rgb(227,233,237);
+  --rh__neutral-bg2: rgb(245,248,250);
+  --rh__neutral-bg1: rgb(255,255,255);
+  --rh__neutral-hover-fg1: rgba(38,38,38,1);
+  --rh__neutral-hover-fg2: rgba(128,135,140,1);
+  --rh__neutral-hover-fg3: rgba(191,199,203,1);
+  --rh__neutral-hover-bg1: rgba(242,242,242,1);
+  --rh__neutral-hover-bg2: rgba(233,236,237,1);
+  --rh__neutral-hover-bg3: rgba(216,221,225,1);
+  --rh__neutral-pressed-fg1: rgba(64,64,64,1);
+  --rh__neutral-pressed-fg2: rgba(143,149,154,1);
+  --rh__neutral-pressed-fg3: rgba(199,206,209,1);
+  --rh__neutral-pressed-bg1: rgba(230,230,230,1);
+  --rh__neutral-pressed-bg2: rgba(221,223,225,1);
+  --rh__neutral-pressed-bg3: rgba(204,210,213,1);
+  --rh__text-color: rgb(0,0,0);
+  --rh__shadow__s1: rgba(0,0,0,0.06);
+  --rh__shadow__s2: rgba(0,0,0,0.02);
+  --rh__focus-inner-color: rgb(0,127,245);
+  --rh__focus-outer-color: rgba(0,127,245,0.25);
+  --rh__type-palette__textS__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textS__font-size: 13px;
+  --rh__type-palette__textS__font-weight: 400;
+  --rh__type-palette__textS__line-height: 20px;
+  --rh__type-palette__textS__letter-spacing: -0.1px;
+  --rh__type-palette__textSBold__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textSBold__font-size: 13px;
+  --rh__type-palette__textSBold__font-weight: 700;
+  --rh__type-palette__textSBold__line-height: 20px;
+  --rh__type-palette__textSBold__letter-spacing: -0.1px;
+  --rh__type-palette__textM__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textM__font-size: 15px;
+  --rh__type-palette__textM__font-weight: 400;
+  --rh__type-palette__textM__line-height: 24px;
+  --rh__type-palette__textM__letter-spacing: -0.1px;
+  --rh__type-palette__textMBold__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textMBold__font-size: 15px;
+  --rh__type-palette__textMBold__font-weight: 700;
+  --rh__type-palette__textMBold__line-height: 24px;
+  --rh__type-palette__textMBold__letter-spacing: -0.1px;
+  --rh__type-palette__textL__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textL__font-size: 18px;
+  --rh__type-palette__textL__font-weight: 400;
+  --rh__type-palette__textL__line-height: 28px;
+  --rh__type-palette__textL__letter-spacing: -0.25px;
+  --rh__type-palette__textLBold__stack: "Capsule Sans Text",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__textLBold__font-size: 18px;
+  --rh__type-palette__textLBold__font-weight: 700;
+  --rh__type-palette__textLBold__line-height: 28px;
+  --rh__type-palette__textLBold__letter-spacing: -0.25px;
+  --rh__type-palette__displayS__stack: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__displayS__font-size: 21px;
+  --rh__type-palette__displayS__font-weight: 500;
+  --rh__type-palette__displayS__line-height: 28px;
+  --rh__type-palette__displayS__letter-spacing: -0.1px;
+  --rh__type-palette__displayM__stack: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__displayM__font-size: 24px;
+  --rh__type-palette__displayM__font-weight: 500;
+  --rh__type-palette__displayM__line-height: 32px;
+  --rh__type-palette__displayM__letter-spacing: -0.33px;
+  --rh__type-palette__displayL__stack: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --rh__type-palette__displayL__font-size: 32px;
+  --rh__type-palette__displayL__font-weight: 500;
+  --rh__type-palette__displayL__line-height: 40px;
+  --rh__type-palette__displayL__letter-spacing: -0.33px;
+  --rh__size-palette__gutterWidthXs: 4px;
+  --rh__size-palette__gutterWidthSm: 8px;
+  --rh__size-palette__gutterWidth: 12px;
+  --rh__size-palette__borderRadius: 4px;
+  --rh__size-palette__cellHeightSm: 36px;
+  --rh__size-palette__cellHeight: 48px;
+  --rh__size-palette__cellHeightLg: 60px;
+  --rh__size-palette__largeInputPadding: 20px;
+  --rh__size-palette___experimentalAnchorTableStickyHeaderZIndex: 1;
+  --rh__size-palette___experimentalToastZIndex: 600;
+  --rh__size-palette___experimentalNavBarZIndex: 100;
+  --rh__size-palette___experimentalPopoverZIndex: 1;
+  --rh__size-palette___experimentalModalZIndex: 301;
+  --rh__size-palette___experimentalSelectMenuZIndex: 500;
+  box-sizing: inherit;
+  display: block;
+}
+
+/* .main-page {
   display: flex;
   justify-content: center;
   margin-top: 4%;
   margin-right: 500px;
   margin-left: 20%;
-}
+} */
 
-.graph-buying_power{
+/* .graph-buying_power{
   display: flex;
   flex-direction: column;
   width: 70%;
-}
+} */
 
-.fixed-container {
+/* .fixed-container {
   position: fixed;
   right: 200px;
-  /* bottom: 650px; */
   top: 100px;
   width: 250px;
   height: 200px;
-}
+} */
 
-.stock-list {
+/* .stock-list {
   width: 100%;
   height: 500px;
   overflow: scroll;
   box-shadow: 0px 0px 5px rgb(107, 104, 104);
-}
+}  */
 /* 
 .stock-graph {
   height: 325px;

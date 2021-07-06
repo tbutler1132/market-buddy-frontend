@@ -27,13 +27,11 @@ function userReducer(currentState = defaultState.currentUser, action){
             clone2['cash'] = action.payload
             return clone2
         case ADD_STOCK_TO_LIST:
-            console.log(action.payload)
             const clone5 = {...currentState}
             clone5['lists'] = action.payload
             return clone5
         case ADD_NEW_LIST:
             const clone6 = {...currentState}
-            console.log(action.payload)
             clone6['lists'] = action.payload
             return clone6
         default:
