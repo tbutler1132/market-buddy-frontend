@@ -31,8 +31,6 @@ function SearchBar(props) {
         history.push(`/stocks/${event.target.value.toLowerCase()}`)
     }
 
-    console.log(suggestions)
-
     return (
         <div>
             <Autocomplete

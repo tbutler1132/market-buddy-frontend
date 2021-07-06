@@ -12,8 +12,6 @@ function ConfirmationForm(props) {
         return type === "Buy" ? user.cash - parseInt(cost) : user.cash + parseInt(cost)
     }
 
-    console.log(calculateNewBuyingPower())
-
     //Buy New Stock
     const buyStock = () => {
         const newStockObj = 

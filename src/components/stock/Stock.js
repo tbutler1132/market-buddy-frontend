@@ -5,6 +5,7 @@ import { BASE_API } from '../../App';
 
 import StockGraph from '../home/StockGraph'
 import Transaction from './Transaction'
+import AddToLists from './AddToLists';
 
 
 function Stock(props) {
@@ -15,7 +16,7 @@ function Stock(props) {
     //Consider refactor into Redux, though this is fairly specific to this component
     const [companyInfo, setCompanyInfo] = useState(false)
     const [latestPrice, setLatestPrice] = useState(false)
-
+    const [historicalData, setHistoricalData] = useState(false)
 
     //Fetch company information from external API
     useEffect(() => {
@@ -33,24 +34,61 @@ function Stock(props) {
         .then(price => setLatestPrice(price.data))
     }, [stockId])
 
+
+    //Fetch stock historical data
+    useEffect(() => {
+        axios.get(`${BASE_API}/stocks/historical/${stockId}`)
+        .then(data => setHistoricalData(data.data))
+    }, [stockId])
+
+    //Prepare data to be sent down to graph
+    const preparedStockData = () => {
+        const data = []
+        
+        historicalData?.forEach(point => {
+            const date = point['date'].slice(5, 10)
+            const obj = {
+                name: date,
+                price: point['close']
+            }
+                data.push(obj)
+        })
+            return data
+    }
+
+    //Check what lists contain this stock
+    const checkLists = () => {
+        const presentLists = []
+        const unPresentLists = []
+        user.lists.forEach(list => {
+            if (list.stocks.includes(stockId.toUpperCase())){
+                presentLists.push(list)
+            }else{
+                unPresentLists.push(list)
+            }
+        })
+        return {hasStock: presentLists, notHasStock: unPresentLists}
+    }
+
     //Find the users position in the currently displayed stock
     //<<<<----- Would likely be faster to grab the stock table from redux and look up symbol: O(1) vs O(N)
     const userPosition = () => {
         return user.portfolio?.find(stock => stock.ticker === stockId.toUpperCase())
     }
 
-    if (!companyInfo || !latestPrice) return <div>Loading..</div>
+    if (!companyInfo || !latestPrice || !historicalData) return <div>Loading..</div>
     return (
         <div className="main-page">
             <div className="graph-buying_power">
                 <h1>{stockId}</h1>
-                <StockGraph />
+                <StockGraph type="price" data={preparedStockData()}/>
                 <h3>About</h3>
                 <p>{companyInfo.description}</p>
             </div>
             <div className="fixed-container">
                 <Transaction userPosition={userPosition()} stockId={stockId} user={user} stockPrice={latestPrice}/>
-                <h3>Add to lists</h3>
+                <AddToLists add={true} lists={checkLists().notHasStock} stockSymbol={stockId} user={user}/>
+                <AddToLists add={false} lists={checkLists().hasStock} stockSymbol={stockId} user={user}/>
             </div>
         </div>
     );

@@ -1,28 +1,20 @@
-import React, { useMemo } from 'react';
-import { Chart } from 'react-charts'
+import React from 'react';
+// import { Chart } from 'react-charts'
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts'
 
 function StockGraph(props) {
-        const data = useMemo(
-          () => [
-            {
-              label: 'Series 1',
-              data: [{ x: 1, y: 10 }, { x: 2, y: 20 }, { x: 3, y: 17 }]
-            },
-          ],
-          []
-        )
-       
-        const axes = useMemo(
-          () => [
-            { primary: true, type: 'linear', position: 'bottom' },
-            { type: 'linear', position: 'left' }
-          ],
-          []
-        )
-       
+
+  const {data, type} = props
+
         return (
           <div >
-            <Chart data={data} axes={axes} />
+              <LineChart width={500} height={400} data={data}>
+                <Line type="linear" dataKey={type} stroke="#8884d8" />
+                <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+              </LineChart>
           </div>
         )
 }

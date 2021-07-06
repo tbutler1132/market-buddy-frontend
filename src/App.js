@@ -14,13 +14,13 @@ import StockContainer from './components/stock/StockContainer';
 
 export const BASE_API = 'http://localhost:7000'
 
-function App() {
 
+function App() {
+  
   //REDUX: Create dispatch, retrieve user from store
   const dispatch = useDispatch() 
   const user = useSelector((state) => state.user)
-
-
+  
   //Initial fetch user
   useEffect(() => {
     axios(`${BASE_API}/users/60dfbc675aa6dc13e52fcf4b`)

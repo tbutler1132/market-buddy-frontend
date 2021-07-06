@@ -34,7 +34,6 @@ function Transaction(props) {
         }
     }
 
-    console.log(user.cash / stockPrice, estimatedCost(), stockPrice)
 
     return (
         <div className="stock-list">

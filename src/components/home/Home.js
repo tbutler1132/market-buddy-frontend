@@ -51,13 +51,35 @@ function Home(props) {
         return totalValue + user.cash
     }
 
+    //Prepare data to be sent down to graph
+    const preparedUserData = () => {
+        const data = []
+    
+        user.historicalPortfolioValue.forEach(point => {
+          const date = point['date'].slice(5, 10)
+          const obj = {
+            name: date,
+            value: point['value']
+          }
+          data.push(obj)
+        })
+
+        const current = {
+            name: "Today",
+            value: portfolioValue()
+        }
+        data.push(current)
+
+        return data
+    }
+
     if(!stockMap) return <div>Loading ...</div>
     return (
         <div>
             <div className="main-page">
                 <div className="graph-buying_power">
                     <h1>Portfolio Value: ${portfolioValue()}</h1>
-                    <StockGraph />
+                    <StockGraph type="value" data={preparedUserData()} user={user}/>
                     <h3>Buying power: ${user.cash}</h3>
                 </div>
             </div>

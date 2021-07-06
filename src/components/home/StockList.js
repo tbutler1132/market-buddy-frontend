@@ -43,6 +43,7 @@ function PortfolioList(props) {
             {title ? <h3>{title}</h3> : <h3>stocks</h3>}
             <hr></hr>
             {renderStocks()}
+            <hr></hr>
         </div>
     );
 }

@@ -16,6 +16,7 @@ function StockListContainer(props) {
     return (
         <div className="stock-list">
             <PortfolioList list={false} user={user} portfolio={portfolio} stocks={portfolioSymbols()}/>
+            <h3>Lists</h3>
             <hr></hr>
             {renderLists()}
         </div>
