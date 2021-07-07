@@ -52,10 +52,9 @@ export const adjustUserCash = (newBuyingPower, userId) => async (dispatch) => {
     }
 }
 
-export const addStockToList = (userId, listId, stock) => async (dispatch) => {
-    console.log(listId)
+export const addStockToList = (user) => async (dispatch) => {
     try {
-        const user = await axios.patch(`http://localhost:7000/users/${userId}/lists/${listId}`, stock)
+        // const user = await axios.patch(`http://localhost:7000/users/${userId}/lists/${listId}`, stock)
 
         dispatch({type: ADD_STOCK_TO_LIST, payload: user.data.lists})
     } catch (error) {
@@ -64,10 +63,8 @@ export const addStockToList = (userId, listId, stock) => async (dispatch) => {
 }
 
 export const RemoveStockFromAList = (userId, listId, stock) => async (dispatch) => {
-    console.log(listId, stock)
     try {
         const user = await axios.delete(`http://localhost:7000/users/${userId}/lists/${listId}/${stock}`)
-
         dispatch({type: ADD_STOCK_TO_LIST, payload: user.data.lists})
     } catch (error) {
         
@@ -78,7 +75,6 @@ export const addList = (userId, listObj) => async (dispatch) => {
     try {
         const user = await axios.post(`http://localhost:7000/users/${userId}/lists`, listObj)
 
-        console.log(user.data.lists)
         dispatch({type: ADD_NEW_LIST, payload: user.data.lists})
     } catch (error) {
         

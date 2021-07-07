@@ -38,7 +38,7 @@ function SearchBar(props) {
                 handleHomeEndKeys={false}
                 onSubmit={(event) => submitHandler(event)}  
                 options={suggestions}
-                onChange={(event, value) => history.push(`/stocks/${value.symbol.toLowerCase()}`)}
+                onChange={(event, value) => history.push(`/stocks/${value?.symbol.toLowerCase()}`)}
                 getOptionSelected={(option, value) => option.symbol === value.symbol}
                 getOptionLabel={(suggestion) => suggestion.symbol}
                 onInputChange={fetchResults}

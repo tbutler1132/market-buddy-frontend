@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
-import { Modal } from '@material-ui/core';
+// import { Modal } from '@material-ui/core';
 
 import { addStockToList, RemoveStockFromAList } from '../../redux/actions'
 import FormDialog from './ModalTest'
@@ -10,7 +10,7 @@ function AddToLists(props) {
     const {lists, user, stockSymbol, add} = props
     const dispatch = useDispatch()
 
-    const [open, setOpen] = useState(false)
+    // const [open, setOpen] = useState(false)
     const [selected, setSelect] = useState([])
 
 
@@ -19,7 +19,7 @@ function AddToLists(props) {
             setSelect([...selected, e.target.name])
         }else {
             const clone = [...selected]
-            const filtered =clone.filter(id => id !== e.target.name)
+            const filtered = clone.filter(id => id !== e.target.name)
             setSelect(filtered)
         }   
     }
@@ -67,7 +67,7 @@ function AddToLists(props) {
                 {renderPresentLists()}
                 <button type="submit">Confirm</button>
             </form>
-            <FormDialog lists={renderPresentLists()}/>
+            <FormDialog stockSymbol={stockSymbol} user={user} lists={renderPresentLists()}/>
         </div>
     );
 }

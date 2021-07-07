@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import { Button, TextField } from '@material-ui/core';
 
 import ConfirmationForm from './ConfirmationForm';
+import FormDialog from './ModalTest';
 
 function Transaction(props) {
 
-    const { stockPrice, user, stockId, userPosition } = props
+    const { stockPrice, user, stockId, userPosition, lists } = props
 
     //Toggle whether the transaction is a buy or sell, set the number of shares for transaction, toggle a confirmation form
     const [buyOrSell, toggleBuyOrSell] = useState("Buy")
@@ -55,6 +56,7 @@ function Transaction(props) {
                 {confirmationForm ? <ConfirmationForm type={buyOrSell} shares={numberOfShares} userPosition={userPosition} stockId={stockId} user={user} cost={estimatedCost()} /> : null}
                 <hr></hr>
                 <p>Buying Power: ${user.cash}</p>
+                <FormDialog lists={lists} user={user} stockSymbol={stockId}/>
             </div>
         </div>
     );
