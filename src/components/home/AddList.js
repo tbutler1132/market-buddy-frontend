@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux'
+import { Button, TextField } from '@material-ui/core';
 
 import {addList} from '../../redux/actions'
 
@@ -24,20 +25,23 @@ function AddList(props) {
             title: title,
         }
         dispatch(addList(user._id, listObj))
+        setTitle('')
         setOpen(false)
     }
 
     return (
-        <div>
-            <p onClick={clickHandler}>+</p>
-            {open ? 
-            <>
-            <form onSubmit={submitHandler}>
-                <input onChange={titleHandler} value={title}/>
-                <button type="submit">Submit</button>
-            </form>
-            </> 
+        <div className="add-list">
+            {open ?
+            <div className="new-list-form">
+                <form onSubmit={submitHandler}>
+                    <TextField onChange={titleHandler} value={title}/>
+                    <Button type="submit">Submit</Button>
+                </form>
+            </div> 
             : null}
+            <div>
+                <p onClick={clickHandler}>{!open ? '+' : '-'}</p>
+            </div>
         </div>
     );
 }

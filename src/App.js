@@ -1,5 +1,4 @@
 import './App.css';
-// import axios from 'axios'
 import { useEffect} from 'react';
 import { Switch, Route } from 'react-router-dom'
 import React from 'react';
@@ -17,11 +16,13 @@ export const BASE_API = 'http://localhost:7000'
 
 function App() {
   
-  //REDUX: Create dispatch, retrieve user from store
+  //REDUX:  Create dispatch to update user state, useSelector to retrieve user from the store
+  //NOTE:   I passed the user down manually via props because many components will need it, so there will be no excessive "prop" drilling
+  //      This is slightly easier than getting it from the store everytime.
   const dispatch = useDispatch() 
   const user = useSelector((state) => state.user)
   
-  //Initial fetch user
+  //Initial fetch user from API upon app mounting
   useEffect(() => {
     axios(`${BASE_API}/users/60dfbc675aa6dc13e52fcf4b`)
     .then(userObj => {
@@ -30,6 +31,7 @@ function App() {
   }, [dispatch])
 
 
+  //Don't render until the user has been retrieved. Once we have the user, render two routes- home page and stock show page
   if (!user) return <div>Loading..</div>
   return (
     <div className="App">

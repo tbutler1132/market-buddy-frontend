@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { Button, TextField } from '@material-ui/core';
 
 import ConfirmationForm from './ConfirmationForm';
 
@@ -36,19 +37,25 @@ function Transaction(props) {
 
 
     return (
-        <div className="stock-list">
-            <button onClick={ () => buyOrSell === "Buy" ? toggleBuyOrSell("Sell") : toggleBuyOrSell("Buy")}>{buyOrSell}</button>
-            <hr></hr>
-            {buyOrSell === "Buy" ? 
-            <p>Shares: <input onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0" max={user.cash / stockPrice}/></p> : 
-            <p>Shares: <input onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0" max={userPosition?.shares}/></p>}
-            <p>Market Price: ${stockPrice}</p>
-            <hr></hr>
-            <p>Estimated {buyOrSell === "Buy" ? "Cost" : "Value"}: ${estimatedCost()}</p>
-            {numberOfShares > 0 ? <button onClick={confirmationFormClickHandler}>Review order</button> : null}
-            {confirmationForm ? <ConfirmationForm type={buyOrSell} shares={numberOfShares} userPosition={userPosition} stockId={stockId} user={user} cost={estimatedCost()} /> : null}
-            <hr></hr>
-            <p>Buying Power: ${user.cash}</p>
+        <div className="sidebar-content">
+            <div className="card" style={{position: 'relative'}}>
+                <Button color={buyOrSell === "Buy" ? "primary" : "default"} onClick={ () => toggleBuyOrSell("Buy")}>Buy</Button>
+                <Button color={buyOrSell === "Sell" ? "primary" : "default"} onClick={ () => toggleBuyOrSell("Sell")}>Sell</Button>
+                <hr></hr>
+                {buyOrSell === "Buy" ? 
+                <>
+                <p>Shares:</p> 
+                <TextField onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0" max={user.cash / stockPrice}/> 
+                </>: 
+                <><p>Shares:</p> <TextField onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0" max={userPosition?.shares}/></>}
+                <p>Market Price: ${stockPrice}</p>
+                <hr></hr>
+                <p>Estimated {buyOrSell === "Buy" ? "Cost" : "Value"}: ${estimatedCost()}</p>
+                {numberOfShares > 0 ? <Button variant="contained" color="primary" onClick={confirmationFormClickHandler}>Review order</Button> : null}
+                {confirmationForm ? <ConfirmationForm type={buyOrSell} shares={numberOfShares} userPosition={userPosition} stockId={stockId} user={user} cost={estimatedCost()} /> : null}
+                <hr></hr>
+                <p>Buying Power: ${user.cash}</p>
+            </div>
         </div>
     );
 }

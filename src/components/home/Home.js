@@ -6,16 +6,21 @@ import { getStockInfo } from '../../redux/actions';
 import StockGraph from './StockGraph'
 import StockListContainer from './StockListContainer';
 
-function Home(props) {
+//Responsible for the stock data because that appears in both stock list and graph. Preps data to be sent down as props
 
+function Home(props) {
+    
+    //Deconstruct props
     const { user } = props
+
+    //REDUX: useDispatch to update the state with external API data, useSelector to retrieve state
     const dispatch = useDispatch()
     const stockMap = useSelector((state) => state.stocks)
         
     //Fetch real time Stock Data from external API
     useEffect(() => {
         
-        //Create an array of all symbols to use for batch request
+        //Create an array of all symbols to use for batch request: This includes the user portfolio as well as "watch lists"
         const stocks = () => {
             const stocks = []
             const portfolio = user.portfolio.map(stock => stock.ticker)
@@ -36,6 +41,7 @@ function Home(props) {
         }
 
         //Make request to external API for stock data, dispatch to redux store
+        //<<---Move axios to Redux actions, just for consistency and simplicity--->
         axios(url)
         .then(stock => dispatch(getStockInfo(stock.data)))
     }, [dispatch, user.lists, user.portfolio])

@@ -336,7 +336,7 @@
   border-radius: var(--rh__size-palette__borderRadius);
   box-sizing: border-box;
   box-shadow: 0px -12px 24px var(--rh__shadow__s2), 0px 12px 24px var(--rh__shadow__s1);
-  height: 90%;
+  height: 80%;
   overflow: hidden auto;
   position: relative;
   padding-left: 4%;
@@ -457,4 +457,53 @@
   box-sizing: inherit;
   margin-bottom: 60px;
   margin-top: -24px;
+}
+
+.stock-list-title{
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* .stock-list {
+
+} */
+
+.stock-list-stock-info{
+  display: flex;
+  align-items: center;
+  border-bottom: solid;
+  border-width: thin;
+}
+
+.symbol-shares-owned{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* .add-list {
+  border: solid;
+} */
+
+.new-list-form{
+  width: 100%;
+}
+
+.add-list{
+  display: flex;
+  align-items: center;
+}
+
+/* .stock-list-stock-price{
+
+} */
+
+a{
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  height: 100px
 }

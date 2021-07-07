@@ -1,5 +1,8 @@
 import React from 'react';
 import {useSelector} from 'react-redux'
+import {Link} from 'react-router-dom'
+
+///TAKE A DEEPER DIVE INTO THIS
 
 function PortfolioList(props) {
 
@@ -9,7 +12,7 @@ function PortfolioList(props) {
     const stockTable = useSelector((state) => state.stocks)
 
 
-    //Look into refactor, as of now it uses the stocks passed down as props to identify which stocks in our stocktable the list needs to know about.
+    //Look into refactor, as of now it uses the stocks passed down as props to identify which stocks in our stock table the list needs to know about.
     //If the list is a portfolio list, it also adds a "shares" key
     const displayData = () => {
         const testArr = []
@@ -33,17 +36,27 @@ function PortfolioList(props) {
 
     //Render stock info
     const renderStocks = () => {
-        return displayData().map(stock => <h4 key={stock.symbol}>{`${stock.symbol}: ${stock.shares}, $${stock.uClose}`}</h4>)
+        return displayData().map(stock => 
+            <div key={stock.symbol} className="stock-list-stock-info">
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={`/stocks/${stock.symbol.toLowerCase()}`}>
+                    <div className="symbol-shares-owned">
+                        <h4 key={stock.symbol}>{stock.symbol}</h4> 
+                        <h5>{stock.shares} share{stock.shares === 1 ? '' : 's'}</h5> 
+                    </div>
+                    <div className="stock-list-stock-price">
+                        <h4>${stock.uClose}</h4>
+                    </div>
+                </Link>
+            </div>
+        )
     }
 
 
     // if (!portfolioStocks || !stockMap) return <div>Loading..</div>
     return (
-        <div>
-            {title ? <h3>{title}</h3> : <h3>stocks</h3>}
-            <hr></hr>
+        <div className="stock-list">
+            {title ? <h3>{title}</h3> : <h3>Stocks</h3>}
             {renderStocks()}
-            <hr></hr>
         </div>
     );
 }

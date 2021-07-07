@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
+import { Modal } from '@material-ui/core';
 
 import { addStockToList, RemoveStockFromAList } from '../../redux/actions'
+import FormDialog from './ModalTest'
 
 function AddToLists(props) {
 
@@ -65,6 +67,7 @@ function AddToLists(props) {
                 {renderPresentLists()}
                 <button type="submit">Confirm</button>
             </form>
+            <FormDialog lists={renderPresentLists()}/>
         </div>
     );
 }

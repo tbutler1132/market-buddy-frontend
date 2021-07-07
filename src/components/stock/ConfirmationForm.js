@@ -1,6 +1,7 @@
 import React from 'react';
 import {useDispatch} from 'react-redux'
 import { useHistory } from 'react-router';
+import { Button } from '@material-ui/core';
 
 import {buyNewStock, adjustUserCash, sellAllShares, adjustStockHoldings} from '../../redux/actions'
 
@@ -67,8 +68,8 @@ function ConfirmationForm(props) {
     return (
         <div>
             <p>You're order total is: ${cost}</p>
-            <button onClick={confirmHandler}>Confirm</button>
-            <button>Cancel</button>
+            <Button variant="outlined" color="primary" onClick={confirmHandler}>Confirm</Button>
+            <Button variant="outlined" color="secondary">Cancel</Button>
         </div>
     );
 }
