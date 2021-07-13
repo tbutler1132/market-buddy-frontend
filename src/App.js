@@ -13,7 +13,7 @@ import StockContainer from './components/stock/StockContainer';
 import Signup from './components/Signup'
 import Signin from './components/Signin';
 
-export const BASE_API = 'tbutler1132-market-buddy-backend.zeet.app'
+export const BASE_API = 'http://localhost:7000'
 
 
 function App() {
