@@ -7,7 +7,7 @@ function StockGraph(props) {
   const {data, type} = props
 
   const graphColor = () => {
-    if (data[data.length - 2].value < data[data.length - 1].value){
+    if (data[data.length - 2]?.value < data[data.length - 1]?.value){
       return "#228B22"
     } else {
       return '#C70039'
@@ -17,7 +17,7 @@ function StockGraph(props) {
         return (
           <div >
               <LineChart width={500} height={400} data={data}>
-                <Line type="linear" dataKey={type} stroke={graphColor()} />
+                <Line dot={false} type={"step"} dataKey={type} stroke={graphColor()} />
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />

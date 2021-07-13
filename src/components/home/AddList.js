@@ -40,7 +40,7 @@ function AddList(props) {
             </div> 
             : null}
             <div>
-                <p onClick={clickHandler}>{!open ? '+' : '-'}</p>
+                <p id="list-add" onClick={clickHandler}>{!open ? '+' : '-'}</p>
             </div>
         </div>
     );

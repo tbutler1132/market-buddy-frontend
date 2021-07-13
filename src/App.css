@@ -496,6 +496,16 @@
   align-items: center;
 }
 
+#list-add{
+  cursor: pointer;
+}
+
+.list-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 /* .stock-list-stock-price{
 
 } */

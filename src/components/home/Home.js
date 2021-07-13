@@ -20,6 +20,7 @@ function Home(props) {
     //Fetch real time Stock Data from external API
     useEffect(() => {
         
+        if (user.portfolio.length){
         //Create an array of all symbols to use for batch request: This includes the user portfolio as well as "watch lists"
         const stocks = () => {
             const stocks = []
@@ -44,6 +45,7 @@ function Home(props) {
         //<<---Move axios to Redux actions, just for consistency and simplicity--->
         axios(url)
         .then(stock => dispatch(getStockInfo(stock.data)))
+    }
     }, [dispatch, user.lists, user.portfolio])
 
     //Calculate the value of the user's portfolio, all holdings + cash
@@ -73,12 +75,19 @@ function Home(props) {
             name: "Today",
             value: portfolioValue()
         }
+
+        const firstDay = {
+            name: "Start",
+            value: 0
+        }
+
         data.push(current)
+        data.unshift(firstDay)
 
         return data
     }
 
-    if(!stockMap) return <div>Loading ...</div>
+    if(!stockMap && user.portfolio.length) return <div>Loading ...</div>
     return (
         <div className="main-container">
             <div className="row">

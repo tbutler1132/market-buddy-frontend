@@ -46,9 +46,9 @@ function Transaction(props) {
                 {buyOrSell === "Buy" ? 
                 <>
                 <p>Shares:</p> 
-                <TextField onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0" max={user.cash / stockPrice}/> 
+                <TextField onChange={handleNumberOfShares} type="number" value={numberOfShares} inputProps={{ min: 0, max: user.cash / stockPrice }} min="0" max={user.cash / stockPrice}/> 
                 </>: 
-                <><p>Shares:</p> <TextField onChange={handleNumberOfShares} type="number" value={numberOfShares} min="0" max={userPosition?.shares}/></>}
+                <><p>Shares:</p> <TextField onChange={handleNumberOfShares} type="number" value={numberOfShares} inputProps={{ min: 0, max: userPosition?.shares }} min="0" max={userPosition?.shares}/></>}
                 <p>Market Price: ${stockPrice}</p>
                 <hr></hr>
                 <p>Estimated {buyOrSell === "Buy" ? "Cost" : "Value"}: ${estimatedCost()}</p>

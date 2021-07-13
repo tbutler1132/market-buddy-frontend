@@ -22,7 +22,7 @@ function ConfirmationForm(props) {
             ticker: stockId.toUpperCase(),
             shares: parseInt(shares)
         }
-        dispatch(buyNewStock(newStockObj))
+        dispatch(buyNewStock(user._id, newStockObj))
     }
 
     //Sell all shares
@@ -52,15 +52,25 @@ function ConfirmationForm(props) {
 
     //Confirm Handler
     const confirmHandler = () => {
-        if (type === "Buy" && !userPosition){
-            buyStock()
-        }else if (type === "Sell" && Number(shares) === userPosition.shares){
-            sellAllHoldings()
-        }else{
-            adjustHoldings()
+        if (cost > user.cash || Number(shares > userPosition.shares)){
+            alert('Thought you could pull a fast one?')
+        } else {
+            if (type === "Buy" && !userPosition){
+                if (cost > user.cash){
+                    alert("Not enough cash")
+                } else {
+                    buyStock()
+                }
+            }else if (type === "Sell" && Number(shares) === userPosition.shares){
+                sellAllHoldings()
+            }else{
+                adjustHoldings()
+            }
+
+            dispatch(adjustUserCash(calculateNewBuyingPower(), user._id))
+            history.push('/')
         }
-        dispatch(adjustUserCash(calculateNewBuyingPower(), user._id))
-        history.push('/')
+        
     }
 
     //Sell Handler
