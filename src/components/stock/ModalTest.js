@@ -85,7 +85,7 @@ export default function FormDialog(props) {
       </Button>
         <form >
           <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+            <DialogTitle id="form-dialog-title">Add lists</DialogTitle>
             <DialogContent>
               <DialogContentText>
                 Check off and confirm to add this stock to a list

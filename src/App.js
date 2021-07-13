@@ -65,6 +65,7 @@ function App() {
 
     .then(data => {
       localStorage.setItem("token", data.data.token)
+      localStorage.setItem("profile", JSON.stringify({...data.data.result}))
       dispatch(getUser(data.data.result))
       history.push('/home')
     })
@@ -93,6 +94,7 @@ function App() {
     localStorage.removeItem("token")
     localStorage.removeItem("profile")
     dispatch(getUser(false))
+    history.push('/')
   }
 
   const toggleHandler = (set) => {

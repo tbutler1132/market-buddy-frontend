@@ -16,6 +16,8 @@ function Home(props) {
     //REDUX: useDispatch to update the state with external API data, useSelector to retrieve state
     const dispatch = useDispatch()
     const stockMap = useSelector((state) => state.stocks)
+
+    console.log(stockMap)
         
     //Fetch real time Stock Data from external API
     useEffect(() => {
@@ -52,7 +54,7 @@ function Home(props) {
     const portfolioValue = () => {
         let totalValue = 0
         user.portfolio.forEach(stock => {
-            totalValue = totalValue + (stockMap[stock.ticker]?.open * stock.shares)
+            totalValue = totalValue + (stockMap[stock.ticker]?.latestPrice * stock.shares)
         })
 
         return totalValue + user.cash

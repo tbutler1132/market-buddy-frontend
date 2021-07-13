@@ -32,9 +32,9 @@ function Signin(props) {
                 <label>Username</label>
                 <input onChange={userNameHandler} value={username}/>
                 <label>Password</label>
-                <input onChange={passwordHandler} value={password}/>
-                <Button type="submit">Submit</Button>
-                <Button variant="contained" color="secondary" onClick={clickHandler}>Signup</Button>
+                <input type="password" onChange={passwordHandler} value={password}/>
+                <Button variant="contained" type="submit">Submit</Button>
+                <Button color="secondary" onClick={clickHandler}>Signup</Button>
             </form>
         </div>
     );
