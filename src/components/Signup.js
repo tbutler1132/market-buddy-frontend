@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Button} from '@material-ui/core'
 
 function Signup(props) {
     const [username, setUsername] = useState('')
@@ -20,14 +21,21 @@ function Signup(props) {
         })
     }
 
+    const clickHandler = () => {
+        props.toggle(false)
+    }
+
+
     return (
         <div className="login">
-            <form onSubmit={submitHandler}>
-                <label>Email</label>
+            <h1>Signup</h1>
+            <form class="login-form" onSubmit={submitHandler}>
+                <label>Username</label>
                 <input onChange={userNameHandler} value={username}/>
                 <label>Password</label>
                 <input onChange={passwordHandler} value={password}/>
-                <button type="submit">Submit</button>
+                <Button type="submit">Submit</Button>
+                <Button variant="contained" color="secondary" onClick={clickHandler}>Signin</Button>
             </form>
         </div>
     );

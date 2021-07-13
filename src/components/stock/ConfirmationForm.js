@@ -52,7 +52,7 @@ function ConfirmationForm(props) {
 
     //Confirm Handler
     const confirmHandler = () => {
-        if (cost > user.cash || Number(shares > userPosition.shares)){
+        if (cost > user.cash || Number(shares > userPosition?.shares)){
             alert('Thought you could pull a fast one?')
         } else {
             if (type === "Buy" && !userPosition){
@@ -68,7 +68,7 @@ function ConfirmationForm(props) {
             }
 
             dispatch(adjustUserCash(calculateNewBuyingPower(), user._id))
-            history.push('/')
+            history.push('/home')
         }
         
     }

@@ -1,6 +1,6 @@
 import './App.css';
-import { useEffect} from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { useEffect, useState} from 'react';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom'
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
@@ -17,6 +17,8 @@ export const BASE_API = 'http://localhost:7000'
 
 
 function App() {
+  const [signup, setSignup] = useState(false)
+  const history = useHistory()
   
   //REDUX:  Create dispatch to update user state, useSelector to retrieve user from the store
   //NOTE:   I passed the user down manually via props because many components will need it, so there will be no excessive "prop" drilling
@@ -64,6 +66,7 @@ function App() {
     .then(data => {
       localStorage.setItem("token", data.data.token)
       dispatch(getUser(data.data.result))
+      history.push('/home')
     })
   }
 
@@ -82,6 +85,7 @@ function App() {
       localStorage.setItem("token", data.data.token)
       localStorage.setItem("profile", JSON.stringify({...data.data.result}))
       dispatch(getUser(data.data.result))
+      history.push('/home')
     })
   }
 
@@ -91,14 +95,32 @@ function App() {
     dispatch(getUser(false))
   }
 
+  const toggleHandler = (set) => {
+    setSignup(set)
+  }
+
 
   //Don't render until the user has been retrieved. Once we have the user, render two routes- home page and stock show page
-  if (!user) return <><Signup signupHandler={signupHandler}/><Signin signinHandler={signinHandler}/></>
+  if (!user) 
+    return (
+    <>
+      <Route exact path="/"><Redirect to="signup"/></Route>
+      {signup ?
+      <div>
+      <Route exact path="/signup" render={() => <Signup toggle={toggleHandler} signupHandler={signupHandler}/>}/>
+      </div>
+      :
+      <div>
+      <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} signinHandler={signinHandler}/>}/>
+      </div>
+      }
+    </>
+    )
   return (
     <div className="App">
         <Nav logoutHandler={logoutHandler}/>
       <Switch>
-        <Route exact path="/" render={() => <Home user={user}/>}/>
+        <Route path="/home" render={() => <Home user={user}/>}/>
         <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
       </Switch>
     </div>

@@ -68,7 +68,7 @@ function PortfolioList(props) {
             {title ? 
             <div className="list-title-container">
                 <h3 style={{textDecoration: "underline"}}>{title}</h3> 
-                <DeleteIcon onClick={removeList} fontSize={'small'}/>
+                <DeleteIcon style={{cursor: 'pointer'}} onClick={removeList} fontSize={'small'}/>
             </div>
             : <h2>Your Stocks</h2>}
             {renderStocks()}
