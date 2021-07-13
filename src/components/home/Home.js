@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStockInfo } from '../../redux/actions';
 import StockGraph from './StockGraph'
 import StockListContainer from './StockListContainer';
+import {BASE_API} from '../../App'
+
 
 //Responsible for the stock data because that appears in both stock list and graph. Preps data to be sent down as props
+
 
 function Home(props) {
     
@@ -33,7 +36,7 @@ function Home(props) {
         }
 
         //Create the url for batch request
-        let url = `http://localhost:7000/stocks/`
+        let url = `${BASE_API}/stocks/`
         for (let i = 0; i < stocks().length; i++) {
             if (i === stocks().length - 1){
                 url = url + stocks()[i]

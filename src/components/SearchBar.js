@@ -3,6 +3,8 @@ import axios from 'axios'
 import {Autocomplete} from '@material-ui/lab'
 import { TextField } from '@material-ui/core';
 import {useHistory} from 'react-router-dom'
+import {BASE_API} from './../App'
+
 
 function SearchBar(props) {
     const [searchTerm, setSearchTerm] = useState('')
@@ -22,7 +24,7 @@ function SearchBar(props) {
     const fetchResults = (event, values) => {
         setSearchTerm(event.target.value)
         if(searchTerm){
-            axios(`http://localhost:7000/stocks/search/${searchTerm}`)
+            axios(`${BASE_API}/${searchTerm}`)
             .then(results => setSuggestions(results.data))
         }
     }
