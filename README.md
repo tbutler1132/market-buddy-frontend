@@ -1,70 +1,15 @@
-# Getting Started with Create React App
+  Market Buddy is an application with which users can you use virtual currency to trade stocks. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  My purpose in building this specific application is not to neccesarily create a ground breaking finance app, but rather to replicate some of the apps that are already on the market. As I continue to build it, I want to demonstrate my ability to construct an industry standard application using a variety of common technologies. Additionally, I hope that I can convey a deep understanding of finance along with a passion for the field.
 
-## Available Scripts
+  Currently the functionality is limited to buying and selling securities. I would consider this to be the minimum viable product. There are many ways in which the app will be improved, both in terms of technical improvment as well as implementing more complex financial transactions (varying order types, options, cryptocurrency, etc.)
+  
+  Below is a list of some of the improvements I would like to make in the near future:
 
-In the project directory, you can run:
+1. Improve historical portfolio value feature. This is the only feature that I would consider to be part of the MVP that is not completely stable. There are many ways in which I could approach this task, so I want to take care in how I proceed.
+2. Allow a user to view different historical timeframes. At the moment, the historical value of a stock is limited to YTD daily prices. Allowing the user to view different time scales is an important piece of functionality.
+3. Stricter, more robust validations and general security. As I built the app, security was a bit of a secondary concern as my primary focus was building out the API and the UI. Despite my approach I realize that this type of application in particular requires very delicate attention to security. 
+4. Cleaner and DRYer code. One of the most notable improvements I have observed in my work over the past few months is the quality of my code. I am satisfied with my work on this project, but I think doing a comprehensive refactor before moving forward with implementing more features would be worthwhile.
+5. More generally, I would like to improve my use of version control. My branches are somewhat random and my commit messages are typically vague and incosistent.
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 
