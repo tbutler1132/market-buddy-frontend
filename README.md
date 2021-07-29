@@ -2,8 +2,6 @@
 
 [Recorded Demo](https://youtu.be/AgCsgbkwLh0)
 
-## Installation
-
 ## Email
 tbutler1132@gmail.com
   
@@ -21,5 +19,5 @@ tbutler1132@gmail.com
 4. More generally, I would like to improve my use of version control. My branches are somewhat random and my commit messages are typically vague and incosistent.
 
 
-Note: Unfortunately the project requires a premium IEX Cloud plan to run locally. While I aim to deploy the project to the internet in the near future, I will also be continually recording video demos of the project. In the event that the cost of hosting the project becomes prohibitive, those demos as well as the published code will provide a comprehensive overview of the process and results of the project.
+Note: Unfortunately the project requires a premium IEX Cloud plan. While I aim to deploy the project to the internet in the near future, I will also be continually recording video demos of the project. In the event that the cost of hosting the project becomes prohibitive, those demos as well as the published code will provide a comprehensive overview of the process and results of the project.
 
