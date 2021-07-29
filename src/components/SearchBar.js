@@ -24,7 +24,7 @@ function SearchBar(props) {
     const fetchResults = (event, values) => {
         setSearchTerm(event.target.value)
         if(searchTerm){
-            axios(`${BASE_API}/${searchTerm}`)
+            axios(`${BASE_API}/stocks/search/${searchTerm}`)
             .then(results => setSuggestions(results.data))
         }
     }

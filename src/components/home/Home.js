@@ -35,6 +35,8 @@ function Home(props) {
             return stocks.flat()
         }
 
+        console.log(stocks)
+
         //Create the url for batch request
         let url = `${BASE_API}/stocks/`
         for (let i = 0; i < stocks().length; i++) {
