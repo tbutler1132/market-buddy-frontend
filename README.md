@@ -1,6 +1,9 @@
 # Market Buddy  
 
+[Live Demo](https://eloquent-hamilton-1cc3f5.netlify.app)
+
 [Recorded Demo](https://youtu.be/AgCsgbkwLh0)
+
 
 ## Email
 tbutler1132@gmail.com
@@ -18,6 +21,4 @@ tbutler1132@gmail.com
 3. Cleaner and DRYer code. One of the most notable improvements I have observed in my work over the past few months is the quality of my code. I am satisfied with my work on this project, but I think doing a comprehensive refactor before moving forward with implementing more features would be worthwhile.
 4. More generally, I would like to improve my use of version control. My branches are somewhat random and my commit messages are typically vague and incosistent.
 
-
-Note: Unfortunately the project requires a premium IEX Cloud plan. While I aim to deploy the project to the internet in the near future, I will also be continually recording video demos of the project. In the event that the cost of hosting the project becomes prohibitive, those demos as well as the published code will provide a comprehensive overview of the process and results of the project.
 
