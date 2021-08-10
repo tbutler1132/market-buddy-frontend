@@ -35,6 +35,8 @@ function Home(props) {
 
         //Create the url for batch request
         let url = `${BASE_API}/stocks/`
+        // let newsUrl = `https://cloud.iexapis.com/stable/stock/market/news/last/1`
+
         for (let i = 0; i < stocks().length; i++) {
             if (i === stocks().length - 1){
                 url = url + stocks()[i]
@@ -50,6 +52,14 @@ function Home(props) {
         .then(stock => dispatch(getStockInfo(stock.data)))
     }
     }, [dispatch, user.lists, user.portfolio])
+
+    //Get news
+
+    useEffect(() => {
+        if(user.portfolio.length){
+
+        }
+    })
 
     //Calculate the value of the user's portfolio, all holdings + cash
     const portfolioValue = () => {
