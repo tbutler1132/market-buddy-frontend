@@ -53,6 +53,7 @@ function App() {
   }, [dispatch])
 
   const signupHandler = (userInfo) => {
+    dispatch(getUser("loading"))
     axios({
       url: `${BASE_API}/users/signup`,
       method: 'POST',
@@ -118,6 +119,14 @@ function App() {
       }
     </>
     )
+
+  if (user === "loading"){
+    return(
+      <div>
+        Loading
+      </div>
+    )
+  }
   return (
     <div className="App">
         <Nav logoutHandler={logoutHandler}/>
