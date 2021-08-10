@@ -26,7 +26,6 @@ function App() {
   const dispatch = useDispatch() 
   const user = useSelector((state) => state.user)
 
-  console.log(user)
   
   //Initial fetch user from API upon app mounting
   useEffect(() => {

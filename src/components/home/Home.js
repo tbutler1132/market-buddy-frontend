@@ -19,8 +19,6 @@ function Home(props) {
     //REDUX: useDispatch to update the state with external API data, useSelector to retrieve state
     const dispatch = useDispatch()
     const stockMap = useSelector((state) => state.stocks)
-
-    console.log(stockMap)
         
     //Fetch real time Stock Data from external API
     useEffect(() => {
@@ -34,8 +32,6 @@ function Home(props) {
             stocks.push(portfolio)
             return stocks.flat()
         }
-
-        console.log(stocks)
 
         //Create the url for batch request
         let url = `${BASE_API}/stocks/`
