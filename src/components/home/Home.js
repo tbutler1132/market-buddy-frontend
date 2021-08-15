@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
+import CircularProgress from '@material-ui/core/CircularProgress'
 
-import { getStockInfo } from '../../redux/actions';
+import { getStockInfo, getNews } from '../../redux/actions';
 import StockGraph from './StockGraph'
 import StockListContainer from './StockListContainer';
+import News from './News';
 import {BASE_API} from '../../App'
 
 
@@ -19,6 +21,7 @@ function Home(props) {
     //REDUX: useDispatch to update the state with external API data, useSelector to retrieve state
     const dispatch = useDispatch()
     const stockMap = useSelector((state) => state.stocks)
+    const news = useSelector((state) => state.news)
         
     //Fetch real time Stock Data from external API
     useEffect(() => {
@@ -35,16 +38,23 @@ function Home(props) {
 
         //Create the url for batch request
         let url = `${BASE_API}/stocks/`
-        // let newsUrl = `https://cloud.iexapis.com/stable/stock/market/news/last/1`
+        let newsUrl = `${BASE_API}/stocks/news/aapl,fb,amzn,nflx`
 
         for (let i = 0; i < stocks().length; i++) {
             if (i === stocks().length - 1){
                 url = url + stocks()[i]
+                // newsUrl = newsUrl + stocks()[i]
             } else {
                 url = url + stocks()[i] + ","
+                // newsUrl = newsUrl + stocks()[i] + ","
             }
             
         }
+
+        console.log(newsUrl)
+
+        axios(newsUrl)
+        .then(news => dispatch(getNews(news.data)))
 
         //Make request to external API for stock data, dispatch to redux store
         //<<---Move axios to Redux actions, just for consistency and simplicity--->
@@ -52,14 +62,6 @@ function Home(props) {
         .then(stock => dispatch(getStockInfo(stock.data)))
     }
     }, [dispatch, user.lists, user.portfolio])
-
-    //Get news
-
-    useEffect(() => {
-        if(user.portfolio.length){
-
-        }
-    })
 
     //Calculate the value of the user's portfolio, all holdings + cash
     const portfolioValue = () => {
@@ -100,7 +102,7 @@ function Home(props) {
         return data
     }
 
-    if(!stockMap && user.portfolio.length) return <div>Loading ...</div>
+    if(!stockMap && user.portfolio.length) return <div><CircularProgress /></div>
     return (
         <div className="main-container">
             <div className="row">
@@ -115,6 +117,7 @@ function Home(props) {
                     <StockListContainer user={user}/>
                 </div>
             </div>
+            <News news={news}/>
         </div>
     );
 }

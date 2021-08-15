@@ -1,15 +1,15 @@
 import {combineReducers} from 'redux'
-import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH, DELETE_USER_STOCK, UPDATE_USER_SHARES, ADD_STOCK_TO_LIST, ADD_NEW_LIST, DELETE_LIST } from '../constants/action_types'
+import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH, DELETE_USER_STOCK, UPDATE_USER_SHARES, ADD_STOCK_TO_LIST, ADD_NEW_LIST, DELETE_LIST, GET_NEWS } from '../constants/action_types'
 
 const defaultState = {
     currentUser: false,
-    userStockWatch: false
+    userStockWatch: false,
+    news: false
 }
 
 function userReducer(currentState = defaultState.currentUser, action){
     switch (action.type) {
         case FETCH_USER:
-            console.log(action.payload)
             return action.payload
         case ADD_USER_STOCK:
             const clone = {...currentState}
@@ -61,10 +61,20 @@ function stockReducer(currentState = defaultState.userStockWatch, action){
     }
 }
 
+function newsReducer(currentState = defaultState.news, action){
+    switch (action.type) {
+        case GET_NEWS:
+            return action.payload
+        default:
+            return currentState
+    }
+}
+
 
 const rootReducer = combineReducers({
     user: userReducer,
-    stocks: stockReducer
+    stocks: stockReducer,
+    news: newsReducer
 })
 
 export default rootReducer

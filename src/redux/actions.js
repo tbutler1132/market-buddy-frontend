@@ -1,5 +1,5 @@
 import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH, DELETE_USER_STOCK, UPDATE_USER_SHARES, ADD_STOCK_TO_LIST, ADD_NEW_LIST, 
-DELETE_LIST
+DELETE_LIST, GET_NEWS
 } from "../constants/action_types";
 import axios from 'axios'
 import { BASE_API } from "../App";
@@ -15,6 +15,10 @@ export const getUser = (userObj) => async (dispatch) => {
 
 export const getStockInfo = (stockArr) => async (dispatch) => {
     dispatch({type: FETCH_USER_STOCKS, payload: stockArr})
+}
+
+export const getNews = (newsArr) => async (dispatch) => {
+    dispatch({type: GET_NEWS, payload: newsArr})
 }
 
 export const buyNewStock = (userId, stockObj) => async (dispatch) => {
