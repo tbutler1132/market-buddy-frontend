@@ -29,7 +29,7 @@ function Signup(props) {
     return (
         <div className="login">
             <h1>Signup</h1>
-            <form class="login-form" onSubmit={submitHandler}>
+            <form className="login-form" onSubmit={submitHandler}>
                 <label>Username</label>
                 <input onChange={userNameHandler} value={username}/>
                 <label>Password</label>

@@ -18,7 +18,7 @@ export const BASE_API = 'http://localhost:7000'
 
 
 function App() {
-  const [signup, setSignup] = useState(false)
+  const [signup, setSignup] = useState(true)
   const history = useHistory()
   
   //REDUX: Create dispatch to update user state, useSelector to retrieve user from the store
@@ -95,7 +95,7 @@ function App() {
     localStorage.removeItem("token")
     localStorage.removeItem("profile")
     dispatch(getUser(false))
-    history.push('/')
+    history.push('/signup')
   }
 
   const toggleHandler = (set) => {
