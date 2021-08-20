@@ -11,14 +11,14 @@ function SearchBar(props) {
     const [suggestions, setSuggestions] = useState([])
     const history = useHistory()
 
-    // const dummy = [
-    //     {
-    //         title: "Hey"
-    //     },
-    //     {
-    //         title: "Never"
-    //     },
-    // ]
+    // // const dummy = [
+    // //     {
+    // //         title: "Hey"
+    // //     },
+    // //     {
+    // //         title: "Never"
+    // //     },
+    // // ]
 
 
     const fetchResults = (event, values) => {
@@ -33,25 +33,49 @@ function SearchBar(props) {
     }
 
     const submitHandler = (event, value) => {
-        history.push(`/stocks/${event.target.value.toLowerCase()}`)
+        console.log("Clicked")
+        history.push(`/stocks/${event.target.innerText.toLowerCase()}`)
+        setSuggestions([])
     }
 
-    console.log(suggestions)
+    const renderSuggestions = () => {
+        if(searchTerm){
+            return suggestions.map(stock => 
+                <li onClick={submitHandler} value={stock.symbol} key={stock.symbol}>{stock.symbol}</li>
+            )
+        }else{
+            return null
+        }
+    }
+
+
+    // console.log(suggestions)
+
+    // return (
+    //     <div>
+    //         <Autocomplete
+    //             id="combo-box-demo"
+    //             handleHomeEndKeys={false}
+    //             onSubmit={(event) => submitHandler(event)}  
+    //             options={suggestions}
+    //             onChange={(event, value) => history.push(`/stocks/${value?.symbol.toLowerCase()}`)}
+    //             getOptionSelected={(option, value) => option.symbol === value.symbol}
+    //             getOptionLabel={(suggestion) => suggestion.symbol}
+    //             onInputChange={fetchResults}
+    //             style={{ width: 300 }}
+    //             renderInput={(params) => <TextField  {...params} label="Search by stock symbol" variant="outlined" />}
+    //         />
+    //     </div>
+    // );
 
     return (
-        <div>
-            <Autocomplete
-                id="combo-box-demo"
-                handleHomeEndKeys={false}
-                onSubmit={(event) => submitHandler(event)}  
-                options={suggestions}
-                onChange={(event, value) => history.push(`/stocks/${value?.symbol.toLowerCase()}`)}
-                getOptionSelected={(option, value) => option.symbol === value.symbol}
-                getOptionLabel={(suggestion) => suggestion.symbol}
-                onInputChange={fetchResults}
-                style={{ width: 300 }}
-                renderInput={(params) => <TextField  {...params} label="Search by stock symbol" variant="outlined" />}
-            />
+        <div className="wrapper">
+            <div className="search-input">  
+                <input onChange={fetchResults}/>
+                <div className="autocom-box">
+                    {renderSuggestions()}
+                </div>
+            </div> 
         </div>
     );
 }
