@@ -46,7 +46,7 @@ const AutoCompleteSearch = () => {
         <input
           id="auto"
           onClick={() => setDisplay(!display)}
-          placeholder="Type to search"
+          placeholder="Search by stock symbol"
           value={search}
           onChange={changeHandler}
         />

@@ -38,8 +38,7 @@ function Home(props) {
 
         //Create the url for batch request
         let url = `${BASE_API}/stocks/`
-        let newsUrl = `${BASE_API}/stocks/news/aapl,fb,amzn,nflx`
-
+        
         for (let i = 0; i < stocks().length; i++) {
             if (i === stocks().length - 1){
                 url = url + stocks()[i]
@@ -50,17 +49,19 @@ function Home(props) {
             }
             
         }
-
-        console.log(newsUrl)
-
-        axios(newsUrl)
-        .then(news => dispatch(getNews(news.data)))
-
+        
+        
         //Make request to external API for stock data, dispatch to redux store
         //<<---Move axios to Redux actions, just for consistency and simplicity--->
         axios(url)
         .then(stock => dispatch(getStockInfo(stock.data)))
     }
+
+    let newsUrl = `${BASE_API}/stocks/news/aapl,fb,amzn,nflx`
+
+    axios(newsUrl)
+    .then(news => dispatch(getNews(news.data)))
+    
     }, [dispatch, user.lists, user.portfolio])
 
     //Calculate the value of the user's portfolio, all holdings + cash

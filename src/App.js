@@ -14,7 +14,7 @@ import StockContainer from './components/stock/StockContainer';
 import Signup from './components/Signup'
 import Signin from './components/Signin';
 
-export const BASE_API = 'http://localhost:7000'
+export const BASE_API = 'https://market-buddy-server.herokuapp.com'
 
 
 function App() {
@@ -70,6 +70,10 @@ function App() {
       dispatch(getUser(data.data.result))
       history.push('/home')
     })
+    .catch((error) => {
+      alert("Username already in use")
+      dispatch(getUser(false))
+    })
   }
 
   const signinHandler = (userInfo) => {
@@ -108,15 +112,18 @@ function App() {
     return (
     <>
       <Route exact path="/"><Redirect to="signup"/></Route>
-      {signup ?
-      <div>
-      <Route exact path="/signup" render={() => <Signup toggle={toggleHandler} signupHandler={signupHandler}/>}/>
+      <div className="signin-page">
+        {signup ?
+        <div>
+          <Route exact path="/signup" render={() => <Signup toggle={toggleHandler} signupHandler={signupHandler}/>}/>
+        </div>
+        :
+        <div>
+          <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} signinHandler={signinHandler}/>}/>
+        </div>
+        }
+        <img src="https://images.cartoonstock.com/previews/CC22230_preview.jpg" alt=""/>
       </div>
-      :
-      <div>
-      <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} signinHandler={signinHandler}/>}/>
-      </div>
-      }
     </>
     )
 
