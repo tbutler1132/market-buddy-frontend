@@ -106,7 +106,6 @@ function App() {
     setSignup(set)
   }
 
-
   //Don't render until the user has been retrieved. Once we have the user, render two routes- home page and stock show page
   if (!user) 
     return (

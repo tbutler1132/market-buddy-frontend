@@ -33,15 +33,6 @@ function AddToLists(props) {
         )
     }
 
-    // const renderunPresentLists = () => {
-    //     return uncheckedLists.map(list => 
-    //         <div key={list._id}>
-    //             <label>{list.title}</label>
-    //             <input name={list.title} type="checkbox"/>
-    //         </div>
-    //     )
-    // }
-
 
     //Get the form, update state, THEN update the database based off of the new state (ASYNC)
 

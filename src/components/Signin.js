@@ -28,11 +28,11 @@ function Signin(props) {
     return (
         <div className="login">
             <h1>Signin</h1>
-            <form class="login-form" onSubmit={submitHandler}>
+            <form className="login-form" onSubmit={submitHandler}>
                 <label>Username</label>
-                <input onChange={userNameHandler} value={username}/>
+                <input className="login" onChange={userNameHandler} value={username}/>
                 <label>Password</label>
-                <input type="password" onChange={passwordHandler} value={password}/>
+                <input className="login" type="password" onChange={passwordHandler} value={password}/>
                 <Button variant="contained" type="submit">Submit</Button>
                 <Button color="secondary" onClick={clickHandler}>Signup</Button>
             </form>

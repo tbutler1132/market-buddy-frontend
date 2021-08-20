@@ -25,13 +25,18 @@ function SearchBar(props) {
         setSearchTerm(event.target.value)
         if(searchTerm){
             axios(`${BASE_API}/stocks/search/${searchTerm}`)
-            .then(results => setSuggestions(results.data))
+            .then(results => {
+                console.log(results.data)
+                setSuggestions(results.data)
+            })
         }
     }
 
     const submitHandler = (event, value) => {
         history.push(`/stocks/${event.target.value.toLowerCase()}`)
     }
+
+    console.log(suggestions)
 
     return (
         <div>
@@ -45,7 +50,7 @@ function SearchBar(props) {
                 getOptionLabel={(suggestion) => suggestion.symbol}
                 onInputChange={fetchResults}
                 style={{ width: 300 }}
-                renderInput={(params) => <TextField  {...params} label="Search" variant="outlined" />}
+                renderInput={(params) => <TextField  {...params} label="Search by stock symbol" variant="outlined" />}
             />
         </div>
     );

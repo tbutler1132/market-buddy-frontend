@@ -507,6 +507,23 @@
   border: solid;
 }
 
+.news-story{
+  background-color: white;
+  padding-bottom: 3px;
+  padding-left: 1%;
+  padding-right: 1%;
+  transition: background-color 0.5s ease;
+}
+
+.news-story:hover{
+  background-color: rgb(243, 242, 242);
+  border-top: none;
+}
+
+img.news {
+  border-radius: 2%;
+}
+
 /* .stock-list-stock-price{
 
 } */
@@ -515,11 +532,12 @@ a{
   display: flex;
   width: 100%;
   align-items: center;
-
+  text-decoration: none;
+  color: black;
   height: 100px
 }
 
-input:focus {
+input.login:focus {
   outline: none;
   border: 3px solid rgb(5, 141, 27);
 }

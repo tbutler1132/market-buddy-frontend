@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
 import { BASE_API } from '../../App';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import StockGraph from '../home/StockGraph'
 import Transaction from './Transaction'
@@ -76,7 +77,7 @@ function Stock(props) {
         return user.portfolio?.find(stock => stock.ticker === stockId.toUpperCase())
     }
 
-    if (!companyInfo || !latestPrice || !historicalData) return <div>Loading..</div>
+    if (!companyInfo || !latestPrice || !historicalData) return <CircularProgress />
     return (
         <div className="main-container">
             <div className="row">

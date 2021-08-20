@@ -87,6 +87,10 @@ export default function FormDialog(props) {
         <form >
           <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
             <DialogTitle id="form-dialog-title">Add lists</DialogTitle>
+            {lists.hasStock.length === 0 && lists.notHasStock.length === 0 ?
+            <DialogContentText>You have no lists</DialogContentText>  
+            :
+            <>
             <DialogContent>
               <DialogContentText>
                 Check off and confirm to add this stock to a list
@@ -101,6 +105,8 @@ export default function FormDialog(props) {
                 Confirm
               </Button>
             </DialogActions>
+            </>
+            }
           </Dialog>
         </form>
     </div>

@@ -113,12 +113,12 @@ function Home(props) {
                     <div className="css-1">
                         <h3>Buying power: ${user.cash}</h3>
                     </div>
+                     <News news={news}/>
                 </div>
                 <div className="col-5">
                     <StockListContainer user={user}/>
                 </div>
             </div>
-            <News news={news}/>
         </div>
     );
 }

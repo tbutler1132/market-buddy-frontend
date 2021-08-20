@@ -35,6 +35,7 @@ function AddList(props) {
             <div className="new-list-form">
                 <form onSubmit={submitHandler}>
                     <TextField onChange={titleHandler} value={title}/>
+                    <Button onClick={() => setOpen(false)}>Cancel</Button>
                     <Button type="submit">Submit</Button>
                 </form>
             </div> 
