@@ -71,7 +71,6 @@ export default function FormDialog(props) {
         updatedUser = await axios.patch(`${BASE_API}/users/${user._id}/lists/${stateArr[i][0]}`, {stock: stockSymbol.toUpperCase()})
       }
     }
-    console.log(stateArr[stateArr.length - 1])
     if(stateArr[stateArr.length - 1][1] === "checked"){
       updatedUser = await axios.patch(`${BASE_API}/users/${user._id}/lists/${stateArr[stateArr.length - 1][0]}`, {stock: stockSymbol.toUpperCase()})
     }

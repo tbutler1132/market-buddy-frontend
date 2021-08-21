@@ -22,8 +22,13 @@ function PortfolioList(props) {
     const displayData = () => {
         const testArr = []
         stocks.forEach(stock => {
-            if (stock in stockTable){
-                testArr.push(stockTable[stock])
+            if(stockTable){
+                if (stock in stockTable){
+                    testArr.push(stockTable[stock])
+                }
+            }
+            else{
+                //Create stocktable
             }
         })
         if (!list){

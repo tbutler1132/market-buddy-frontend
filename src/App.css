@@ -573,6 +573,11 @@ img.news {
   font-size: medium;
 }  
 
+.loading-bar{
+  position: fixed;
+  top: 2;
+}
+
 
 
 /* .search-input.active .autocom-box li{

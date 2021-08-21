@@ -52,7 +52,9 @@ function Transaction(props) {
                 <p>Market Price: ${stockPrice}</p>
                 <hr></hr>
                 <p>Estimated {buyOrSell === "Buy" ? "Cost" : "Value"}: ${estimatedCost()}</p>
-                {numberOfShares > 0 ? <Button variant="contained" color="primary" onClick={confirmationFormClickHandler}>Review order</Button> : null}
+                {numberOfShares > 0 ? 
+                <Button variant="contained" color="primary" onClick={confirmationFormClickHandler}>Review order</Button> 
+                : null}
                 {confirmationForm ? <ConfirmationForm type={buyOrSell} shares={numberOfShares} userPosition={userPosition} stockId={stockId} user={user} cost={estimatedCost()} /> : null}
                 <hr></hr>
                 <p>Buying Power: ${user.cash}</p>

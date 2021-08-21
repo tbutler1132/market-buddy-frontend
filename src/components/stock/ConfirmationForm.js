@@ -12,7 +12,7 @@ function ConfirmationForm(props) {
     const history = useHistory()
 
     const calculateNewBuyingPower = () => {
-        return type === "Buy" ? user.cash - parseInt(cost) : user.cash + parseInt(cost)
+        return type === "Buy" ? user.cash - parseInt(cost) - 2 : user.cash + parseInt(cost) - 2
     }
 
     //Buy New Stock

@@ -26,7 +26,7 @@ function Home(props) {
     //Fetch real time Stock Data from external API
     useEffect(() => {
         
-        if (user.portfolio.length){
+        if (user.portfolio.length || user.lists.length){
         //Create an array of all symbols to use for batch request: This includes the user portfolio as well as "watch lists"
         const stocks = () => {
             const stocks = []
@@ -35,6 +35,8 @@ function Home(props) {
             stocks.push(portfolio)
             return stocks.flat()
         }
+
+        console.log("Stocks", stocks())
 
         //Create the url for batch request
         let url = `${BASE_API}/stocks/`
