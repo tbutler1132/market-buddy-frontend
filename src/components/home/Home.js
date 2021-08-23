@@ -102,7 +102,7 @@ function Home(props) {
         return data
     }
 
-    if(!stockMap && user.portfolio.length) return <div><CircularProgress /><p>Signing in...</p></div>
+    if(!stockMap && user.portfolio.length) return <div><CircularProgress /></div>
     return (
         <div className="main-container">
             <div className="row">
