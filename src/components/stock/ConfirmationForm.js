@@ -52,9 +52,12 @@ function ConfirmationForm(props) {
 
     //Confirm Handler
     const confirmHandler = () => {
-        if (cost > user.cash || (Number(shares > userPosition?.shares && type === "Sell"))){
+        if (cost > user.cash && type === "Buy"){
             alert('Invalid')
-        } else {
+        } else if((Number(shares) > userPosition?.shares && type === "Sell")){
+            alert('Invalid')
+        }
+        else {
             if (type === "Buy" && !userPosition){
                 if (cost > user.cash){
                     alert("Not enough cash")
