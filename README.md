@@ -2,6 +2,10 @@
 
 [Live Demo](https://eloquent-hamilton-1cc3f5.netlify.app)
 
+TEST ACCOUNT:
+Username: Steve
+Password: 1234
+
 [Recorded Demo](https://youtu.be/AgCsgbkwLh0)
 
 
