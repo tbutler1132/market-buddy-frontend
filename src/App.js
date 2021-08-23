@@ -14,7 +14,7 @@ import StockContainer from './components/stock/StockContainer';
 import Signup from './components/Signup'
 import Signin from './components/Signin';
 
-export const BASE_API = 'https://market-buddy-server.herokuapp.com'
+export const BASE_API = 'http://localhost:7000'
 
 
 function App() {

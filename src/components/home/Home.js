@@ -36,8 +36,6 @@ function Home(props) {
             return stocks.flat()
         }
 
-        console.log("Stocks", stocks())
-
         //Create the url for batch request
         let url = `${BASE_API}/stocks/`
         
@@ -59,11 +57,10 @@ function Home(props) {
         .then(stock => dispatch(getStockInfo(stock.data)))
     }
 
-    let newsUrl = `${BASE_API}/stocks/news/aapl,fb,amzn,nflx`
+    let newsUrl = `${BASE_API}/stocks/news/aapl`
 
     axios(newsUrl)
     .then(news => dispatch(getNews(news.data)))
-    
     }, [dispatch, user.lists, user.portfolio])
 
     //Calculate the value of the user's portfolio, all holdings + cash
