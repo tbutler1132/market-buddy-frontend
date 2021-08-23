@@ -14,7 +14,7 @@ import StockContainer from './components/stock/StockContainer';
 import Signup from './components/Signup'
 import Signin from './components/Signin';
 
-export const BASE_API = 'http://localhost:7000'
+export const BASE_API = 'https://market-buddy-server.herokuapp.com'
 
 
 function App() {
@@ -130,6 +130,7 @@ function App() {
     return(
       <div>
         <CircularProgress />
+        <p>Signing in...</p>
       </div>
     )
   }
