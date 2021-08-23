@@ -83,6 +83,7 @@ function Stock(props) {
             <div className="row">
                 <div className="col-12">
                     <h1>{stockId}</h1>
+                    <h3>{latestPrice}</h3>
                     <StockGraph type="price" data={preparedStockData()}/>
                     <h3>About</h3>
                     <p>{companyInfo.description}</p>
