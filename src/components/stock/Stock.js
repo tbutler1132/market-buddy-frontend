@@ -88,11 +88,14 @@ function Stock(props) {
                     <h3>About</h3>
                     <p>{companyInfo.description}</p>
                 </div>
+                {user ?
                 <div className="col-5">
                     <Transaction lists={checkLists()} userPosition={userPosition()} stockId={stockId} user={user} stockPrice={latestPrice}/>
                     {/* <AddToLists add={true} lists={checkLists().notHasStock} stockSymbol={stockId} user={user}/>
                     <AddToLists add={false} lists={checkLists().hasStock} stockSymbol={stockId} user={user}/> */}
                 </div>
+                :
+                null}
             </div>
         </div>
     );

@@ -13,6 +13,8 @@ import Nav from './components/Nav'
 import StockContainer from './components/stock/StockContainer';
 import Signup from './components/Signup'
 import Signin from './components/Signin';
+import PublicHome from './components/publicViews/PublicHome';
+
 
 export const BASE_API = 'https://market-buddy-server.herokuapp.com'
 
@@ -110,7 +112,10 @@ function App() {
   if (!user) 
     return (
     <>
-      <Route exact path="/"><Redirect to="signup"/></Route>
+    <div className="app">
+      <Switch>
+      <Route exact path="/home"><PublicHome /></Route>
+      <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
       <div className="signin-page">
         {signup ?
         <div>
@@ -122,6 +127,8 @@ function App() {
         </div>
         }
         <img src="https://images.cartoonstock.com/previews/CC22230_preview.jpg" alt=""/>
+      </div>
+      </Switch>
       </div>
     </>
     )

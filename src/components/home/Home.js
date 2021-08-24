@@ -57,9 +57,7 @@ function Home(props) {
         .then(stock => dispatch(getStockInfo(stock.data)))
     }
 
-    let newsUrl = `${BASE_API}/stocks/news/aapl`
-
-    axios(newsUrl)
+    axios(`${BASE_API}/stocks/news/aapl`)
     .then(news => dispatch(getNews(news.data)))
     }, [dispatch, user.lists, user.portfolio])
 
@@ -102,7 +100,13 @@ function Home(props) {
         return data
     }
 
-    if(!stockMap && user.portfolio.length) return <div><CircularProgress /></div>
+    if(!user){
+        return(
+            <div>Hey</div>
+        )
+    }
+
+    if(!stockMap && user?.portfolio.length) return <div><CircularProgress /></div>
     return (
         <div className="main-container">
             <div className="row">

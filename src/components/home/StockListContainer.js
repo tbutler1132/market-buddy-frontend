@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PortfolioList from './StockList';
+import PortfolioList from './PortfolioList';
 import AddList from './AddList';
 
 //Renders watchlists, as well as user portfolio
