@@ -1,5 +1,5 @@
 import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH, DELETE_USER_STOCK, UPDATE_USER_SHARES, ADD_STOCK_TO_LIST, ADD_NEW_LIST, 
-DELETE_LIST, GET_NEWS
+DELETE_LIST, GET_NEWS, GET_COLLECTION
 } from "../constants/action_types";
 import axios from 'axios'
 import { BASE_API } from "../App";
@@ -17,8 +17,13 @@ export const getStockInfo = (stockArr) => async (dispatch) => {
     dispatch({type: FETCH_USER_STOCKS, payload: stockArr})
 }
 
-export const getNews = (newsArr) => async (dispatch) => {
-    dispatch({type: GET_NEWS, payload: newsArr})
+export const getNews = () => async (dispatch) => {
+    try {
+        const news = await axios(`${BASE_API}/stocks/news/aapl`)
+        dispatch({type: GET_NEWS, payload: news.data})
+    } catch (error) {
+        
+    }
 }
 
 export const buyNewStock = (userId, stockObj) => async (dispatch) => {
@@ -92,6 +97,14 @@ export const deleteList = (userId, listId) => async (dispatch) => {
 
         console.log(user)
         dispatch({type: DELETE_LIST, payload: user.data.lists})
+    } catch (error) {
+        
+    }
+}
+
+export const getCollection = () => async (dispatch) => {
+    try {
+        
     } catch (error) {
         
     }

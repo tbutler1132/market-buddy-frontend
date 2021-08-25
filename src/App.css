@@ -442,9 +442,14 @@
   justify-content: space-between;
 }
 
-/* .stock-list {
+.stock-list {
+  background-color: white;
+  transition: all .2s ease-in-out;
+}
 
-} */
+.stock-list:hover{
+  background-color: rgb(255, 253, 253);
+}
 
 .stock-list-stock-info{
   display: flex;
@@ -509,7 +514,10 @@
 
 .news-story{
   background-color: white;
-  padding-bottom: 3px;
+  border-bottom: solid;
+  border-bottom-color: rgb(224, 226, 226);
+  border-bottom-width: .1em;
+  padding-bottom: 6px;
   padding-left: 1%;
   padding-right: 1%;
   transition: background-color 0.5s ease;
@@ -517,7 +525,7 @@
 
 .news-story:hover{
   background-color: rgb(243, 242, 242);
-  border-top: none;
+  border-bottom: none;
 }
 
 img.news {
@@ -578,6 +586,11 @@ img.news {
   top: 2;
 }
 
+.trending-lists{
+  height: max-content;
+  margin-top: 10%;
+  margin-bottom: 14%;
+}
 
 
 /* .search-input.active .autocom-box li{
@@ -587,9 +600,9 @@ img.news {
   background: #efefef;
 }  */
 
-/* .stock-list-stock-price{
-
-} */
+.stock-list-stock-price{
+  text-align: right;
+}
 
 a{
   display: flex;
@@ -603,4 +616,17 @@ a{
 input.login:focus {
   outline: none;
   border: 3px solid rgb(5, 141, 27);
+}
+
+
+button.collection-button {
+  text-decoration: none;
+  border: solid;
+  border-color: rgb(241, 241, 241);
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  margin-right: 3px;
+  margin-top: 3px;
+  border-radius: 40px;
+  cursor: pointer;
 }

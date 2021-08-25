@@ -11,6 +11,7 @@ function Collection({stock}) {
                     </div>
                     <div className="stock-list-stock-price">
                         <h4>${stock.latestPrice.toFixed(2)}</h4>
+                        <h4 style={{color: stock.change > 0 ? 'green' : 'red'}}>{stock.change}%</h4>
                     </div>
                 </Link>
             </div>

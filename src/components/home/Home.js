@@ -57,8 +57,7 @@ function Home(props) {
         .then(stock => dispatch(getStockInfo(stock.data)))
     }
 
-    axios(`${BASE_API}/stocks/news/aapl`)
-    .then(news => dispatch(getNews(news.data)))
+    dispatch(getNews())
     }, [dispatch, user.lists, user.portfolio])
 
     //Calculate the value of the user's portfolio, all holdings + cash

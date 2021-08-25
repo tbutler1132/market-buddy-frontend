@@ -3,9 +3,9 @@ import { getNews } from '../../redux/actions';
 import StockGraph from "../home/StockGraph";
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
-import {BASE_API} from '../../App'
 import React, {useEffect, useState} from 'react';
 import CollectionContainer from "./CollectionContainer";
+import TrendingLists from "../TrendingLists";
 
 function PublicHome(props) {
 
@@ -22,9 +22,11 @@ function PublicHome(props) {
         setNASDAQPrices(data.data)})
     
 
-    axios(`${BASE_API}/stocks/news/aapl`)
-    .then(news => dispatch(getNews(news.data)))
+    
+    dispatch(getNews())
     }, [dispatch])
+
+    console.log(news)
 
     const preparedStockData = () => {
         const data = []
@@ -52,6 +54,7 @@ function PublicHome(props) {
                     <h1>SandP</h1>
                     <h3>Latest Price here</h3>
                     <StockGraph type="price" data={preparedStockData()}/>
+                    <TrendingLists />
                     <News news={news}/>
                 </div>
                 <div className="col-5">

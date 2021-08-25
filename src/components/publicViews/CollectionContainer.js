@@ -24,6 +24,7 @@ function CollectionContainer() {
     if(!collection) return <div>Loading...</div>
     return (
         <div className="sidebar-content">
+            <h3>List Name</h3>
             <div className="card" style={{position: 'relative'}}>
                 {renderStocks()}
             </div>

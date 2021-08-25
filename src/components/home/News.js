@@ -7,7 +7,6 @@ function News(props) {
     const renderNews = () => {
         return news.map(story => 
             <div className="news-story" key={Math.floor(Math.random() * 1000)}>
-                <hr></hr>
                 <a href={story.url}>
                     <h2 style={{cursor: 'pointer'}}>{story.headline}</h2>
                 </a>
