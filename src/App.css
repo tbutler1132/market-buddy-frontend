@@ -544,7 +544,7 @@ img.news {
   position: relative;
 }
 .search-input input{
-  background-color: rgb(218, 255, 162);
+  background-color: rgb(248, 252, 243);
   height: 55px;
   width: 100%;
   outline: none;
@@ -587,6 +587,12 @@ img.news {
 }
 
 .trending-lists{
+  height: max-content;
+  margin-top: 10%;
+  margin-bottom: 14%;
+}
+
+.gainers-lists{
   height: max-content;
   margin-top: 10%;
   margin-bottom: 14%;

@@ -16,7 +16,7 @@ import Signin from './components/Signin';
 import PublicHome from './components/publicViews/PublicHome';
 
 
-export const BASE_API = 'https://market-buddy-server.herokuapp.com'
+export const BASE_API = 'http://localhost:7000'
 
 
 function App() {

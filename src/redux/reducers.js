@@ -1,10 +1,11 @@
 import {combineReducers} from 'redux'
-import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH, DELETE_USER_STOCK, UPDATE_USER_SHARES, ADD_STOCK_TO_LIST, ADD_NEW_LIST, DELETE_LIST, GET_NEWS } from '../constants/action_types'
+import { FETCH_USER, FETCH_USER_STOCKS, ADD_USER_STOCK, UPDATE_USER_CASH, DELETE_USER_STOCK, UPDATE_USER_SHARES, ADD_STOCK_TO_LIST, ADD_NEW_LIST, DELETE_LIST, GET_NEWS, GET_COLLECTION } from '../constants/action_types'
 
 const defaultState = {
     currentUser: false,
     userStockWatch: false,
-    news: false
+    news: false,
+    collection: false
 }
 
 function userReducer(currentState = defaultState.currentUser, action){
@@ -70,11 +71,21 @@ function newsReducer(currentState = defaultState.news, action){
     }
 }
 
+function collectionReducer(currentState = defaultState.collection, action){
+    switch (action.type) {
+        case GET_COLLECTION:
+            return action.payload
+        default:
+            return currentState
+    }
+}
+
 
 const rootReducer = combineReducers({
     user: userReducer,
     stocks: stockReducer,
-    news: newsReducer
+    news: newsReducer,
+    collection: collectionReducer
 })
 
 export default rootReducer

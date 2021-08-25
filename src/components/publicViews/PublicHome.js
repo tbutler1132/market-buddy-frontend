@@ -6,6 +6,7 @@ import axios from 'axios'
 import React, {useEffect, useState} from 'react';
 import CollectionContainer from "./CollectionContainer";
 import TrendingLists from "../TrendingLists";
+import Movers from "../Movers";
 
 function PublicHome(props) {
 
@@ -18,7 +19,7 @@ function PublicHome(props) {
     
     axios(`http://localhost:7000/stocks/historical/NDAQ`)
     .then(data => {
-        console.log(data)
+
         setNASDAQPrices(data.data)})
     
 
@@ -26,7 +27,7 @@ function PublicHome(props) {
     dispatch(getNews())
     }, [dispatch])
 
-    console.log(news)
+
 
     const preparedStockData = () => {
         const data = []
@@ -42,7 +43,7 @@ function PublicHome(props) {
             return data
     }
 
-    console.log(NASDAQPrices)
+
 
     // console.log(preparedStockData())
 
@@ -51,9 +52,9 @@ function PublicHome(props) {
         <div className="main-container">
             <div className="row">
                 <div className="col-12">
-                    <h1>SandP</h1>
-                    <h3>Latest Price here</h3>
-                    <StockGraph type="price" data={preparedStockData()}/>
+                    <h1>Welcome to Market Buddy</h1>
+                    <img src="https://cdn.robinhood.com/assets/generated_assets/6da8e43c2ce2585fa5f4384a506a5eda.svg" alt="" />
+                    <Movers type="Gainers"/>
                     <TrendingLists />
                     <News news={news}/>
                 </div>
