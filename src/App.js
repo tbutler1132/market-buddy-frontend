@@ -112,7 +112,8 @@ function App() {
   if (!user) 
     return (
     <>
-    <div className="app">
+    <div className="App">
+      <Nav />
       <Switch>
       <Route exact path="/home"><PublicHome /></Route>
       <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
@@ -143,7 +144,7 @@ function App() {
   }
   return (
     <div className="App">
-        <Nav logoutHandler={logoutHandler}/>
+        <Nav user={user} logoutHandler={logoutHandler}/>
       <Switch>
         <Route path="/home" render={() => <Home user={user}/>}/>
         <Route path="/stocks" render={() => <StockContainer user={user}/>}/>

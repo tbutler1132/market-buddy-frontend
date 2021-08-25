@@ -6,7 +6,6 @@ import axios from 'axios'
 import {BASE_API} from '../../App'
 import React, {useEffect, useState} from 'react';
 import CollectionContainer from "./CollectionContainer";
-import SearchBar from "../SearchBar";
 
 function PublicHome(props) {
 
@@ -48,7 +47,6 @@ function PublicHome(props) {
     if(!NASDAQPrices) return <div>Loading</div>
     return (
         <div className="main-container">
-            <SearchBar />
             <div className="row">
                 <div className="col-12">
                     <h1>SandP</h1>
