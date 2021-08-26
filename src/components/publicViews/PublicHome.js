@@ -7,6 +7,7 @@ import React, {useEffect, useState} from 'react';
 import CollectionContainer from "./CollectionContainer";
 import TrendingLists from "../TrendingLists";
 import Movers from "../Movers";
+import { BASE_API } from "../../App";
 
 function PublicHome(props) {
 
@@ -17,7 +18,7 @@ function PublicHome(props) {
     useEffect(() => {
 
     
-    axios(`http://localhost:7000/stocks/historical/NDAQ`)
+    axios(`${BASE_API}/stocks/historical/NDAQ`)
     .then(data => {
 
         setNASDAQPrices(data.data)})
@@ -55,6 +56,7 @@ function PublicHome(props) {
                     <h1>Welcome to Market Buddy</h1>
                     <img src="https://cdn.robinhood.com/assets/generated_assets/6da8e43c2ce2585fa5f4384a506a5eda.svg" alt="" />
                     <Movers type="Gainers"/>
+                    <Movers type="Losers"/>
                     <TrendingLists />
                     <News news={news}/>
                 </div>

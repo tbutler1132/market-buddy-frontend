@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Collection from './Collection';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
+import { BASE_API } from '../../App';
 
 import { getCollection } from '../../redux/actions';
 
@@ -12,7 +13,7 @@ function CollectionContainer() {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:7000/stocks/collection/list`)
+        axios.get(`${BASE_API}/stocks/collection/list`)
         .then(data => {
             dispatch(getCollection(data.data))})
     }, [dispatch])

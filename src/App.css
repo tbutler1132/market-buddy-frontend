@@ -592,10 +592,26 @@ img.news {
   margin-bottom: 14%;
 }
 
-.gainers-lists{
+.movers-container{
   height: max-content;
   margin-top: 10%;
   margin-bottom: 14%;
+}
+
+.stock-card-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.stock-card {
+  border: solid;
+  border-width: thin;
+  border-color: gray;
+  border-radius: 4%;
+  height: 200px;
+  width: 170px;
+  padding-left: 8px;
+  margin-right: 3%;
 }
 
 

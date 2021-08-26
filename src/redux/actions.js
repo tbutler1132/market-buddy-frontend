@@ -103,7 +103,6 @@ export const deleteList = (userId, listId) => async (dispatch) => {
 }
 
 export const getCollection = (collectionObj) => async (dispatch) => {
-    console.log(collectionObj)
     dispatch({type: GET_COLLECTION, payload: collectionObj})
 }
 
