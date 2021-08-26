@@ -82,7 +82,7 @@ function Stock(props) {
         <div className="main-container">
             <div className="row">
                 <div className="col-12">
-                    <h1>{stockId}</h1>
+                    <h1>{stockId.toUpperCase()}</h1>
                     <h3>{latestPrice}</h3>
                     <StockGraph type="price" data={preparedStockData()}/>
                     <h3>About</h3>

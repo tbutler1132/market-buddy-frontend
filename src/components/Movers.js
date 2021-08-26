@@ -15,7 +15,6 @@ function Movers({type}) {
 
     const renderStockCards = () => {
         const currentCollection = collection.slice(0, 3)
-        console.log("In render", currentCollection)
         return currentCollection.map(stock => <StockCard type={type} key={stock.symbol} stock={stock}/>)
     }
 

@@ -59,7 +59,7 @@ function PortfolioList(props) {
                         {!title ? <h5>{stock.shares} share{stock.shares === 1 ? '' : 's'}</h5> : null}
                     </div>
                     <div className="stock-list-stock-price">
-                        <h4>${stock.latestPrice}</h4>
+                        <h4>${stock.latestPrice.toFixed(2)}</h4>
                     </div>
                 </Link>
             </div>

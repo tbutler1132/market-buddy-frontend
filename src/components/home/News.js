@@ -4,8 +4,6 @@ function News(props) {
 
     const {news} = props
 
-    console.log(news)
-
     const renderNews = () => {
         return news.map(story => 
             <div className="news-story" key={Math.floor(Math.random() * 1000)}>

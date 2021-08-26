@@ -10,6 +10,11 @@ function Nav({ user, logoutHandler }) {
     const clickHandler = () => {
         logoutHandler()
     }
+
+    const signupHandler = () => {
+        history.push('/signup')
+    }
+
     return (
         <div>
             <nav className="nav">
@@ -23,7 +28,7 @@ function Nav({ user, logoutHandler }) {
                     {user ?
                     <Button onClick={clickHandler}>Logout</Button>
                     :
-                    <Button onClick={clickHandler}>Sign up</Button>                   
+                    <Button onClick={signupHandler}>Sign up</Button>                   
                     }
                 </div>
             </nav>

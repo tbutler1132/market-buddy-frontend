@@ -108,6 +108,8 @@ function App() {
     setSignup(set)
   }
 
+  console.log(user)
+
   //Don't render until the user has been retrieved. Once we have the user, render two routes- home page and stock show page
   if (!user) 
     return (
@@ -115,20 +117,20 @@ function App() {
     <div className="App">
       <Nav />
       <Switch>
-      <Route exact path="/home"><PublicHome /></Route>
-      <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
-      <div className="signin-page">
-        {signup ?
-        <div>
-          <Route exact path="/signup" render={() => <Signup toggle={toggleHandler} signupHandler={signupHandler}/>}/>
+        <Route exact path="/home"><PublicHome /></Route>
+        <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
+        <div className="signin-page">
+          {signup ?
+          <div>
+            <Route exact path="/signup" render={() => <Signup toggle={toggleHandler} signupHandler={signupHandler}/>}/>
+          </div>
+          :
+          <div>
+            <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} signinHandler={signinHandler}/>}/>
+          </div>
+          }
+          <img src="https://images.cartoonstock.com/previews/CC22230_preview.jpg" alt=""/>
         </div>
-        :
-        <div>
-          <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} signinHandler={signinHandler}/>}/>
-        </div>
-        }
-        <img src="https://images.cartoonstock.com/previews/CC22230_preview.jpg" alt=""/>
-      </div>
       </Switch>
       </div>
     </>
