@@ -11,12 +11,12 @@ function Movers({type}) {
         //Gainers endpoint
         axios(`${BASE_API}/stocks/collection/tag/list?name=${type}`)
         .then(data => setCollection(data.data))
-    }, [])
+    }, [type])
 
     const renderStockCards = () => {
         const currentCollection = collection.slice(0, 3)
         console.log("In render", currentCollection)
-        return currentCollection.map(stock => <StockCard key={stock.symbol} stock={stock}/>)
+        return currentCollection.map(stock => <StockCard type={type} key={stock.symbol} stock={stock}/>)
     }
 
     if(!collection) return <div>Loading...</div>

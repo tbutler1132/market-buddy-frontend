@@ -4,12 +4,17 @@ function News(props) {
 
     const {news} = props
 
+    console.log(news)
+
     const renderNews = () => {
         return news.map(story => 
             <div className="news-story" key={Math.floor(Math.random() * 1000)}>
-                <a href={story.url}>
-                    <h2 style={{cursor: 'pointer'}}>{story.headline}</h2>
-                </a>
+                <div className="title-headline">
+                    <h5>{story.source}</h5>
+                    <a href={story.url}>
+                        <h4 style={{cursor: 'pointer'}}>{story.headline}</h4>
+                    </a>
+                </div>
                     <img className="news" src={story.image} alt={story.source} width="100px" height="100px"/>
             </div>
         )

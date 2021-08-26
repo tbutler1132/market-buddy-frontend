@@ -1,6 +1,5 @@
 import News from "../home/News";
 import { getNews } from '../../redux/actions';
-import StockGraph from "../home/StockGraph";
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
 import React, {useEffect, useState} from 'react';
@@ -27,23 +26,6 @@ function PublicHome(props) {
     
     dispatch(getNews())
     }, [dispatch])
-
-
-
-    const preparedStockData = () => {
-        const data = []
-        
-        NASDAQPrices?.forEach(point => {
-            const date = point['date'].slice(5, 10)
-            const obj = {
-                name: date,
-                price: point['close']
-            }
-                data.push(obj)
-        })
-            return data
-    }
-
 
 
     // console.log(preparedStockData())
