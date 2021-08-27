@@ -116,6 +116,7 @@ function App() {
     <>
     <div className="App">
       <Nav />
+        <Route to="/"><Redirect to="/home" /></Route>
       <Switch>
         <Route exact path="/home"><PublicHome /></Route>
         <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
