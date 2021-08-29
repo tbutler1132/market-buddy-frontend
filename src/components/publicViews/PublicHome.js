@@ -1,36 +1,24 @@
 import News from "../home/News";
 import { getNews } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios'
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import CollectionContainer from "./CollectionContainer";
 import TrendingLists from "../TrendingLists";
 import Movers from "../Movers";
-import { BASE_API } from "../../App";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 function PublicHome(props) {
 
     const dispatch = useDispatch()
     const news = useSelector((state) => state.news)
-    const [NASDAQPrices, setNASDAQPrices] = useState(false)
 
     useEffect(() => {
-
-    
-    axios(`${BASE_API}/stocks/historical/NDAQ`)
-    .then(data => {
-
-        setNASDAQPrices(data.data)})
-    
-
-    
     dispatch(getNews())
     }, [dispatch])
 
 
-    // console.log(preparedStockData())
 
-    if(!NASDAQPrices) return <div>Loading</div>
+    if(!news) return <div className="loading"><CircularProgress /></div>
     return (
         <div className="main-container">
             <div className="row">
