@@ -105,7 +105,7 @@ function Home(props) {
         )
     }
 
-    if(!stockMap && user?.portfolio.length) return <div><CircularProgress /></div>
+    if(!stockMap && user?.portfolio.length) return <div className="loading"><CircularProgress /></div>
     return (
         <div className="main-container">
             <div className="row">

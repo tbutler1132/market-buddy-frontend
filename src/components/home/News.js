@@ -1,4 +1,4 @@
-import React from 'react';
+import CircularProgress from "@material-ui/core/CircularProgress"
 
 function News(props) {
 
@@ -18,7 +18,7 @@ function News(props) {
         )
     }
 
-    if(!news) return <div>Loading...</div>
+    if(!news) return <div className="loading"><CircularProgress /></div>
     return (
         <div>
             <h1>News</h1>
