@@ -77,13 +77,15 @@ function Stock(props) {
         return user.portfolio?.find(stock => stock.ticker === stockId.toUpperCase())
     }
 
+
     if (!companyInfo || !latestPrice || !historicalData) return <div className="loading"><CircularProgress /></div>
     return (
         <div className="main-container">
             <div className="row">
                 <div className="col-12">
                     <h1>{stockId.toUpperCase()}</h1>
-                    <h3>{latestPrice}</h3>
+                    <h2>{companyInfo.companyName}</h2>
+                    <h3>${latestPrice.toFixed(2)}</h3>
                     <StockGraph type="price" data={preparedStockData()}/>
                     <h3>About</h3>
                     <p>{companyInfo.description}</p>
