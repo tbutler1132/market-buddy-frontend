@@ -22,9 +22,9 @@ function TrendingLists(props) {
             <button className="collection-button">Information</button>
             <button className="collection-button">Coal</button>
             <button className="collection-button">Steel</button>
-            <button className="collection-button">List name</button>
-            <button className="collection-button">List name</button>
-            <button className="collection-button">List name</button>
+            <button className="collection-button">Entertainment</button>
+            <button className="collection-button">Transportation</button>
+            <button className="collection-button">Fintech</button>
         </div>
     );
 }
