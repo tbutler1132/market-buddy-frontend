@@ -5,9 +5,8 @@ import React, { useEffect } from 'react';
 import CollectionContainer from "./CollectionContainer";
 import TrendingLists from "../TrendingLists";
 import Movers from "../Movers";
-import CircularProgress from "@material-ui/core/CircularProgress";
 
-function PublicHome(props) {
+function PublicHome() {
 
     const dispatch = useDispatch()
     const news = useSelector((state) => state.news)
@@ -18,7 +17,7 @@ function PublicHome(props) {
 
 
 
-    if(!news) return <div className="loading"><CircularProgress /></div>
+    
     return (
         <div className="main-container">
             <div className="row">

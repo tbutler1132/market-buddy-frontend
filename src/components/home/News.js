@@ -18,7 +18,7 @@ function News(props) {
         )
     }
 
-    if(!news) return <div className="loading"><CircularProgress /></div>
+    if(!news) return <div className="loading"><CircularProgress /><small>Loading stock data...</small></div>
     return (
         <div>
             <h1>News</h1>
