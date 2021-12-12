@@ -5,6 +5,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
 import CircularProgress  from '@material-ui/core/CircularProgress';
+import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 
 import { getUser } from './redux/actions';
 
@@ -105,8 +106,6 @@ function App() {
     setSignup(set)
   }
 
-  console.log(user)
-
   //Don't render until the user has been retrieved. Once we have the user, render two routes- home page and stock show page
   if (!user) 
     return (
@@ -127,7 +126,7 @@ function App() {
             <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} signinHandler={signinHandler}/>}/>
           </div>
           }
-          <img src="https://images.cartoonstock.com/previews/CC22230_preview.jpg" alt=""/>
+          <img src={DogCartoon} alt=""/>
         </div>
       </Switch>
       </div>

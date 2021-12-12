@@ -7,6 +7,8 @@ import CollectionContainer from "./CollectionContainer";
 import TrendingLists from "../TrendingLists";
 import Movers from "../Movers";
 import { BASE_API } from "../../App";
+import { CircularProgress } from "@material-ui/core";
+import GraphImage from '../../assets/images/green_dot_graph.svg'
 
 function PublicHome(props) {
 
@@ -30,13 +32,13 @@ function PublicHome(props) {
 
     // console.log(preparedStockData())
 
-    if(!NASDAQPrices) return <div>Loading</div>
+    if(!NASDAQPrices) return <div className="main-container"><CircularProgress/></div>
     return (
         <div className="main-container">
             <div className="row">
                 <div className="col-12">
                     <h1>Welcome to Market Buddy</h1>
-                    <img src="https://cdn.robinhood.com/assets/generated_assets/6da8e43c2ce2585fa5f4384a506a5eda.svg" alt="" />
+                    <img src={GraphImage} alt="" />
                     <Movers type="Gainers"/>
                     <Movers type="Losers"/>
                     <TrendingLists />

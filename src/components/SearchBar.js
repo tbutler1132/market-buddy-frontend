@@ -39,7 +39,7 @@ function SearchBar() {
     return (
         <div className="wrapper">
             <div className="search-input">  
-                <input onChange={fetchResults}/>
+                <input onBlur={(e) => {setSuggestions([])}} onChange={fetchResults}/>
                 <div className="autocom-box">
                     {renderSuggestions()}
                 </div>
