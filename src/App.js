@@ -23,9 +23,6 @@ function App() {
   const [signup, setSignup] = useState(true)
   const history = useHistory()
   
-  //REDUX: Create dispatch to update user state, useSelector to retrieve user from the store
-  //NOTE:  I passed the user down manually via props because many components will need it, so there will be no excessive "prop" drilling
-  //       This is slightly easier than getting it from the store everytime.
   const dispatch = useDispatch() 
   const user = useSelector((state) => state.user)
 
