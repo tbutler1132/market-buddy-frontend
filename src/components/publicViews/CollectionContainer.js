@@ -3,7 +3,7 @@ import Collection from './Collection';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import { BASE_API } from '../../App';
-
+import { CircularProgress } from '@material-ui/core';
 import { getCollection } from '../../redux/actions';
 
 function CollectionContainer() {
@@ -26,7 +26,7 @@ function CollectionContainer() {
 
 
 
-    if(!collection) return <div>Loading...</div>
+    if(!collection) return <div><CircularProgress /></div>
     return (
         <div className="sidebar-content">
             <h3>Most Active Stocks</h3>

@@ -11,6 +11,7 @@ function SearchBar() {
 
 
     const fetchResults = (event, values) => {
+        console.log("Type")
         setSearchTerm(event.target.value)
         if(searchTerm){
             axios(`${BASE_API}/stocks/search/${searchTerm}`)
@@ -39,7 +40,7 @@ function SearchBar() {
     return (
         <div className="wrapper">
             <div className="search-input">  
-                <input onBlur={(e) => {setSuggestions([])}} onChange={fetchResults}/>
+                <input onChange={fetchResults}/>
                 <div className="autocom-box">
                     {renderSuggestions()}
                 </div>
