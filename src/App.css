@@ -319,8 +319,6 @@
   height: 80%;
   overflow: hidden auto;
   position: relative;
-  padding-left: 4%;
-  padding-right: 4%;
 }
 
 .css-1{
@@ -449,17 +447,16 @@
 .stock-list {
   background-color: white;
   transition: all .2s ease-in-out;
+  padding: 0 4% 0 4%;
 }
 
 .stock-list:hover{
-  background-color: rgb(255, 253, 253);
+  background-color: rgb(235, 231, 231);
 }
 
 .stock-list-stock-info{
   display: flex;
   align-items: center;
-  border-bottom: solid;
-  border-width: thin;
 }
 
 .symbol-shares-owned{
@@ -674,6 +671,11 @@ button.collection-button {
   margin-top: 3px;
   border-radius: 40px;
   cursor: pointer;
+  transition: 0.5s ease;
+}
+
+button.collection-button:hover {
+  border-color: rgb(133, 219, 107);
 }
 
 ._2wuDJhUh9lal-48SV5IIfk {
