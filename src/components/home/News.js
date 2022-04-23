@@ -1,12 +1,16 @@
 import React from 'react';
+import { useGetNewsQuery } from '../../app/services/IEXCloud';
 
-function News(props) {
+function News() {
 
-    const {news} = props
+
+    const { data, isLoading } = useGetNewsQuery('aapl')
+
+    console.log(data, "NEWS")
 
     const renderNews = () => {
-        return news.map(story => 
-            <div className="news-story" key={Math.floor(Math.random() * 1000)}>
+        return data.map(story => 
+            <div className="news-story" key={Math.floor(Math.random() * 1000)}>xr
                 <div className="title-headline">
                     <h5>{story.source}</h5>
                     <a href={story.url}>
@@ -18,7 +22,7 @@ function News(props) {
         )
     }
 
-    if(!news) return <div>Loading...</div>
+    if(isLoading) return <div>Loading...</div>
     return (
         <div>
             <h1>News</h1>

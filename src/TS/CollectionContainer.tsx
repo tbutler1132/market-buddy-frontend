@@ -1,13 +1,13 @@
-import Collection from './Collection';
 import { CircularProgress } from '@material-ui/core';
-import { useGetMostActiveStocksQuery } from '../../app/services/IEXCloud';
+import { useGetMostActiveStocksQuery } from '../app/services/IEXCloud'
+import Collection from './Collection';
 
 function CollectionContainer() {
 
-    const { data, isLoading } = useGetMostActiveStocksQuery()
+    const { data, isLoading } = useGetMostActiveStocksQuery("_")
 
     const renderStocks = () => {
-        return data.map(stock => 
+        return data.map((stock: any) => 
             <Collection key={stock.symbol} stock={stock} />
         )
     }

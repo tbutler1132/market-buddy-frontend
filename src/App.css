@@ -531,6 +531,11 @@
   transition: background-color 0.5s ease;
 }
 
+.css-1e4ygyu {
+  min-width: 0px;
+  width: auto;
+}
+
 .news-story.title-headline {
   margin-right: 20px;
 }
@@ -669,4 +674,22 @@ button.collection-button {
   margin-top: 3px;
   border-radius: 40px;
   cursor: pointer;
+}
+
+._2wuDJhUh9lal-48SV5IIfk {
+  margin-bottom: 60px;
+  transition-property: background;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+.css-19gdfx2 {
+  column-gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.css-10ypg7 {
+  flex-basis: 160.667px;
 }

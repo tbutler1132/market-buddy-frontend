@@ -6,7 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import { getStockInfo, getNews } from '../../redux/actions';
 import StockGraph from './StockGraph'
 import StockListContainer from './StockListContainer';
-import News from './News';
+import News from './../../TS/News';
 import {BASE_API} from '../../App'
 
 
@@ -23,7 +23,7 @@ function Home(props) {
     const stockMap = useSelector((state) => state.stocks)
     const news = useSelector((state) => state.news)
         
-    //Fetch real time Stock Data from external API
+    //Fetch Stock Data from external API
     useEffect(() => {
         
         if (user.portfolio.length || user.lists.length){
@@ -108,6 +108,7 @@ function Home(props) {
     if(!stockMap && user?.portfolio.length) return <div><CircularProgress /></div>
     return (
         <div className="main-container">
+            Hey
             <div className="row">
                 <div className="col-12">
                     {portfolioValue() ? <h1>${portfolioValue().toFixed(2)}</h1> : null}
@@ -115,7 +116,7 @@ function Home(props) {
                     <div className="css-1">
                         <h3>Buying power: ${user.cash}</h3>
                     </div>
-                     <News news={news}/>
+                     <News />
                 </div>
                 <div className="col-5">
                     <StockListContainer user={user}/>

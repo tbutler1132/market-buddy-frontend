@@ -6,11 +6,15 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 import StockGraph from '../home/StockGraph'
 import Transaction from './Transaction'
+import { useGetCompanyInfoQuery } from '../../app/services/IEXCloud';
 // import AddToLists from './AddToLists';
 
 
 function Stock(props) {
+    
     let { stockId } = useParams()
+
+    const { data } = useGetCompanyInfoQuery(stockId)
 
     const { user } = props
 

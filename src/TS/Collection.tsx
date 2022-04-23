@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-function Collection({stock}) {
+function Collection({ stock }: {stock: any}) {
     return (
         <div className="stock-list">
             <div key={stock.symbol} className="stock-list-stock-info">

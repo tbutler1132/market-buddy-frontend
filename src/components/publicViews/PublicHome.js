@@ -2,7 +2,7 @@ import News from "../home/News";
 import { getNews } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
-import React, {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import CollectionContainer from "./CollectionContainer";
 import TrendingLists from "../TrendingLists";
 import Movers from "../Movers";
@@ -30,9 +30,6 @@ function PublicHome(props) {
     }, [dispatch])
 
 
-    // console.log(preparedStockData())
-
-    if(!NASDAQPrices) return <div className="main-container"><CircularProgress/></div>
     return (
         <div className="main-container">
             <div className="row">

@@ -3,15 +3,12 @@ import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import {BASE_API} from './../App'
 
-
 function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('')
     const [suggestions, setSuggestions] = useState([])
     const history = useHistory()
 
-
     const fetchResults = (event, values) => {
-        console.log("Type")
         setSearchTerm(event.target.value)
         if(searchTerm){
             axios(`${BASE_API}/stocks/search/${searchTerm}`)

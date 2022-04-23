@@ -9,12 +9,24 @@ import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 
 import { getUser } from './redux/actions';
 
-import Home from './components/home/Home'
-import Nav from './components/Nav'
 import StockContainer from './components/stock/StockContainer';
+import StockPage from './TS/StockPage';
+
+
 import Signup from './components/Signup'
 import Signin from './components/Signin';
-import PublicHome from './components/publicViews/PublicHome';
+
+// import PublicHome from './components/publicViews/PublicHome';
+import PublicHome from './TS/PublicHome';
+
+// import Nav from './components/Nav'
+import Nav from './TS/Nav.tsx'
+
+// import Home from './components/home/Home'
+import Home from './TS/Home'
+
+import ListPage from './TS/ListPage';
+
 
 
 export const BASE_API = 'http://localhost:7000'
@@ -25,32 +37,32 @@ function App() {
   const history = useHistory()
   
   const dispatch = useDispatch() 
-  const user = useSelector((state) => state.user)
-
+  const user = useSelector((state) => state.auth.user)
   
   //Initial fetch user from API upon app mounting
-  useEffect(() => {
-    const token = localStorage.getItem("token")
-    const profile = localStorage.getItem("profile")
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token")
+  //   const profile = localStorage.getItem("profile")
 
-    if(token) {
-      const profileObj = JSON.parse(profile)
+  //   if(token) {
+  //     console.log()
+  //     const profileObj = JSON.parse(profile)
     
 
-      axios({
-        method: 'GET',
-        url: `${BASE_API}/users/${profileObj._id}`,
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      })
-      .then(userObj => {
-        dispatch(getUser(userObj.data))
-      })
-    }
-  }, [dispatch])
+  //     axios({
+  //       method: 'GET',
+  //       url: `${BASE_API}/users/${profileObj._id}`,
+  //       headers: {
+  //         'Authorization': `Bearer ${token}`,
+  //         'Content-Type': 'application/json',
+  //         'Accept': 'application/json'
+  //       }
+  //     })
+  //     .then(userObj => {
+  //       dispatch(getUser(userObj.data))
+  //     })
+  //   }
+  // }, [dispatch])
 
   const signupHandler = (userInfo) => {
     dispatch(getUser("loading"))
@@ -76,24 +88,24 @@ function App() {
     })
   }
 
-  const signinHandler = (userInfo) => {
-    axios({
-      url: `${BASE_API}/users/signin`,
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      data: userInfo
-    })
+  // const signinHandler = (userInfo) => {
+  //   axios({
+  //     url: `${BASE_API}/users/signin`,
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     data: userInfo
+  //   })
 
-    .then(data => {
-      localStorage.setItem("token", data.data.token)
-      localStorage.setItem("profile", JSON.stringify({...data.data.result}))
-      dispatch(getUser(data.data.result))
-      history.push('/home')
-    })
-  }
+  //   .then(data => {
+  //     localStorage.setItem("token", data.data.token)
+  //     localStorage.setItem("profile", JSON.stringify({...data.data.result}))
+  //     dispatch(getUser(data.data.result))
+  //     history.push('/home')
+  //   })
+  // }
 
   const logoutHandler = () => {
     localStorage.removeItem("token")
@@ -106,41 +118,44 @@ function App() {
     setSignup(set)
   }
 
+  console.log("USERss", user)
+
   //Don't render until the user has been retrieved. Once we have the user, render two routes- home page and stock show page
   if (!user) 
     return (
     <>
     <div className="App">
-      <Nav />
+        <Nav />
         <Route to="/"><Redirect to="/home" /></Route>
       <Switch>
         <Route exact path="/home"><PublicHome /></Route>
-        <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
+        <Route path="/stocks" render={() => <StockPage user={user}/>}/>
+        <Route path="/lists" render={() => <ListPage user={user}/>}/>
         <div className="signin-page">
-          {signup ?
+        {signup ?
           <div>
             <Route exact path="/signup" render={() => <Signup toggle={toggleHandler} signupHandler={signupHandler}/>}/>
           </div>
           :
           <div>
-            <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} signinHandler={signinHandler}/>}/>
+            <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} />}/>
           </div>
-          }
-          <img src={DogCartoon} alt=""/>
+        }
+        <img src={DogCartoon} alt=""/>
         </div>
       </Switch>
       </div>
     </>
     )
 
-  if (user === "loading"){
-    return(
-      <div>
-        <CircularProgress />
-        <p>Signing in...</p>
-      </div>
-    )
-  }
+  // if (user === "loading"){
+  //   return(
+  //     <div>
+  //       <CircularProgress />
+  //       <p>Signing in...</p>
+  //     </div>
+  //   )
+  // }
   return (
     <div className="App">
         <Nav user={user} logoutHandler={logoutHandler}/>
