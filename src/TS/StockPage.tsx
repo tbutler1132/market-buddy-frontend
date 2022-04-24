@@ -1,5 +1,5 @@
-import React from 'react';
-import {  Switch,
+import {  
+    Switch,
     Route,
     useRouteMatch,
     } 
@@ -7,17 +7,15 @@ from 'react-router-dom'
 
 import Stock from './Stock'
 
-//Render the stock show pages
+function StockPage() {
 
-function StockContainer(props) {
-    const { user } = props
     let match = useRouteMatch()
 
     return (
         <div>
             <Switch>
                 <Route path={`${match.path}/:stockId`}>
-                    <Stock user={user}/>
+                    <Stock />
                 </Route>
                 <Route path={match.path}>
                     <h3>Please select a topic.</h3>
@@ -27,4 +25,4 @@ function StockContainer(props) {
     );
 }
 
-export default StockContainer;
+export default StockPage;

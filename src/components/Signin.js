@@ -1,9 +1,16 @@
 import React, {useState} from 'react';
 import {Button} from '@material-ui/core'
+import { useLoginMutation } from '../app/services/MarketBuddy';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '../app/authSlice';
+import { useHistory } from 'react-router-dom';
 
 function Signin(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [login] = useLoginMutation()
+    const dispatch = useDispatch()
+    const history = useHistory()
 
     const userNameHandler = (e) => {
         setUsername(e.target.value)
@@ -13,12 +20,21 @@ function Signin(props) {
         setPassword(e.target.value)
     }
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault()
-        props.signinHandler({
-            username: username,
-            password: password
-        })
+        // props.signinHandler({
+        //     username: username,
+        //     password: password
+        // })
+
+        try {
+            const user = await login({username, password}).unwrap()
+            localStorage.setItem("token", user.token)
+            dispatch(setCredentials(user))
+            history.push("/home")
+        } catch (error) {
+            console.log("Oh no there was an error")
+        }
     }
 
     const clickHandler = () => {

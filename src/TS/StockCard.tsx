@@ -1,7 +1,11 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
-function StockCard({stock, type}) {
+interface StockCardProps {
+    stock: any 
+    type: string
+}
+
+function StockCard({stock, type}: StockCardProps) {
 
 
     return (

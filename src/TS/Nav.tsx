@@ -1,10 +1,15 @@
 import { useHistory } from "react-router-dom"
 import { Button } from '@material-ui/core'
 
-import SearchBar from './SearchBar';
+import SearchBar from '../components/SearchBar';
+
+interface NavProps {
+    user: any
+    logoutHandler: any
+}
 
 
-function Nav({ user, logoutHandler }) {
+function Nav({ user, logoutHandler }: NavProps) {
     const history = useHistory()
 
     const clickHandler = () => {
