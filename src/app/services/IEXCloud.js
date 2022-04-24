@@ -18,12 +18,12 @@ export const IEXCloudApi = createApi({
         }),
         getCompanyInfo: builder.query({
           query: (id) => `company/${id}`,
-        }),
+        }), 
         getLatestPrice: builder.query({
           query: (id) => `latestPrice/${id}`,
         }),
         getHistoricalData: builder.query({
-          query: (id) => `historical/${id}`,
+          query: ({ id, range }) => `historical/${id}?range=${range}`,
         }),
         getFinancialData: builder.query({
           query: (id) => `financials/${id}`,
@@ -44,7 +44,7 @@ export const {
     useGetMostActiveStocksQuery,
     useGetCompanyInfoQuery,
     useGetLatestPriceQuery,
-    useGetHistoricalDataQuery,
+    useLazyGetHistoricalDataQuery,
     useGetFinancialDataQuery,
     useGetTagsQuery,
     useGetCollectionQuery

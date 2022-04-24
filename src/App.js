@@ -6,7 +6,7 @@ import axios from 'axios'
 // import CircularProgress  from '@material-ui/core/CircularProgress';
 import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 
-import { getUser } from './redux/actions';
+// import { getUser } from './redux/actions';
 
 // import StockContainer from './components/stock/StockContainer';
 import StockPage from './TS/StockPage';
@@ -63,29 +63,29 @@ function App() {
   //   }
   // }, [dispatch])
 
-  const signupHandler = (userInfo) => {
-    dispatch(getUser("loading"))
-    axios({
-      url: `${BASE_API}/users/signup`,
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      data: userInfo
-    })
+  // const signupHandler = (userInfo) => {
+  //   dispatch(getUser("loading"))
+  //   axios({
+  //     url: `${BASE_API}/users/signup`,
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     data: userInfo
+  //   })
 
-    .then(data => {
-      localStorage.setItem("token", data.data.token)
-      localStorage.setItem("profile", JSON.stringify({...data.data.result}))
-      dispatch(getUser(data.data.result))
-      history.push('/home')
-    })
-    .catch((error) => {
-      alert("Username already in use")
-      dispatch(getUser(false))
-    })
-  }
+  //   .then(data => {
+  //     localStorage.setItem("token", data.data.token)
+  //     localStorage.setItem("profile", JSON.stringify({...data.data.result}))
+  //     dispatch(getUser(data.data.result))
+  //     history.push('/home')
+  //   })
+  //   .catch((error) => {
+  //     alert("Username already in use")
+  //     dispatch(getUser(false))
+  //   })
+  // }
 
   // const signinHandler = (userInfo) => {
   //   axios({
@@ -109,7 +109,6 @@ function App() {
   const logoutHandler = () => {
     localStorage.removeItem("token")
     localStorage.removeItem("profile")
-    dispatch(getUser(false))
     history.push('/signup')
   }
 
@@ -131,7 +130,7 @@ function App() {
         <div className="signin-page">
         {signup ?
           <div>
-            <Route exact path="/signup" render={() => <Signup toggle={toggleHandler} signupHandler={signupHandler}/>}/>
+            <Route exact path="/signup" render={() => <Signup toggle={toggleHandler}/>}/>
           </div>
           :
           <div>

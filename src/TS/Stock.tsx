@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
-import { useGetCompanyInfoQuery, useGetLatestPriceQuery, useGetHistoricalDataQuery, useGetFinancialDataQuery } from "../app/services/IEXCloud";
+import { useEffect, useState } from "react";
+import { useGetCompanyInfoQuery, useGetLatestPriceQuery, useLazyGetHistoricalDataQuery, useGetFinancialDataQuery } from "../app/services/IEXCloud";
 import StockGraph from "./StockGraph";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import News from "./News";
@@ -7,24 +8,44 @@ import News from "./News";
 
 function Stock() {
 
+    const [timeRange, setTimeRange] = useState("ytd")
+
     let { stockId }: {stockId: string} = useParams()
 
     const { data, isLoading } = useGetCompanyInfoQuery(stockId)
 
     const { data: price, isLoading: priceLoading } = useGetLatestPriceQuery(stockId)
 
-    const { data: historicalData, isLoading: historicalDataLoading } = useGetHistoricalDataQuery(stockId)
+    const [getHistoricalData, results] = useLazyGetHistoricalDataQuery()
 
     const { data: financialData, isLoading: financialDataLoading, isError } = useGetFinancialDataQuery(stockId)
 
-    if(isLoading || priceLoading || historicalDataLoading || financialDataLoading) return <CircularProgress />
+    useEffect(() => {
+        getHistoricalData({id: stockId, range: "ytd"}, true)
+    }, [])
+
+    const timeRangeClickHandler = (e: any) => {
+        setTimeRange(e.target.value)
+        getHistoricalData({id: stockId, range: e.target.value})
+    }
+
+    if(isLoading || priceLoading || results.isUninitialized || results.isLoading || financialDataLoading) return <CircularProgress />
     return (
         <div className="main-container">
             <div className="row">
                 <div className="col-12">
-                    <h1>{stockId.toUpperCase()}</h1>
+                    <h1>{data.companyName}</h1>
                     <h3>${price.toLocaleString()}</h3>
-                    <StockGraph type="price" data={historicalData}/>
+                    <StockGraph type="price" data={results.data}/>
+                    <nav>
+                        <div className="YLzQdbd6ixTG1LWujco0N">
+                            <button onClick={timeRangeClickHandler} value="ytd" className={timeRange === "ytd" ? "css-klp03n" : "css-16sjopo"}>YTD</button>
+                            <button onClick={timeRangeClickHandler} value="1m" className={timeRange === "1m" ? "css-klp03n" : "css-16sjopo"}>1M</button>
+                            <button onClick={timeRangeClickHandler} value="3m" className={timeRange === "3m" ? "css-klp03n" : "css-16sjopo"}>3M</button>
+                            <button onClick={timeRangeClickHandler} value="1y" className={timeRange === "1y" ? "css-klp03n" : "css-16sjopo"}>1Y</button>
+                            <button onClick={timeRangeClickHandler} value="5y" className={timeRange === "5y" ? "css-klp03n" : "css-16sjopo"}>5Y</button>
+                        </div>
+                    </nav>
                     <section className="_2wuDJhUh9lal-48SV5IIfk">
                         <h3>About</h3>
                         <hr />

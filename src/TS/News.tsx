@@ -9,12 +9,14 @@ function News({ companySymbol = "aapl" }: NewsProps) {
 
     const { data, isLoading } = useGetNewsQuery(companySymbol)
 
-    if(isLoading) return <div>Loading...</div>
+    console.log("NEWS", data)
+
+    if(isLoading) return null
     return (
         <div>
             <h1>News</h1>
             {data.map((story: any) => 
-                <div className="news-story" key={Math.floor(Math.random() * 1000)}>
+                <div className="news-story" key={story.url}>
                     <div className="title-headline">
                         <h5>{story.source}</h5>
                         <a style={{height: "auto"}} href={story.url}>

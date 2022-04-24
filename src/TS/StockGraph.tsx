@@ -14,12 +14,15 @@ interface StockGraphProps {
 }
 
 function StockGraph({ type, data }: StockGraphProps) {
+
+  console.log(data, "Chart")
+
     return (
         <div >
         <LineChart width={500} height={400} data={data}>
           <Line dot={false} type={"step"} dataKey={type} stroke={graphColor(data)} />
           <XAxis dataKey="name" />
-          <YAxis />
+          {/* <YAxis /> */}
           <Tooltip />
         </LineChart>
     </div>

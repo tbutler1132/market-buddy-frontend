@@ -8,11 +8,11 @@ function TrendingLists() {
 
     const renderLists = () => {
         return [...data.slice(0, 10)].map((list: any) => 
-            <button onClick={() => history.push(`lists/${list.name}`)} className="collection-button">{list.name}</button> 
+            <button key={list.name} onClick={() => history.push(`lists/${list.name}`)} className="collection-button">{list.name}</button> 
         )
     }
 
-    if(isLoading) return <div>Loading...</div>
+    if(isLoading) return null
     return (
         <div className="trending-lists">
             <h2>Trending Lists</h2> 
