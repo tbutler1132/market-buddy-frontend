@@ -3,8 +3,8 @@ import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import {BASE_API} from './../App'
 import useOutsideAlerter from '../hooks/useOutsideAlerter';
-import { TextField } from '@material-ui/core';
-import { Autocomplete } from '@material-ui/lab';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('')
@@ -14,6 +14,7 @@ function SearchBar() {
     useOutsideAlerter(wrapperRef);
 
     const fetchResults = (event, values) => {
+        console.log(event.target.value, "event")
         setSearchTerm(event.target.value)
         if(searchTerm){
             axios(`${BASE_API}/stocks/search/${searchTerm}`)
@@ -24,36 +25,24 @@ function SearchBar() {
     }
 
     const submitHandler = (event, value) => {
-        history.push(`/stocks/${event.target.innerText.toLowerCase()}`)
-        setSuggestions([])
-    }
-
-    const renderSuggestions = () => {
-        if(searchTerm){
-            return suggestions.map(stock => 
-                <li onClick={submitHandler} value={stock.symbol} key={stock.symbol}>{stock.symbol}</li>
-            )
-        }else{
-            return null
+        if(event.target.innerText){
+            history.push(`/stocks/${event.target.innerText.toLowerCase()}`)
         }
-    }
+        setSuggestions([])    }
+
 
 
     return (
-        <div ref={wrapperRef} className="wrapper">
             <div className="search-input">  
-                <Autocomplete />
-                <TextField label="Search stocks" variant='outlined' type='search' onChange={fetchResults}/>
-                {searchTerm 
-                    ?
-                        <div className="autocom-box">
-                            {renderSuggestions()}
-                        </div>
-                    :
-                        null
-                }
+                <Autocomplete 
+                clearOnEscape
+                freeSolo
+                filterOptions={(x) => x} 
+                options={suggestions.map((option) => option.symbol)}
+                onChange={submitHandler}
+                renderInput={(params) => <TextField color="success" variant='outlined' onChange={fetchResults} {...params} label="Search Stocks"/>}
+                />
             </div> 
-        </div>
     );
 }
 

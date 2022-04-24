@@ -24,7 +24,7 @@ function MiniStockChart({ stockId }: {stockId: string}) {
     return (
         <div>
             <LineChart width={80} height={50} data={results.data}>
-                <Line dot={false} type="monotone" dataKey={'price'} stroke={graphColor(results.data)} strokeWidth={2}/>
+                <Line dot={false} type="monotone" dataKey={'price'} stroke={graphColor(results.data)} strokeWidth={1}/>
                 <XAxis hide dataKey="name" />
                 <YAxis domain={['auto', 'auto']} hide/>
             </LineChart>
