@@ -1,15 +1,14 @@
 import './App.css';
-import { useEffect, useState} from 'react';
+import { useState} from 'react';
 import { Switch, Route, Redirect, useHistory } from 'react-router-dom'
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
-import CircularProgress  from '@material-ui/core/CircularProgress';
+// import CircularProgress  from '@material-ui/core/CircularProgress';
 import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 
 import { getUser } from './redux/actions';
 
-import StockContainer from './components/stock/StockContainer';
+// import StockContainer from './components/stock/StockContainer';
 import StockPage from './TS/StockPage';
 
 
@@ -23,7 +22,7 @@ import PublicHome from './TS/PublicHome';
 import Nav from './TS/Nav.tsx'
 
 // import Home from './components/home/Home'
-import Home from './TS/Home'
+// import Home from './TS/Home'
 
 import ListPage from './TS/ListPage';
 
@@ -154,15 +153,15 @@ function App() {
   //     </div>
   //   )
   // }
-  return (
-    <div className="App">
-        <Nav user={user} logoutHandler={logoutHandler}/>
-      <Switch>
-        <Route path="/home" render={() => <Home user={user}/>}/>
-        <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
-      </Switch>
-    </div>
-  );
+  // return (
+  //   <div className="App">
+  //       <Nav user={user} logoutHandler={logoutHandler}/>
+  //     <Switch>
+  //       <Route path="/home" render={() => <Home user={user}/>}/>
+  //       <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
+  //     </Switch>
+  //   </div>
+  // );
 }
 
 export default App;

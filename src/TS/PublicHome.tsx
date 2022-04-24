@@ -1,37 +1,10 @@
-// import News from "../components/home/News";
-// import { getNews } from '../redux/actions';
-// import { useDispatch, useSelector } from 'react-redux';
-// import axios from 'axios'
-// import { useEffect, useState } from 'react';
-// import CollectionContainer from "../components/publicViews/CollectionContainer"
-// import TrendingLists from "../components/TrendingLists";
-// import Movers from ".";
 import Movers from "./Movers";
 import News from "./News";
 import TrendingLists from "./TrendingLists";
 import CollectionContainer from "./CollectionContainer";
-// import { BASE_API } from "../../App";
-import { CircularProgress } from "@material-ui/core";
 import GraphImage from '../assets/images/green_dot_graph.svg'
 
 function PublicHome() {
-
-    // const dispatch = useDispatch()
-    // const news = useSelector((state) => state.news)
-    // const [NASDAQPrices, setNASDAQPrices] = useState(false)
-
-    // useEffect(() => {
-
-    
-    // axios(`${BASE_API}/stocks/historical/NDAQ`)
-    // .then(data => {
-
-    //     setNASDAQPrices(data.data)})
-    
-
-    
-    // dispatch(getNews())
-    // }, [dispatch])
 
 
     return (

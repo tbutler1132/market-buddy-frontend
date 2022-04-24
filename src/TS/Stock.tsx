@@ -4,9 +4,6 @@ import StockGraph from "./StockGraph";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import News from "./News";
 
-const formatStatistics = (stat: number) => {
-    return stat
-}
 
 function Stock() {
 

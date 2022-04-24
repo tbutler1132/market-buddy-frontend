@@ -1,17 +1,9 @@
-import React, {useEffect} from 'react';
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux';
-import CircularProgress from '@material-ui/core/CircularProgress'
+// import React, {useEffect} from 'react';
+// import axios from 'axios'
+// import { useDispatch, useSelector } from 'react-redux';
+// import CircularProgress from '@material-ui/core/CircularProgress'
 
-// import { getStockInfo, getNews } from '../../redux/actions';
-// import StockGraph from './StockGraph'
 import StockListContainer from './StockListContainer';
-// import News from './../../TS/News';
-// import {BASE_API} from '../../App'
-
-
-//Responsible for the stock data because that appears in both stock list and graph. Preps data to be sent down as props
-
 
 function Home({ user }: {user: any}) {
     
