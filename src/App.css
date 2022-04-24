@@ -112,6 +112,8 @@
   display: block;
 }
 
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -166,6 +168,16 @@
   z-index: 105;
   margin-top: 2%;
   align-items: center;
+}
+
+.header-info-container {
+  display: flex;
+  align-items: center;
+}
+
+.info-icon {
+  margin-top: 11px;
+  margin-left: 4px;
 }
 
 .signin-page {

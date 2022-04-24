@@ -22,20 +22,20 @@ function Nav({ user, logoutHandler }: NavProps) {
 
     return (
         <div>
-            <nav className="nav">
+            <nav data-mode="dark" className="nav">
                 <div className="home-button">
                     <h1 id="list-add" onClick={() => history.push('/home')}>Market Buddy</h1>
                 </div>
                 <div className="search">
                     <SearchBar />
                 </div>
-                <div className="logout-button">
+                {/* <div className="logout-button">
                     {user ?
                     <Button onClick={clickHandler}>Logout</Button>
                     :
                     <Button onClick={signupHandler}>Sign up</Button>                   
                     }
-                </div>
+                </div> */}
             </nav>
         </div>
     );
