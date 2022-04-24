@@ -9,8 +9,6 @@ function News({ companySymbol = "aapl" }: NewsProps) {
 
     const { data, isLoading } = useGetNewsQuery(companySymbol)
 
-    console.log("NEWS", data)
-
     if(isLoading) return null
     return (
         <div>

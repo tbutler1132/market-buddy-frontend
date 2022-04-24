@@ -462,7 +462,7 @@
 .symbol-shares-owned{
   display: flex;
   flex-direction: column;
-  width: 100%;
+  /* width: 100%; */
 }
 
 /* .add-list {
@@ -738,7 +738,7 @@ button.collection-button:hover {
   border: 0px;
   cursor: pointer;
   font: inherit;
-  color: green;
+  color: rgb(94, 167, 185);
   border-bottom: solid;
 }
 
@@ -749,4 +749,20 @@ button.collection-button:hover {
   -webkit-box-align: center;
   align-items: center;
   display: flex;
+}
+
+.css-w8p71j {
+  margin: 0px;
+  color: var(--rh__text-color);
+  font-family: var(--rh__type-palette__textSBold__stack);
+  font-size: var(--rh__type-palette__textSBold__font-size);
+  font-style: normal;
+  font-weight: var(--rh__type-palette__textSBold__font-weight);
+  letter-spacing: var(--rh__type-palette__textSBold__letter-spacing);
+  line-height: var(--rh__type-palette__textSBold__line-height);
+  text-decoration: unset;
+}
+
+#company-about-section {
+  margin-top: 50px;
 }
