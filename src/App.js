@@ -1,8 +1,8 @@
 import './App.css';
 import { useState} from 'react';
-import { Switch, Route, Redirect, useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+// import axios from 'axios'
 // import CircularProgress  from '@material-ui/core/CircularProgress';
 import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 
@@ -33,9 +33,8 @@ export const BASE_API = 'http://localhost:7000'
 
 function App() {
   const [signup, setSignup] = useState(true)
-  const history = useHistory()
+  // const history = useHistory()
   
-  const dispatch = useDispatch() 
   const user = useSelector((state) => state.auth.user)
   
   //Initial fetch user from API upon app mounting
@@ -106,11 +105,11 @@ function App() {
   //   })
   // }
 
-  const logoutHandler = () => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("profile")
-    history.push('/signup')
-  }
+  // const logoutHandler = () => {
+  //   localStorage.removeItem("token")
+  //   localStorage.removeItem("profile")
+  //   history.push('/signup')
+  // }
 
   const toggleHandler = (set) => {
     setSignup(set)

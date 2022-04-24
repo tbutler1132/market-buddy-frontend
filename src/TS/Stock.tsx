@@ -22,7 +22,7 @@ function Stock() {
 
     useEffect(() => {
         getHistoricalData({id: stockId, range: "ytd"}, true)
-    }, [])
+    }, [getHistoricalData, stockId])
 
     const timeRangeClickHandler = (e: any) => {
         setTimeRange(e.target.value)

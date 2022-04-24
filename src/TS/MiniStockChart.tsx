@@ -16,9 +16,7 @@ function MiniStockChart({ stockId }: {stockId: string}) {
 
     useEffect(() => {
         getHistoricalData({id: stockId, range: "ytd"}, true)
-    }, [])
-
-    console.log(results.data, stockId)
+    }, [getHistoricalData, stockId])
 
     if(!results.isSuccess) return null
     return (

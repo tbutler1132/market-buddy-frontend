@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import MiniStockChart from './MiniStockChart';
 
 function Collection({ stock }: {stock: any}) {
-    console.log("STOCK", stock)
+    
     return (
         <div className="stock-list">
             <div key={stock.symbol} className="stock-list-stock-info">
