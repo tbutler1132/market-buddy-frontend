@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom'
 import {BASE_API} from './../App'
 import useOutsideAlerter from '../hooks/useOutsideAlerter';
 import { TextField } from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 
 function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('')
@@ -41,7 +42,8 @@ function SearchBar() {
     return (
         <div ref={wrapperRef} className="wrapper">
             <div className="search-input">  
-                <TextField variant='outlined' onChange={fetchResults}/>
+                <Autocomplete />
+                <TextField label="Search stocks" variant='outlined' type='search' onChange={fetchResults}/>
                 {searchTerm 
                     ?
                         <div className="autocom-box">
