@@ -4,9 +4,10 @@ interface NewsProps {
     companySymbol?: string
 }
 
+
 function News({ companySymbol = "aapl" }: NewsProps) {
 
-    const { data, isLoading } = useGetNewsQuery(companySymbol ? companySymbol :  'aapl')
+    const { data, isLoading } = useGetNewsQuery(companySymbol)
 
     if(isLoading) return <div>Loading...</div>
     return (
@@ -16,9 +17,10 @@ function News({ companySymbol = "aapl" }: NewsProps) {
                 <div className="news-story" key={Math.floor(Math.random() * 1000)}>
                     <div className="title-headline">
                         <h5>{story.source}</h5>
-                        <a href={story.url}>
+                        <a style={{height: "auto"}} href={story.url}>
                             <h4 style={{cursor: 'pointer'}}>{story.headline}</h4>
                         </a>
+                        <p>{story.summary}</p>
                     </div>
                     <img className="news" src={story.image} alt={story.source} width="100px" height="100px"/>
                 </div>

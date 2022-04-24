@@ -1,7 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts'
 
 const graphColor = (data: any) => {
-    if (data[data.length - 2]?.value < data[data.length - 1]?.value){
+    if (data[data.length - 1]?.price >= data[0]?.price){
       return "#228B22"
     } else {
       return '#C70039'

@@ -18,9 +18,7 @@ function Stock() {
 
     const { data: historicalData, isLoading: historicalDataLoading } = useGetHistoricalDataQuery(stockId)
 
-    const { data: financialData, isLoading: financialDataLoading } = useGetFinancialDataQuery(stockId)
-
-    console.log("DATA", financialData)
+    const { data: financialData, isLoading: financialDataLoading, isError } = useGetFinancialDataQuery(stockId)
 
     if(isLoading || priceLoading || historicalDataLoading || financialDataLoading) return <CircularProgress />
     return (
@@ -28,7 +26,7 @@ function Stock() {
             <div className="row">
                 <div className="col-12">
                     <h1>{stockId.toUpperCase()}</h1>
-                    <h3>{price}</h3>
+                    <h3>${price.toLocaleString()}</h3>
                     <StockGraph type="price" data={historicalData}/>
                     <section className="_2wuDJhUh9lal-48SV5IIfk">
                         <h3>About</h3>
@@ -50,25 +48,32 @@ function Stock() {
                         </div>
                     </section>
                     <section className="_2wuDJhUh9lal-48SV5IIfk">
-                        <h3>Key Statistics</h3>
-                        <div className="css-19gdfx2">
-                            <div className="css-10ypg7">
-                                <div>
-                                    Revenue
+                        {isError
+                            ?
+                                <h3>No key statistics available</h3>
+                            :
+                            <>
+                                <h3>Key Statistics</h3>
+                                <div className="css-19gdfx2">
+                                    <div className="css-10ypg7">
+                                        <div>
+                                            Revenue
+                                        </div>
+                                        <div>
+                                            ${financialData?.revenue.toLocaleString()}
+                                        </div>
+                                    </div>
+                                    <div className="css-10ypg7">
+                                        <div>
+                                            EBITDA
+                                        </div>
+                                        <div>
+                                            ${financialData?.EBITDA.toLocaleString()}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    {financialData.revenue}
-                                </div>
-                            </div>
-                            <div className="css-10ypg7">
-                                <div>
-                                    EBITDA
-                                </div>
-                                <div>
-                                    {financialData.EBITDA}
-                                </div>
-                            </div>
-                        </div>
+                            </>
+                        }
                         <hr />
                     </section>
                     <section className="_2wuDJhUh9lal-48SV5IIfk">

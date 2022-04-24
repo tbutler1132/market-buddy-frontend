@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import {BASE_API} from './../App'
 import useOutsideAlerter from '../hooks/useOutsideAlerter';
+import { TextField } from '@material-ui/core';
 
 function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('')
@@ -40,10 +41,15 @@ function SearchBar() {
     return (
         <div ref={wrapperRef} className="wrapper">
             <div className="search-input">  
-                <input onChange={fetchResults}/>
-                <div className="autocom-box">
-                    {renderSuggestions()}
-                </div>
+                <TextField variant='outlined' onChange={fetchResults}/>
+                {searchTerm 
+                    ?
+                        <div className="autocom-box">
+                            {renderSuggestions()}
+                        </div>
+                    :
+                        null
+                }
             </div> 
         </div>
     );

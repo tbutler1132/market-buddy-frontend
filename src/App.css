@@ -524,7 +524,6 @@
   padding-bottom: 6px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
   transition: background-color 0.5s ease;
 }
 
@@ -579,6 +578,15 @@ img.news {
   max-height: 280px;
   overflow-y: auto;
   list-style: none;
+}
+
+.autocom-box {
+  border-bottom: solid;
+  border-left: solid;
+  border-right: solid;
+  border-width: thin;
+  border-radius: 4px;
+  border-color: gainsboro;
 }
 
 /* .search-input.active .autocom-box{
@@ -694,4 +702,23 @@ button.collection-button:hover {
 
 .css-10ypg7 {
   flex-basis: 160.667px;
+}
+
+.css-1689bsa {
+  border-collapse: separate;
+  border-spacing: 0px;
+  width: 100%;
+}
+
+.css-dhyehc {
+  position: sticky;
+  top: 144px;
+  z-index: var(--rh__size-palette___experimentalAnchorTableStickyHeaderZIndex);
+}
+
+.css-sl18mi-HeaderRow {
+  background-color: var(--rh__neutral-bg1);
+  display: flex;
+  margin: 0 calc(-1 * calc(2 * var(--rh__size-palette__gutterWidth)));
+  padding: 0 calc(2 * var(--rh__size-palette__gutterWidth));
 }
