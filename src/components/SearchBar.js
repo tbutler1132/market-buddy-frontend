@@ -14,7 +14,6 @@ function SearchBar() {
     useOutsideAlerter(wrapperRef);
 
     const fetchResults = (event, values) => {
-        console.log(event.target.value, "event")
         setSearchTerm(event.target.value)
         if(searchTerm){
             axios(`${BASE_API}/stocks/search/${searchTerm}`)

@@ -714,3 +714,45 @@ button.collection-button:hover {
 #company-about-section {
   margin-top: 50px;
 }
+
+.row>._2QDjqlRg7zTUxYLjTHDGlF {
+  -ms-flex-negative: 0;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  width: 218.2222222222px;
+}
+
+._1fEdz1YPOLpLW1Ow3rKh92 {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  background: var(--rh__primary-lightest-base);
+  border-radius: 67px;
+  color: var(--rh__primary-base);
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 134px;
+  width: 134px;
+}
+
+._1fEdz1YPOLpLW1Ow3rKh92>h2 {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+}
+
+._1fEdz1YPOLpLW1Ow3rKh92>p {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+}

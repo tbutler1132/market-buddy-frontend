@@ -4,6 +4,7 @@ import { useGetCompanyInfoQuery, useGetLatestPriceQuery, useLazyGetHistoricalDat
 import StockGraph from "./StockGraph";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import News from "./News";
+import AnalystRatings from "./AnalystRatings";
 
 
 function Stock() {
@@ -98,6 +99,9 @@ function Stock() {
                             </>
                         }
                         <hr />
+                    </section>
+                    <section className="_2wuDJhUh9lal-48SV5IIfk">
+                        <AnalystRatings stockId={stockId}/>
                     </section>
                     <section className="_2wuDJhUh9lal-48SV5IIfk">
                         <News companySymbol={stockId}/>
