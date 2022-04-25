@@ -1,5 +1,6 @@
 import { useHistory } from "react-router-dom"
 import { Button } from '@material-ui/core'
+import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from '../components/SearchBar';
 
@@ -11,13 +12,15 @@ interface NavProps {
 
 function Nav({ user, logoutHandler }: NavProps) {
     const history = useHistory()
+    // const dispatch = useDispatch()
+    // const [mode] = useSelector((state) => state.styles)
 
     const clickHandler = () => {
         logoutHandler()
     }
 
     const signupHandler = () => {
-        history.push('/signup')
+        history.push('/demo')
     }
 
     return (
@@ -29,13 +32,9 @@ function Nav({ user, logoutHandler }: NavProps) {
                 <div className="search">
                     <SearchBar />
                 </div>
-                {/* <div className="logout-button">
-                    {user ?
-                    <Button onClick={clickHandler}>Logout</Button>
-                    :
-                    <Button onClick={signupHandler}>Sign up</Button>                   
-                    }
-                </div> */}
+                <div className="logout-button">
+                    <Button onClick={signupHandler}>Login</Button>
+                </div>
             </nav>
         </div>
     );

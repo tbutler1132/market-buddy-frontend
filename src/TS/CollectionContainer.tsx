@@ -1,10 +1,8 @@
 import { CircularProgress } from '@material-ui/core';
-import { useGetMostActiveStocksQuery } from '../app/services/IEXCloud'
 import Collection from './Collection';
 
-function CollectionContainer() {
+function CollectionContainer({ data, header }: {data: any, header: string}) {
 
-    const { data, isLoading } = useGetMostActiveStocksQuery("_")
 
     const renderStocks = () => {
         return data.map((stock: any) => 
@@ -12,10 +10,9 @@ function CollectionContainer() {
         )
     }
 
-    if(isLoading) return <div><CircularProgress /></div>
     return (
         <div className="sidebar-content">
-            <h3>Most Active Stocks</h3>
+            <h3>{header}</h3>
             <div className="card" style={{position: 'relative'}}>
                 {renderStocks()}
             </div>

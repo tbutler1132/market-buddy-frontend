@@ -5,9 +5,12 @@ import StockGraph from "./StockGraph";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import News from "./News";
 import AnalystRatings from "./AnalystRatings";
+import { useSelector } from 'react-redux';
+import TransactionContainer from "./TransactionContainer";
 
 
 function Stock() {
+    const { auth } = useSelector((state: any) => state)
 
     const [timeRange, setTimeRange] = useState("ytd")
 
@@ -37,7 +40,7 @@ function Stock() {
                 <div className="col-12">
                     <h1>{data.companyName}</h1>
                     <h3>${price.toLocaleString()}</h3>
-                    <StockGraph type="price" data={results.data}/>
+                    <StockGraph width={500} height={400} type="price" data={results.data}/>
                     <nav>
                         <div className="YLzQdbd6ixTG1LWujco0N">
                             <button onClick={timeRangeClickHandler} value="ytd" className={timeRange === "ytd" ? "css-klp03n" : "css-16sjopo"}>YTD</button>
@@ -107,6 +110,12 @@ function Stock() {
                         <News companySymbol={stockId}/>
                     </section>
                 </div>
+                {auth.user 
+                    ?
+                        <TransactionContainer stockId={stockId}/>
+                    :
+                        null
+                }
             </div>
         </div>
     );

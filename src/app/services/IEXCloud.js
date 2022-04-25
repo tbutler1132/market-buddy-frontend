@@ -37,6 +37,9 @@ export const IEXCloudApi = createApi({
         getAnalystRatings: builder.query({
           query: (id) => `ratings/${id}`,
         }),
+        getStockPrices: builder.query({
+          query: (symbols) => `stockprices?symbols=${symbols}`,
+        }),
     })
 })
 
@@ -51,5 +54,6 @@ export const {
     useGetFinancialDataQuery,
     useGetTagsQuery,
     useGetCollectionQuery,
-    useGetAnalystRatingsQuery
+    useGetAnalystRatingsQuery,
+    useGetStockPricesQuery
 } = IEXCloudApi

@@ -11,13 +11,15 @@ const graphColor = (data: any) => {
 interface StockGraphProps {
     type: string
     data: any,
+    width: number,
+    height: number
 }
 
-function StockGraph({ type, data }: StockGraphProps) {
+function StockGraph({ type, data, width, height }: StockGraphProps) {
 
     return (
       <div >
-        <LineChart width={500} height={400} data={data}>
+        <LineChart width={width} height={height} data={data}>
           <Line dot={false} type={"step"} dataKey={type} stroke={graphColor(data)} />
           <XAxis hide dataKey="name" />
           <YAxis domain={['auto', 'auto']} hide/>

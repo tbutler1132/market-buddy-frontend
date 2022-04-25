@@ -17,6 +17,7 @@ import Signin from './components/Signin';
 
 // import PublicHome from './components/publicViews/PublicHome';
 import PublicHome from './TS/PublicHome';
+import Home from './TS/Home';
 
 // import Nav from './components/Nav'
 import Nav from './TS/Nav.tsx'
@@ -25,6 +26,8 @@ import Nav from './TS/Nav.tsx'
 // import Home from './TS/Home'
 
 import ListPage from './TS/ListPage';
+
+import DemoLogin from './TS/DemoLogin';
 
 
 
@@ -119,47 +122,39 @@ function App() {
   if (!user) 
     return (
     <>
-    <div className="App">
+      <div className="App">
         <Nav />
         <Route to="/"><Redirect to="/home" /></Route>
-      <Switch>
-        <Route exact path="/home"><PublicHome /></Route>
-        <Route path="/stocks" render={() => <StockPage user={user}/>}/>
-        <Route path="/lists" render={() => <ListPage user={user}/>}/>
-        <div className="signin-page">
-        {signup ?
-          <div>
-            <Route exact path="/signup" render={() => <Signup toggle={toggleHandler}/>}/>
+        <Switch>
+          <Route exact path="/home"><PublicHome /></Route>
+          <Route path="/stocks" render={() => <StockPage user={user}/>}/>
+          <Route path="/lists" render={() => <ListPage user={user}/>}/>
+          <div className="signin-page">
+            <Route exact path="/demo" render={() => <DemoLogin />}/> 
+          {signup ?
+            <div>
+              <Route exact path="/signup" render={() => <Signup toggle={toggleHandler}/>}/>
+            </div>
+            :
+            <div>
+              <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} />}/>
+            </div>
+          }
+          <img src={DogCartoon} alt=""/>
           </div>
-          :
-          <div>
-            <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} />}/>
-          </div>
-        }
-        <img src={DogCartoon} alt=""/>
-        </div>
-      </Switch>
+        </Switch>
       </div>
     </>
     )
-
-  // if (user === "loading"){
-  //   return(
-  //     <div>
-  //       <CircularProgress />
-  //       <p>Signing in...</p>
-  //     </div>
-  //   )
-  // }
-  // return (
-  //   <div className="App">
-  //       <Nav user={user} logoutHandler={logoutHandler}/>
-  //     <Switch>
-  //       <Route path="/home" render={() => <Home user={user}/>}/>
-  //       <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
-  //     </Switch>
-  //   </div>
-  // );
+  return (
+    <div className="App">
+        <Nav />
+      <Switch>
+        <Route path="/home" render={() => <Home />}/>
+        <Route path="/stocks" render={() => <StockPage user={user}/>}/>
+      </Switch>
+    </div>
+  );
 }
 
 export default App;
