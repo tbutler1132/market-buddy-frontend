@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { useUpdatePositionMutation } from '../app/services/MarketBuddy';
+// import { useUpdatePositionMutation } from '../app/services/MarketBuddy';
 
 const style = {
     position: 'absolute',
@@ -21,7 +21,7 @@ function OrderSummaryModal() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [updatePostition] = useUpdatePositionMutation()
+    // const [updatePostition] = useUpdatePositionMutation()
 
     return (
         <div>

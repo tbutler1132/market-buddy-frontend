@@ -1,7 +1,6 @@
-import React, {useState, useRef} from 'react';
+import { useState } from 'react';
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
-import {BASE_API} from './../App'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 

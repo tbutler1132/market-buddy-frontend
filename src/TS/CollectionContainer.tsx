@@ -1,4 +1,3 @@
-import { CircularProgress } from '@material-ui/core';
 import Collection from './Collection';
 
 function CollectionContainer({ data, header }: {data: any, header: string}) {

@@ -1,27 +1,20 @@
 import { useHistory } from "react-router-dom"
-import { Button } from '@material-ui/core'
-import { useDispatch, useSelector } from "react-redux";
 
 import SearchBar from '../components/SearchBar';
 
-interface NavProps {
-    user: any
-    logoutHandler: any
-}
+// interface NavProps {
+//     user: any
+//     logoutHandler: any
+// }
 
 
-function Nav({ user, logoutHandler }: NavProps) {
+function Nav() {
     const history = useHistory()
-    // const dispatch = useDispatch()
-    // const [mode] = useSelector((state) => state.styles)
 
-    const clickHandler = () => {
-        logoutHandler()
-    }
 
-    const signupHandler = () => {
-        history.push('/demo')
-    }
+    // const signupHandler = () => {
+    //     history.push('/demo')
+    // }
 
     return (
         <div>

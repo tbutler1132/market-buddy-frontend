@@ -1,20 +1,14 @@
-// import React, {useEffect} from 'react';
-// import axios from 'axios'
-// import { useDispatch, useSelector } from 'react-redux';
-// import CircularProgress from '@material-ui/core/CircularProgress'
 import News from './News';
 import { useSelector } from 'react-redux';
 import CollectionContainer from './CollectionContainer';
 
-import StockListContainer from './StockListContainer';
 import StockGraph from './StockGraph';
 import { useGetCurrentPortfolioValueQuery, useGetHistoricalPortfolioValueQuery, useGetUserQuery, useGetPortfolioDataQuery } from '../app/services/MarketBuddy';
-import { useGetStockPricesQuery } from '../app/services/IEXCloud'
 
-interface chartData {
-    date: string,
-    value: number
-}
+// interface chartData {
+//     date: string,
+//     value: number
+// }
 
 const formatChartData = (data: any, currentData: any) => {
 
@@ -35,7 +29,7 @@ const formatChartData = (data: any, currentData: any) => {
 function Home() {
     const { auth } = useSelector((state: any) => state)
 
-    const { data, isLoading, isFetching } = useGetCurrentPortfolioValueQuery(auth.user)   
+    const { data, isLoading } = useGetCurrentPortfolioValueQuery(auth.user)   
     const { data: historicalPortfolioValue, isLoading: historicalPortfolioValueIsLoading } = useGetHistoricalPortfolioValueQuery(auth.user)
     const { data: currentUser, isLoading: currentUserIsLoading } = useGetUserQuery(auth.user)
     const { data: portfolioData, isLoading: portfolioDataIsLoading } = useGetPortfolioDataQuery(auth.user)

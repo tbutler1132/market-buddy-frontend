@@ -4,14 +4,14 @@ import TrendingLists from "./TrendingLists";
 import CollectionContainer from "./CollectionContainer";
 import GraphImage from '../assets/images/green_dot_graph.svg'
 import { useGetMostActiveStocksQuery } from '../app/services/IEXCloud'
-import { CircularProgress } from "@mui/material";
+import { LinearProgress } from "@mui/material";
 
 
 function PublicHome() {
 
     const { data, isLoading } = useGetMostActiveStocksQuery("_")
 
-    if(isLoading) return <CircularProgress />
+    if(isLoading) return <div style={{marginTop: "15px"}}><LinearProgress /></div>
     return (
         <div className="main-container">
             <div className="row">
