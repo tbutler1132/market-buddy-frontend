@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const IEXCloudApi = createApi({
     reducerPath: 'IEXCloudApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:7000/stocks' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://market-buddy-server.herokuapp.com/stocks' }),
     endpoints: (builder) => ({
         getDailyGainers: builder.query({
           query: (type) => `collection/tag/list?name=${type}`,
