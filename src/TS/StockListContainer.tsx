@@ -7,7 +7,7 @@ function StockListContainer() {
     const { auth } = useSelector((state: any) => state)
 
 
-    const { data, isLoading, isFetching } = useGetListsQuery(auth.user._id)
+    const { data, isLoading } = useGetListsQuery(auth.user._id)
 
     const renderLists = () => {
         return data.lists.map((list: any) => 

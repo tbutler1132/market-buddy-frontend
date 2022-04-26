@@ -1,7 +1,9 @@
 import Collection from './Collection';
+import { useSelector } from 'react-redux';
 
 function CollectionContainer({ data, header }: {data: any, header: string}) {
 
+    const { mode } = useSelector((state: any) => state.styles)
 
     const renderStocks = () => {
         return data.map((stock: any) => 
@@ -10,9 +12,9 @@ function CollectionContainer({ data, header }: {data: any, header: string}) {
     }
 
     return (
-        <div className="sidebar-content">
+        <div data-mode={mode} className="sidebar-content">
             <h3>{header}</h3>
-            <div className="card" style={{position: 'relative'}}>
+            <div data-mode={mode} className="card" style={{position: 'relative'}}>
                 {renderStocks()}
             </div>
         </div>

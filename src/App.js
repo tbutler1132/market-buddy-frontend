@@ -1,5 +1,5 @@
 import './App.css';
-import { useState} from 'react';
+import { useEffect, useState} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
@@ -26,9 +26,12 @@ function App() {
   const [signup, setSignup] = useState(true)
   
   const user = useSelector((state) => state.auth.user)
-  
-  console.log(process.env.NODE_ENV)
+  const { mode } = useSelector((state) => state.styles)
 
+  useEffect(() => {
+    document.body.style.backgroundColor = mode === "dark" ? "black" : "white"
+  })
+  
   const toggleHandler = (set) => {
     setSignup(set)
   }
@@ -36,7 +39,7 @@ function App() {
   if (!user) 
     return (
     <>
-      <div className="App">
+      <div data-mode={mode} className="App">
         <Nav />
         <Route to="/"><Redirect to="/home" /></Route>
         <Switch>

@@ -112,7 +112,65 @@
   display: block;
 }
 
+.App[data-mode="dark"] {
+  background-color: black;
+  color: white
+}
 
+.stock-list[data-mode="dark"] {
+  background-color: rgb(30,33,36);
+  color: white
+}
+
+
+.card[data-mode="dark"] {
+  color: white
+}
+
+.news-story[data-mode="dark"] {
+  background-color: black;
+  color: white;
+}
+
+.trending-lists[data-mode="dark"] {
+  color: white;
+}
+
+.header-info-container[data-mode="dark"] {
+  color: white;
+}
+
+
+.col-12[data-mode="dark"] {
+  background-color: black;
+  color: white;
+}
+
+.sidebar-content[data-mode="dark"] {
+  color: white;
+}
+
+.stock-card:hover[data-mode="dark"] {
+  background-color: rgb(48,54,58);
+}
+
+.stock-list:hover[data-mode="dark"] {
+  background-color: rgb(48,54,58);
+}
+
+button.collection-button[data-mode="dark"] {
+  color: white;
+  border-color: gainsboro;
+  background-color: black;
+}
+
+.movers-container[data-mode="dark"] {
+  color: white
+}
+
+#custom-css-outlined-input {
+  color: white;
+}
 
 .App-logo {
   height: 40vmin;

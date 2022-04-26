@@ -8,7 +8,6 @@ import AnalystRatings from "./AnalystRatings";
 import { useSelector } from 'react-redux';
 import TransactionContainer from "./TransactionContainer";
 
-
 function Stock() {
     const { auth } = useSelector((state: any) => state)
 
@@ -24,6 +23,8 @@ function Stock() {
 
     const { data: financialData, isLoading: financialDataLoading, isError } = useGetFinancialDataQuery(stockId)
 
+    const { mode } = useSelector((state: any) => state.styles)
+
     useEffect(() => {
         getHistoricalData({id: stockId, range: "ytd"}, true)
     }, [getHistoricalData, stockId])
@@ -37,7 +38,7 @@ function Stock() {
     return (
         <div className="main-container">
             <div className="row">
-                <div className="col-12">
+                <div data-mode={mode} className="col-12">
                     <h1>{data.companyName}</h1>
                     <h3>${price.toLocaleString()}</h3>
                     <StockGraph width={500} height={400} type="price" data={results.data}/>

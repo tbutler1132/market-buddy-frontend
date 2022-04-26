@@ -1,4 +1,8 @@
 import { useHistory } from "react-router-dom"
+import Button from "@mui/material/Button";
+import { toggleDarkMode } from '../app/stylesSlice'
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import SearchBar from '../components/SearchBar';
 
@@ -10,6 +14,12 @@ import SearchBar from '../components/SearchBar';
 
 function Nav() {
     const history = useHistory()
+    const dispatch = useDispatch()
+    const { mode } = useSelector((state: any) => state.styles)
+
+    const darkModeHandler = (e: any) => {
+        dispatch(toggleDarkMode(mode === "dark" ? "light" : "dark"))
+    }
 
 
     // const signupHandler = () => {
@@ -25,6 +35,9 @@ function Nav() {
                 <div className="search">
                     <SearchBar />
                 </div>
+                <div className="logout-button">
+                    <Button onClick={darkModeHandler}>Toggle dark mode</Button>
+                </div> 
                 {/* <div className="logout-button">
                     <Button onClick={signupHandler}>Login</Button>
                 </div> */}
