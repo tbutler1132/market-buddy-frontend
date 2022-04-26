@@ -19,6 +19,8 @@ function Nav() {
 
     const darkModeHandler = (e: any) => {
         dispatch(toggleDarkMode(mode === "dark" ? "light" : "dark"))
+        let favoriteMode = mode === "dark" ? "light" : "dark"
+        localStorage.setItem("mode", favoriteMode)
     }
 
 

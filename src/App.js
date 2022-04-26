@@ -28,6 +28,8 @@ function App() {
   const user = useSelector((state) => state.auth.user)
   const { mode } = useSelector((state) => state.styles)
 
+  
+
   useEffect(() => {
     document.body.style.backgroundColor = mode === "dark" ? "black" : "white"
   })
