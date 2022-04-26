@@ -1,8 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+const BASE_API = process.env.NODE_ENV === "development" ? 'http://localhost:7000/' : 'https://market-buddy-server.herokuapp.com/'
+
 export const marketBuddyApi = createApi({
     reducerPath: 'marketBuddyApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:7000/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: BASE_API }),
     tagTypes: ['List'],
     endpoints: (builder) => ({
         login: builder.mutation({

@@ -4,6 +4,8 @@ import {useHistory} from 'react-router-dom'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
+const BASE_API = process.env.NODE_ENV === "development" ? 'http://localhost:7000/' : 'https://market-buddy-server.herokuapp.com/'
+
 function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('')
     const [suggestions, setSuggestions] = useState([])
@@ -12,7 +14,7 @@ function SearchBar() {
     const fetchResults = (event, values) => {
         setSearchTerm(event.target.value)
         if(searchTerm){
-            axios(`https://market-buddy-server.herokuapp.com/stocks/search/${searchTerm}`)
+            axios(`${BASE_API}stocks/search/${searchTerm}`)
             .then(results => {
                 setSuggestions(results.data)
             })
