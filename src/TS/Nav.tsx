@@ -32,9 +32,9 @@ function Nav({ user, logoutHandler }: NavProps) {
                 <div className="search">
                     <SearchBar />
                 </div>
-                <div className="logout-button">
+                {/* <div className="logout-button">
                     <Button onClick={signupHandler}>Login</Button>
-                </div>
+                </div> */}
             </nav>
         </div>
     );

@@ -13,7 +13,7 @@ function SearchBar() {
     const fetchResults = (event, values) => {
         setSearchTerm(event.target.value)
         if(searchTerm){
-            axios(`http://localhost:7000/stocks/search/${searchTerm}`)
+            axios(`https://market-buddy-server.herokuapp.com/stocks/search/${searchTerm}`)
             .then(results => {
                 setSuggestions(results.data)
             })
