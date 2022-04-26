@@ -31,7 +31,7 @@ function AnalystRatings({ stockId }: {stockId: string}) {
                     <div className="_2QDjqlRg7zTUxYLjTHDGlF">
                         <div id="sdp-analyst-ratings-summary-tooltip" className="_1fEdz1YPOLpLW1Ow3rKh92">
                             <h2>{data?.marketConsensus}</h2>
-                            <p>of {data?.analystCount} ratings</p>
+                            <p>from {data?.analystCount} ratings</p>
                         </div>
                     </div>
                     <div className="_13Jm9_7eI9W-YsXRyrVJX_">
