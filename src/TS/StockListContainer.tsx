@@ -1,31 +1,30 @@
-import React from 'react';
-
-// import PortfolioList from './PortfolioList';
-// import AddList from './AddList';
-
-//Renders watchlists, as well as user portfolio
+import AddList from "./AddList";
+import { useGetListsQuery } from "../app/services/MarketBuddy";
+import { useSelector } from "react-redux";
 
 function StockListContainer() {
-    // const { user, portfolio} = props
 
-    //Render watch lists
-    // const renderLists = () => {
-    //     return user.lists.map(list => <PortfolioList list={true} title={list.title} user={user} stocks={list.stocks} key={list._id} listId={list._id}/>)
-    // }
-
-    //Create an array of stock symbols in user's portfolio to send down as props
-    // const portfolioSymbols = () => {return user.portfolio.map((stock: any) => stock.ticker)}
+    const { auth } = useSelector((state: any) => state)
 
 
+    const { data, isLoading, isFetching } = useGetListsQuery(auth.user._id)
+
+    const renderLists = () => {
+        return data.lists.map((list: any) => 
+            <p>{list.title}</p>    
+        )
+    }
+
+
+    if(isLoading) return null
     return (
         <div className="sidebar-content">
             <div className="card" style={{position: 'relative'}}>
-                {/* <PortfolioList list={false} user={user} portfolio={portfolio} stocks={portfolioSymbols()}/> */}
                 <div className="stock-list-title">
-                    <h2>Your Lists</h2>
-                    {/* <AddList user={user}/> */}
+                    <h2>Lists</h2>
+                    {renderLists()}
+                    <AddList />
                 </div>
-                {/* {renderLists()} */}
             </div>
         </div>
     );

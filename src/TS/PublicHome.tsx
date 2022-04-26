@@ -3,10 +3,15 @@ import News from "./News";
 import TrendingLists from "./TrendingLists";
 import CollectionContainer from "./CollectionContainer";
 import GraphImage from '../assets/images/green_dot_graph.svg'
+import { useGetMostActiveStocksQuery } from '../app/services/IEXCloud'
+import { CircularProgress } from "@mui/material";
+
 
 function PublicHome() {
 
+    const { data, isLoading } = useGetMostActiveStocksQuery("_")
 
+    if(isLoading) return <CircularProgress />
     return (
         <div className="main-container">
             <div className="row">
@@ -19,7 +24,7 @@ function PublicHome() {
                     <News /> 
                 </div>
                 <div className="col-5">
-                    <CollectionContainer />
+                    <CollectionContainer header="Most Active Stocks" data={data}/>
                 </div>
             </div>
         </div>

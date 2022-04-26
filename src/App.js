@@ -1,8 +1,8 @@
 import './App.css';
 import { useState} from 'react';
-import { Switch, Route, Redirect, useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+// import axios from 'axios'
 // import CircularProgress  from '@material-ui/core/CircularProgress';
 import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 
@@ -17,6 +17,7 @@ import Signin from './components/Signin';
 
 // import PublicHome from './components/publicViews/PublicHome';
 import PublicHome from './TS/PublicHome';
+import Home from './TS/Home';
 
 // import Nav from './components/Nav'
 import Nav from './TS/Nav.tsx'
@@ -26,6 +27,8 @@ import Nav from './TS/Nav.tsx'
 
 import ListPage from './TS/ListPage';
 
+import DemoLogin from './TS/DemoLogin';
+
 
 
 export const BASE_API = 'https://market-buddy-server.herokuapp.com'
@@ -33,9 +36,8 @@ export const BASE_API = 'https://market-buddy-server.herokuapp.com'
 
 function App() {
   const [signup, setSignup] = useState(true)
-  const history = useHistory()
+  // const history = useHistory()
   
-  const dispatch = useDispatch() 
   const user = useSelector((state) => state.auth.user)
   
   //Initial fetch user from API upon app mounting
@@ -106,11 +108,11 @@ function App() {
   //   })
   // }
 
-  const logoutHandler = () => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("profile")
-    history.push('/signup')
-  }
+  // const logoutHandler = () => {
+  //   localStorage.removeItem("token")
+  //   localStorage.removeItem("profile")
+  //   history.push('/signup')
+  // }
 
   const toggleHandler = (set) => {
     setSignup(set)
@@ -120,47 +122,39 @@ function App() {
   if (!user) 
     return (
     <>
-    <div className="App">
+      <div className="App">
         <Nav />
         <Route to="/"><Redirect to="/home" /></Route>
-      <Switch>
-        <Route exact path="/home"><PublicHome /></Route>
-        <Route path="/stocks" render={() => <StockPage user={user}/>}/>
-        <Route path="/lists" render={() => <ListPage user={user}/>}/>
-        <div className="signin-page">
-        {signup ?
-          <div>
-            <Route exact path="/signup" render={() => <Signup toggle={toggleHandler}/>}/>
+        <Switch>
+          <Route exact path="/home"><PublicHome /></Route>
+          <Route path="/stocks" render={() => <StockPage user={user}/>}/>
+          <Route path="/lists" render={() => <ListPage user={user}/>}/>
+          <div className="signin-page">
+            <Route exact path="/demo" render={() => <DemoLogin />}/> 
+          {signup ?
+            <div>
+              <Route exact path="/signup" render={() => <Signup toggle={toggleHandler}/>}/>
+            </div>
+            :
+            <div>
+              <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} />}/>
+            </div>
+          }
+          <img src={DogCartoon} alt=""/>
           </div>
-          :
-          <div>
-            <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} />}/>
-          </div>
-        }
-        <img src={DogCartoon} alt=""/>
-        </div>
-      </Switch>
+        </Switch>
       </div>
     </>
     )
-
-  // if (user === "loading"){
-  //   return(
-  //     <div>
-  //       <CircularProgress />
-  //       <p>Signing in...</p>
-  //     </div>
-  //   )
-  // }
-  // return (
-  //   <div className="App">
-  //       <Nav user={user} logoutHandler={logoutHandler}/>
-  //     <Switch>
-  //       <Route path="/home" render={() => <Home user={user}/>}/>
-  //       <Route path="/stocks" render={() => <StockContainer user={user}/>}/>
-  //     </Switch>
-  //   </div>
-  // );
+  return (
+    <div className="App">
+        <Nav />
+      <Switch>
+        <Route path="/home" render={() => <Home />}/>
+        <Route path="/stocks" render={() => <StockPage user={user}/>}/>
+      </Switch>
+    </div>
+  );
 }
 
 export default App;

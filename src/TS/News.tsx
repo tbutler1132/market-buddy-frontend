@@ -1,4 +1,5 @@
 import { useGetNewsQuery } from '../app/services/IEXCloud';
+import NewsInfoModal from './NewsInfoModal';
 
 interface NewsProps {
     companySymbol?: string
@@ -9,12 +10,13 @@ function News({ companySymbol = "aapl" }: NewsProps) {
 
     const { data, isLoading } = useGetNewsQuery(companySymbol)
 
-    console.log("NEWS", data)
-
     if(isLoading) return null
     return (
         <div>
-            <h1>News</h1>
+            <div className="header-info-container">
+                <h1>News</h1>
+                <NewsInfoModal />
+            </div>
             {data.map((story: any) => 
                 <div className="news-story" key={story.url}>
                     <div className="title-headline">

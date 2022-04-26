@@ -6,26 +6,26 @@ const graphColor = (data: any) => {
     } else {
       return '#C70039'
     }
-  }
+}
 
 interface StockGraphProps {
     type: string
-    data: any
+    data: any,
+    width: number,
+    height: number
 }
 
-function StockGraph({ type, data }: StockGraphProps) {
-
-  console.log(data, "Chart")
+function StockGraph({ type, data, width, height }: StockGraphProps) {
 
     return (
-        <div >
-        <LineChart width={500} height={400} data={data}>
+      <div >
+        <LineChart width={width} height={height} data={data}>
           <Line dot={false} type={"step"} dataKey={type} stroke={graphColor(data)} />
-          <XAxis dataKey="name" />
-          {/* <YAxis /> */}
-          <Tooltip />
+          <XAxis hide dataKey="name" />
+          <YAxis domain={['auto', 'auto']} hide/>
+          <Tooltip formatter={(value: number, name: string) => ['$' + value.toFixed(2), "Price"]} separator=': '/>
         </LineChart>
-    </div>
+      </div>
     );
 }
 
