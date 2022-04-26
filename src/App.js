@@ -27,7 +27,7 @@ function App() {
   
   const user = useSelector((state) => state.auth.user)
   
-  
+  console.log(process.env.NODE_ENV)
 
   const toggleHandler = (set) => {
     setSignup(set)
