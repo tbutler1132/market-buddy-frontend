@@ -112,6 +112,10 @@
   display: block;
 }
 
+.MuiPopover-paper {
+  color: white;
+}
+
 .App[data-mode="dark"] {
   background-color: black;
   color: white

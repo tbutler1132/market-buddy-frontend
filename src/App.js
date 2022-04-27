@@ -2,6 +2,8 @@ import './App.css';
 import { useEffect, useState} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { toggleDarkMode } from './app/stylesSlice';
 
 import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 
@@ -27,8 +29,13 @@ function App() {
   
   const user = useSelector((state) => state.auth.user)
   const { mode } = useSelector((state) => state.styles)
+  const dispatch = useDispatch()
 
   useEffect(() => {
+    const preferredDesign = localStorage.getItem("mode")
+    if(preferredDesign){
+      dispatch(toggleDarkMode(preferredDesign))
+    }
     document.body.style.backgroundColor = mode === "dark" ? "black" : "white"
   })
   
