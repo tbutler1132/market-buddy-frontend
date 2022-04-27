@@ -29,7 +29,6 @@ function App() {
   const { mode } = useSelector((state) => state.styles)
 
   
-
   useEffect(() => {
     document.body.style.backgroundColor = mode === "dark" ? "black" : "white"
   })
