@@ -611,7 +611,6 @@ button.collection-button[data-mode="dark"] {
 
 .news-story{
   background-color: white;
-  border-top: solid;
   border-top-color: rgb(224, 226, 226);
   border-top-width: .1em;
   padding-top: 6px;
@@ -620,8 +619,19 @@ button.collection-button[data-mode="dark"] {
   padding-bottom: 6px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   transition: background-color 0.5s ease;
 }
+
+.title-headline {
+  width: 60%;
+}
+
+.news-story:hover{
+  background-color: rgb(30,33,36);
+  border-radius: 4px;
+}
+
 
 .css-1e4ygyu {
   min-width: 0px;
@@ -635,6 +645,8 @@ button.collection-button[data-mode="dark"] {
 
 img.news {
   border-radius: 2%;
+  width: 30%;
+  height: 100%;
 }
 
 .autocom-box li{

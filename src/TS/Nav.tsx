@@ -51,35 +51,35 @@ function Nav() {
                 <div className="search">
                     <SearchBar />
                 </div>
-                    <div className="logout-button">
-                        <Button
-                        aria-owns={open ? 'mouse-over-popover' : undefined}
-                        aria-haspopup="true"
-                        onMouseEnter={handlePopoverOpen}
-                        onMouseLeave={handlePopoverClose} 
-                        onClick={darkModeHandler}>Toggle dark mode</Button>
-                        <Popover
-                        id="mouse-over-popover"
-                        classes={{ paper: "MuiPopover-paper" }}
-                        sx={{
-                        pointerEvents: 'none',
-                        }}
-                        open={open}
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
-                        }}
-                        transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'left',
-                        }}
-                        onClose={handlePopoverClose}
-                        disableRestoreFocus
-                        >
-                            <Typography sx={{ p: 1 }}>I remember your preferred mode, try refreshing!</Typography>
-                        </Popover>
-                    </div> 
+                <div className="logout-button">
+                    <Button
+                    aria-owns={open ? 'mouse-over-popover' : undefined}
+                    aria-haspopup="true"
+                    onMouseEnter={handlePopoverOpen}
+                    onMouseLeave={handlePopoverClose} 
+                    onClick={darkModeHandler}>Toggle dark mode</Button>
+                    <Popover
+                    id="mouse-over-popover"
+                    classes={{ paper: "MuiPopover-paper" }}
+                    sx={{
+                    pointerEvents: 'none',
+                    }}
+                    open={open}
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'left',
+                    }}
+                    onClose={handlePopoverClose}
+                    disableRestoreFocus
+                    >
+                        <Typography sx={{ p: 1 }}>I remember your preferred mode, try refreshing!</Typography>
+                    </Popover>
+                </div> 
             </nav>
         </div>
     );
