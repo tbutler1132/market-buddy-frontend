@@ -6,7 +6,7 @@
   line-height: 20px;
   font-family: Capsule Sans Text,-apple-system,BlinkMacSystemFont,sans-serif;
   -webkit-text-size-adjust: none;
-  color: var(--rh__neutral-fg1);
+  color: var(--text-primary);
   --rh__primary-base: rgb(255,80,0);
   --rh__primary-hover: rgba(230,72,0,1);
   --rh__primary-pressed: rgba(204,64,0,1);
@@ -110,19 +110,33 @@
   --rh__size-palette___experimentalSelectMenuZIndex: 500;
   box-sizing: inherit;
   display: block;
+  background-color: var(--background);
 }
 
 .MuiPopover-paper {
   color: white;
 }
 
-.App[data-mode="dark"] {
-  background-color: black;
-  color: white
+:root {
+  --background: white;
+  --text-primary: black;
 }
 
+[data-mode='dark'] {
+  --background: black;
+  --text-primary: white;
+  /* --text-primary: white;
+  --text-secondary: grey;
+  --accent: darkred; */
+}
+
+/* .App[data-mode="dark"] {
+  background-color: black;
+  color: white
+} */
+
 .stock-list[data-mode="dark"] {
-  background-color: rgb(30,33,36);
+  background-color: rgb(30, 33, 36);
   color: white
 }
 
@@ -521,7 +535,7 @@ button.collection-button[data-mode="dark"] {
 }
 
 .stock-list {
-  background-color: white;
+  background-color: var(--background);
   transition: all .2s ease-in-out;
   padding: 0 4% 0 4%;
 }

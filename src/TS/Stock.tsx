@@ -8,6 +8,7 @@ import AnalystRatings from "./AnalystRatings";
 import { useSelector } from 'react-redux';
 import TransactionContainer from "./TransactionContainer";
 
+
 function Stock() {
     const { auth } = useSelector((state: any) => state)
 
@@ -113,7 +114,7 @@ function Stock() {
                 </div>
                 {auth.user 
                     ?
-                        <TransactionContainer stockId={stockId}/>
+                        <TransactionContainer latestPrice={price} stockId={stockId}/>
                     :
                         null
                 }

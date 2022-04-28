@@ -7,7 +7,11 @@ from 'react-router-dom'
 
 import Stock from './Stock'
 
-function StockPage() {
+interface stockPageProps {
+    design: string
+}
+
+function StockPage({ design }: stockPageProps) {
 
     let match = useRouteMatch()
 

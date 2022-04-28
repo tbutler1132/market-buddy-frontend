@@ -53,7 +53,8 @@ function App() {
         <Route to="/"><Redirect to="/home" /></Route>
         <Switch>
           <Route exact path="/home"><PublicHome /></Route>
-          <Route path="/stocks" render={() => <StockPage user={user}/>}/>
+          <Route path="/stocks" render={() => <StockPage design="stock" user={user}/>}/>
+          <Route path="/crypto" render={() => <StockPage design="crypto" />}/>
           <Route path="/lists" render={() => <ListPage user={user}/>}/>
           <div className="signin-page">
             <Route exact path="/demo" render={() => <DemoLogin />}/> 
@@ -77,7 +78,7 @@ function App() {
         <Nav />
       <Switch>
         <Route path="/home" render={() => <Home />}/>
-        <Route path="/stocks" render={() => <StockPage user={user}/>}/>
+        <Route path="/stocks" render={() => <StockPage design="stock" />}/>
       </Switch>
     </div>
   );

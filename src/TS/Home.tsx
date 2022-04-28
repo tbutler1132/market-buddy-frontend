@@ -40,7 +40,7 @@ function Home() {
         <div className="main-container">
             <div className="row">
                 <div className="col-12">
-                    <h1>${data.value}</h1>
+                    <h1>${data.value.toLocaleString()}</h1>
                     <StockGraph width={500} height={400} type="value" data={formatChartData(historicalPortfolioValue.historicalPortfolioValue, data)} />
                     <div className="css-1">
                         <h3>Buying power: ${currentUser.cash.toLocaleString()}</h3>

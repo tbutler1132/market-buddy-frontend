@@ -16,7 +16,13 @@ const style = {
     p: 4,
 };
 
-function OrderSummaryModal() {
+interface OrderSummaryModalProps {
+    shares: number,
+    symbol: string,
+    transactionType: string
+}
+
+function OrderSummaryModal({ shares, symbol, transactionType }: OrderSummaryModalProps) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -25,7 +31,7 @@ function OrderSummaryModal() {
 
     return (
         <div>
-            <span onClick={handleOpen}>Sell all</span>
+            <span onClick={handleOpen}>Review Order</span>
             <Modal
             open={open}
             onClose={handleClose}
@@ -34,10 +40,10 @@ function OrderSummaryModal() {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        News: How are news articles chosen?
+                        Order Summary
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        News is chosen from over 3,000 global news sources including major publications, regional media, and social
+                        You’re placing an order to {transactionType} {shares} share of {symbol} that will be converted to a limit order with a 5% collar. If your order cannot be executed within the collar, it won’t be filled. Your order will be placed after the market opens
                     </Typography>
                 </Box>
             </Modal>
