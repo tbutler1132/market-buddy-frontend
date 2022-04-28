@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { toggleDarkMode } from './app/stylesSlice';
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 
@@ -22,7 +23,17 @@ import ListPage from './TS/ListPage';
 
 import DemoLogin from './TS/DemoLogin';
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+});
 
 function App() {
   const [signup, setSignup] = useState(true)
@@ -47,7 +58,7 @@ function App() {
 
   if (!user) 
     return (
-    <>
+      <ThemeProvider theme={mode === "dark" ? darkTheme : lightTheme}>
       <div data-mode={mode} className="App">
         <Nav />
         <Route to="/"><Redirect to="/home" /></Route>
@@ -71,7 +82,7 @@ function App() {
           </div>
         </Switch>
       </div>
-    </>
+    </ThemeProvider>
     )
   return (
     <div className="App">

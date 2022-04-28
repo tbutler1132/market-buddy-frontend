@@ -240,7 +240,7 @@ button.collection-button[data-mode="dark"] {
   position: sticky;
   text-size-adjust: 100%;
   top: 0px;
-  width: 1133px;
+  width: 100%;
   z-index: 105;
   margin-top: 2%;
   align-items: center;
@@ -269,6 +269,7 @@ button.collection-button[data-mode="dark"] {
 }
 
 
+
 .search{
   -webkit-tap-highlight-color: transparent;
   font-size: 13px;
@@ -284,6 +285,11 @@ button.collection-button[data-mode="dark"] {
   position: relative;
   width: 50%;
 } 
+
+.a3Jm9_7eI9W-YsXRyrVJX {
+  color: var(--text-primary);
+}
+
 
 .side-bar {
   -webkit-tap-highlight-color: transparent;
@@ -791,7 +797,7 @@ button.collection-button:hover {
 
 .css-w8p71j {
   margin: 0px;
-  color: var(--rh__text-color);
+  color: var(--text-primary);
   font-family: var(--rh__type-palette__textSBold__stack);
   font-size: var(--rh__type-palette__textSBold__font-size);
   font-style: normal;

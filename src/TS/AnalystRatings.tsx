@@ -34,7 +34,7 @@ function AnalystRatings({ stockId }: {stockId: string}) {
                             <p>from {data?.analystCount} ratings</p>
                         </div>
                     </div>
-                    <div className="_13Jm9_7eI9W-YsXRyrVJX_">
+                    <div className="a3Jm9_7eI9W-YsXRyrVJX">
                         <p>{reccomendation(data?.marketConsensus, data?.symbol)} at a target price of ${data?.marketConsensusTargetPrice}</p>
                     </div>
                 </div> 

@@ -40,7 +40,7 @@ function SearchBar() {
                 filterOptions={(x) => x} 
                 options={suggestions.map((option) => option.symbol)}
                 onChange={submitHandler}
-                renderInput={(params) => <TextField id={mode === "dark" ? "custom-css-outlined-input" : null} color="success" focused variant='outlined' onChange={fetchResults} {...params} label="Search Stocks"/>}
+                renderInput={(params) => <TextField  color="success" focused variant='outlined' onChange={fetchResults} {...params} label="Search Stocks"/>}
                 />
             </div> 
     );
