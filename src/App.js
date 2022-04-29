@@ -11,9 +11,6 @@ import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 import StockPage from './TS/StockPage';
 
 
-import Signup from './components/Signup'
-import Signin from './components/Signin';
-
 import PublicHome from './TS/PublicHome';
 import Home from './TS/Home';
 
@@ -36,7 +33,6 @@ const lightTheme = createTheme({
 });
 
 function App() {
-  const [signup, setSignup] = useState(true)
   
   const user = useSelector((state) => state.auth.user)
   const { mode } = useSelector((state) => state.styles)
@@ -52,9 +48,6 @@ function App() {
     document.body.style.backgroundColor = mode === "dark" ? "black" : "white"
   })
   
-  const toggleHandler = (set) => {
-    setSignup(set)
-  }
 
   if (!user) 
     return (
@@ -68,16 +61,7 @@ function App() {
           <Route path="/crypto" render={() => <StockPage design="crypto" />}/>
           <Route path="/lists" render={() => <ListPage user={user}/>}/>
           <div className="signin-page">
-            <Route exact path="/demo" render={() => <DemoLogin />}/> 
-          {signup ?
-            <div>
-              <Route exact path="/signup" render={() => <Signup toggle={toggleHandler}/>}/>
-            </div>
-            :
-            <div>
-              <Route exact path="/signup" render={() => <Signin toggle={toggleHandler} />}/>
-            </div>
-          }
+          <Route exact path="/demo" render={() => <DemoLogin />}/> 
           <img src={DogCartoon} alt=""/>
           </div>
         </Switch>
