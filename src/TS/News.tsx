@@ -23,7 +23,7 @@ function News({ companySymbol = "aapl" }: NewsProps) {
                 <div data-mode={mode} className="news-story" key={story.url}>
                     <div className="title-headline">
                         <h5>{story.source}</h5>
-                        <h5>{story.datetime}</h5>
+                        {/* <h5>{story.datetime}</h5> */}
                         <a style={{height: "auto"}} href={story.url}>
                             <h4 style={{cursor: 'pointer', color: mode === "dark" ? "white" : 'black'}}>{story.headline}</h4>
                         </a>
