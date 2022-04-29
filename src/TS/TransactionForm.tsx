@@ -1,9 +1,33 @@
+import { useState, useReducer } from "react";
+import produce from "immer";
 import OrderSummaryModal from "./OrderSummaryModal";
-import { useForm } from "react-hook-form";
 
-function TransactionForm({ latestPrice, symbol }: {latestPrice: number, symbol: string}) {
+
+function TransactionForm({ latestPrice, symbol, position }: {latestPrice: number, symbol: string, position: any}) {
+    const [transactionForm, dispatch] = useReducer(
+        produce((draft, action) => {
+            switch (action.type) {
+                case "shares":
+                    draft['shares'] = action.payload
+                    break
+                default:
+                    break
+            }
+        }),
+        {
+            shares: ""
+        }
+    )
+
+    const updateForm = (e: any, type: string) => {
+        dispatch({
+            type: "shares",
+            payload: e.target.value
+        })
+    }
+
     return (
-        <form>
+        <form >
             <div className="order-type">
                 <label>Order Type</label>
             </div>
@@ -15,7 +39,7 @@ function TransactionForm({ latestPrice, symbol }: {latestPrice: number, symbol: 
             </div>
             <div className="order-type">
                 <label>Shares</label>
-                <input />
+                <input type="number" onChange={(e) => updateForm(e, "shares")}/>
             </div>
             <div className="order-type">
                 <label>Market Price</label>
@@ -23,9 +47,9 @@ function TransactionForm({ latestPrice, symbol }: {latestPrice: number, symbol: 
             </div>
             <div className="order-type">
                 <label>Estimated Cost</label>
-                <span>${(5 * latestPrice).toLocaleString()}</span>
+                <span>${(transactionForm.shares * latestPrice).toLocaleString()}</span>
             </div>
-            <OrderSummaryModal shares={1} symbol={symbol} transactionType="Buy"/>
+            <OrderSummaryModal cost={transactionForm.shares * latestPrice} transactionDetails={transactionForm} shares={1} symbol={symbol} transactionType="Buy"/>
         </form>
     );
 }

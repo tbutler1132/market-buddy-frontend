@@ -51,6 +51,9 @@ export const marketBuddyApi = createApi({
         getPortfolioData: builder.query({
             query: (id) => `users/${id}/portfolioData`,
         }),
+        getPosition: builder.query({
+            query: ({ id, symbol }) => `users/${id}/portfolio/${symbol}`,
+        }),
     })
 })
 
@@ -63,5 +66,6 @@ export const {
     useCreateListMutation,
     useGetListsQuery,
     useGetUserQuery,
-    useUpdatePositionMutation
+    useUpdatePositionMutation,
+    useGetPositionQuery
 } = marketBuddyApi

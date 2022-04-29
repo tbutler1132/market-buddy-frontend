@@ -120,11 +120,13 @@
 :root {
   --background: white;
   --text-primary: black;
+  --background-hover: rgb(243, 240, 240);
 }
 
 [data-mode='dark'] {
   --background: black;
   --text-primary: white;
+  --background-hover: rgb(30,33,36);
   /* --text-primary: white;
   --text-secondary: grey;
   --accent: darkred; */
@@ -628,7 +630,7 @@ button.collection-button[data-mode="dark"] {
 }
 
 .news-story:hover{
-  background-color: rgb(30,33,36);
+  background-color: var(--background-hover);
   border-radius: 4px;
 }
 

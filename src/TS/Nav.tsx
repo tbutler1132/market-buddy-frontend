@@ -80,6 +80,10 @@ function Nav() {
                         <Typography sx={{ p: 1 }}>I remember your preferred mode, try refreshing!</Typography>
                     </Popover>
                 </div> 
+                <div className="logout-button">
+                    <Button
+                    onClick={signupHandler}>Demo</Button>
+                </div> 
             </nav>
         </div>
     );
