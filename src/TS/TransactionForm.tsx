@@ -47,9 +47,9 @@ function TransactionForm({ latestPrice, symbol, position }: {latestPrice: number
             </div>
             <div className="order-type">
                 <label>Estimated Cost</label>
-                <span>${(transactionForm.shares * latestPrice).toLocaleString()}</span>
+                <span>${(transactionForm.shares * latestPrice * 1.01).toLocaleString()}</span>
             </div>
-            <OrderSummaryModal cost={transactionForm.shares * latestPrice} transactionDetails={transactionForm} shares={1} symbol={symbol} transactionType="Buy"/>
+            <OrderSummaryModal position={position} cost={transactionForm.shares * latestPrice} transactionDetails={transactionForm} symbol={symbol} transactionType="Buy"/>
         </form>
     );
 }

@@ -12,5 +12,5 @@ export const store = configureStore({
         styles: stylesReducer
     },
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(IEXCloudApi.middleware),
+    getDefaultMiddleware().concat(IEXCloudApi.middleware).concat(marketBuddyApi.middleware),
 })

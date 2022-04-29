@@ -2,7 +2,9 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
+import { useUpdatePositionMutation } from '../app/services/MarketBuddy'
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 // import { useUpdatePositionMutation } from '../app/services/MarketBuddy';
 
 const style = {
@@ -18,16 +20,18 @@ const style = {
 };
 
 interface OrderSummaryModalProps {
-    shares: number,
     symbol: string,
     transactionType: string,
     transactionDetails: any
+    position: any,
     cost: number
 }
 
-function OrderSummaryModal({ shares, symbol, transactionType, transactionDetails, cost }: OrderSummaryModalProps) {
+function OrderSummaryModal({ symbol, transactionType, transactionDetails, position, cost }: OrderSummaryModalProps) {
     const [open, setOpen] = useState(false);
     const { auth } = useSelector((state: any) => state)
+    const [updatePosition] = useUpdatePositionMutation()
+    const history = useHistory()
     
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -35,7 +39,8 @@ function OrderSummaryModal({ shares, symbol, transactionType, transactionDetails
 
     const submitHandler = (e: any) => {
         e.preventDefault()
-        console.log(transactionDetails)
+        updatePosition({id: auth.user, positionId: position._id, updatedPosition: {adjustment: Number(transactionDetails.shares), price: -Math.abs(cost)}})
+        history.push("/home")
     }
 
     return (

@@ -5,7 +5,7 @@ const BASE_API = process.env.NODE_ENV === "development" ? 'http://localhost:7000
 export const marketBuddyApi = createApi({
     reducerPath: 'marketBuddyApi',
     baseQuery: fetchBaseQuery({ baseUrl: BASE_API }),
-    tagTypes: ['List'],
+    tagTypes: ['Cash', 'PortfolioValue', 'PortfolioData'],
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (credentials) => ({
@@ -26,13 +26,6 @@ export const marketBuddyApi = createApi({
             }),   
             invalidatesTags: ['List', 'User']
         }),
-        updatePosition: builder.mutation({
-            query: ( { id, positionId, updatedPosition } ) => ({
-                url: `users/${id}/transaction/${positionId}`,
-                method: 'PATCH',
-                body: updatedPosition,
-            }),   
-        }),
         demo: builder.mutation({
             query: () => ({
                 url: `users/demo`,
@@ -41,15 +34,26 @@ export const marketBuddyApi = createApi({
         }),
         getUser: builder.query({
             query: (id) => `users/${id}?fields=cash%20username`,
+            providesTags: ['Cash']
         }),
         getCurrentPortfolioValue: builder.query({
             query: (id) => `users/${id}/currentPortfolioValue`,
+            providesTags: ['PortfolioValue']
         }),
         getHistoricalPortfolioValue: builder.query({
             query: (id) => `users/${id}/historicalPortfolioValue`,
         }),
         getPortfolioData: builder.query({
             query: (id) => `users/${id}/portfolioData`,
+            providesTags: ['PortfolioData']
+        }),
+        updatePosition: builder.mutation({
+            query: ( { id, positionId, updatedPosition } ) => ({
+                url: `users/${id}/transaction/${positionId}`,
+                method: 'PATCH',
+                body: updatedPosition,
+            }),   
+            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData']
         }),
         getPosition: builder.query({
             query: ({ id, symbol }) => `users/${id}/portfolio/${symbol}`,
