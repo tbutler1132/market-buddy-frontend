@@ -7,7 +7,9 @@ import News from "./News";
 import AnalystRatings from "./AnalystRatings";
 import { useSelector } from 'react-redux';
 import TransactionContainer from "./TransactionContainer";
+import ChartNav from "./ChartNav";
 
+const chartRanges = ["ytd", "5d", "1m", "3m", "1y", "5y"]
 
 function Stock() {
     const { auth } = useSelector((state: any) => state)
@@ -30,9 +32,9 @@ function Stock() {
         getHistoricalData({id: stockId, range: "ytd"}, true)
     }, [getHistoricalData, stockId])
 
-    const timeRangeClickHandler = (e: any) => {
-        setTimeRange(e.target.value)
-        getHistoricalData({id: stockId, range: e.target.value})
+    const timeRangeClickHandler = (range: any) => {
+        setTimeRange(range)
+        getHistoricalData({id: stockId, range: range})
     }
 
     if(isLoading || priceLoading || results.isUninitialized || results.isLoading || financialDataLoading) return <CircularProgress />
@@ -43,7 +45,8 @@ function Stock() {
                     <h1>{data.companyName}</h1>
                     <h3>${price.toLocaleString()}</h3>
                     <StockGraph width={500} height={400} type="price" data={results.data}/>
-                    <nav>
+                    <ChartNav chartRanges={chartRanges} setTimeRange={timeRangeClickHandler} timeRange={timeRange}/>
+                    {/* <nav>
                         <div className="YLzQdbd6ixTG1LWujco0N">
                             <button onClick={timeRangeClickHandler} value="ytd" className={timeRange === "ytd" ? "css-klp03n" : "css-16sjopo"}>YTD</button>
                             <button onClick={timeRangeClickHandler} value="5d" className={timeRange === "5d" ? "css-klp03n" : "css-16sjopo"}>5D</button>
@@ -52,7 +55,7 @@ function Stock() {
                             <button onClick={timeRangeClickHandler} value="1y" className={timeRange === "1y" ? "css-klp03n" : "css-16sjopo"}>1Y</button>
                             <button onClick={timeRangeClickHandler} value="5y" className={timeRange === "5y" ? "css-klp03n" : "css-16sjopo"}>5Y</button>
                         </div>
-                    </nav>
+                    </nav> */}
                     <section id="company-about-section" className="_2wuDJhUh9lal-48SV5IIfk">
                         <h2>About</h2>
                         <hr />
