@@ -55,6 +55,14 @@ export const marketBuddyApi = createApi({
             }),   
             invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData']
         }),
+        createPosition: builder.mutation({
+            query: ( { id, newPosition } ) => ({
+                url: `users/${id}/transaction`,
+                method: 'POST',
+                body: newPosition,
+            }),   
+            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData']
+        }),
         getPosition: builder.query({
             query: ({ id, symbol }) => `users/${id}/portfolio/${symbol}`,
         }),
@@ -71,5 +79,6 @@ export const {
     useGetListsQuery,
     useGetUserQuery,
     useUpdatePositionMutation,
-    useGetPositionQuery
+    useGetPositionQuery,
+    useCreatePositionMutation
 } = marketBuddyApi
