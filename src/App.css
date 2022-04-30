@@ -119,6 +119,7 @@
 
 :root {
   --background: white;
+  --secondary-background: white;
   --text-primary: black;
   --background-hover: rgb(243, 240, 240);
 }
@@ -126,26 +127,25 @@
 [data-mode='dark'] {
   --background: black;
   --text-primary: white;
+  --secondary-background: rgb(30, 33, 36);
   --background-hover: rgb(30,33,36);
-  /* --text-primary: white;
-  --text-secondary: grey;
-  --accent: darkred; */
 }
 
-/* .App[data-mode="dark"] {
-  background-color: black;
-  color: white
-} */
 
-.stock-list[data-mode="dark"] {
-  background-color: rgb(30, 33, 36);
-  color: white
+.stock-list {
+  background-color: var(--secondary-background);
+  transition: all .2s ease-in-out;
+  padding: 0 4% 0 4%;
 }
 
 .css-1migmwn{
   color: rgb(255,80,0);
   border-bottom: solid;
   transition: all .2s ease-in-out;
+}
+
+.css-2{
+  color: var(--text-primary);
 }
 
 .t-toggle {
@@ -197,30 +197,8 @@
 }
 
 
-.card[data-mode="dark"] {
-  color: white
-}
-
-.news-story[data-mode="dark"] {
-  background-color: black;
-  color: white;
-}
-
-.trending-lists[data-mode="dark"] {
-  color: white;
-}
-
-.header-info-container[data-mode="dark"] {
-  color: white;
-}
-
-
 .col-12[data-mode="dark"] {
   background-color: black;
-  color: white;
-}
-
-.sidebar-content[data-mode="dark"] {
   color: white;
 }
 
@@ -305,6 +283,7 @@ button.collection-button[data-mode="dark"] {
 .header-info-container {
   display: flex;
   align-items: center;
+  color: var(--text-primary);
 }
 
 .info-icon {
@@ -439,7 +418,7 @@ button.collection-button[data-mode="dark"] {
   line-height: 20px;
   font-family: Capsule Sans Text,-apple-system,BlinkMacSystemFont,sans-serif;
   -webkit-text-size-adjust: none;
-  color: var(--rh__neutral-fg1);
+  color: var(--text-primary);
   box-sizing: inherit;
   margin-left: -24px;
   margin-top: -24px;
@@ -464,13 +443,15 @@ button.collection-button[data-mode="dark"] {
   color: var(--rh__neutral-fg1);
   --rh-fixed-header-height: 64px;
   border: 1px solid var(--rh__neutral-bg3);
-  background-color: var(--rh__neutral-bg1);
+  background-color: var(--secondary-background);
   border-radius: var(--rh__size-palette__borderRadius);
   box-sizing: border-box;
   box-shadow: 0px -12px 24px rgba(0,0,0,0.02), 0px 12px 24px rgba(0,0,0,0.06);
   height: 80%;
   overflow: hidden auto;
   position: relative;
+  color: var(--text-primary);
+  transition: all .2s ease-in-out;
 }
 
 .css-1{
@@ -596,11 +577,6 @@ button.collection-button[data-mode="dark"] {
   justify-content: space-between;
 }
 
-.stock-list {
-  background-color: var(--background);
-  transition: all .2s ease-in-out;
-  padding: 0 4% 0 4%;
-}
 
 .stock-list:hover{
   background-color: rgb(235, 231, 231);
@@ -666,7 +642,7 @@ button.collection-button[data-mode="dark"] {
 }
 
 .news-story{
-  background-color: white;
+  background-color: var(--background);
   border-top-color: rgb(224, 226, 226);
   border-top-width: .1em;
   padding-top: 6px;
@@ -677,6 +653,7 @@ button.collection-button[data-mode="dark"] {
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.5s ease;
+  color: var(--text-primary);
 }
 
 .title-headline {
@@ -724,6 +701,7 @@ img.news {
   height: max-content;
   margin-top: 10%;
   margin-bottom: 14%;
+  color: var(--text-primary);
 }
 
 .movers-container{

@@ -11,8 +11,6 @@ import { useEffect } from 'react';
 
 const formatChartData = (data: any, currentData: any) => {
 
-    console.log(data, "Data")
-
     let arr: { name: any; value: any; }[] = []
 
     data.forEach((point: any) => {
@@ -36,6 +34,7 @@ function Home() {
     const [getHistoricalData, results] = useLazyGetHistoricalPortfolioValueQuery()
     const { data: currentUser, isLoading: currentUserIsLoading } = useGetUserQuery(auth.user)
     const { data: portfolioData, isLoading: portfolioDataIsLoading } = useGetPortfolioDataQuery(auth.user)
+    const { mode } = useSelector((state: any) => state.styles)
 
     useEffect(() => {
         getHistoricalData({id: auth.user, range: "1m"})
@@ -50,11 +49,11 @@ function Home() {
     return (
         <div className="main-container">
             <div className="row">
-                <div className="col-12">
+                <div data-mode={mode} className="col-12">
                     <h1>${data.value.toLocaleString()}</h1>
                     <StockGraph width={500} height={400} type="value" data={formatChartData(results.data, data)} />
                     <ChartNav chartRanges={chartRanges} setTimeRange={timeRangeClickHandler} timeRange={timeRange}/>
-                    <div className="css-1">
+                    <div className="css-2">
                         <h3>Buying power: ${Number(currentUser.cash.toFixed(2)).toLocaleString()}</h3>
                     </div>
                     <Movers type="Gainers" numberOfCards={3}/>

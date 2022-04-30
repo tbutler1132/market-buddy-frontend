@@ -15,6 +15,8 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
+    color: "white",
+    backgroundColor: "black",
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
@@ -31,6 +33,7 @@ interface OrderSummaryModalProps {
 function OrderSummaryModal({ symbol, transactionType, transactionDetails, positionId, cost }: OrderSummaryModalProps) {
     const [open, setOpen] = useState(false);
     const { auth } = useSelector((state: any) => state)
+    const { mode } = useSelector((state: any) => state.styles)
     const [updatePosition] = useUpdatePositionMutation()
     const [createPosition] = useCreatePositionMutation()
     const history = useHistory()
@@ -66,7 +69,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
     }
 
     return (
-        <div>
+        <div className='order-summary-container'>
             <div className="order-summary-button">
                 <Button variant='outlined' color='warning' style={{cursor: "pointer"}} onClick={handleOpen}>Review Order</Button>
             </div>
@@ -84,7 +87,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                             You're placing an order to {transactionType} {transactionDetails.s} share of {symbol} that will be converted to a limit order with a 5% collar. If your order cannot be executed within the collar, it won’t be filled. Your order will be placed after the market opens
                         </Typography>
-                        <button type='submit'>Place order</button>
+                        <Button variant='contained' type='submit'>Place order</Button>
                     </form>
                 </Box>
             </Modal>

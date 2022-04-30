@@ -1,7 +1,4 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts'
-import { useState, useEffect } from 'react'
-import ChartNav from './ChartNav'
-import { useLazyGetHistoricalDataQuery } from '../app/services/IEXCloud'
 
 const graphColor = (data: any) => {
     if (data[data.length - 1]?.price >= data[0]?.price){

@@ -69,13 +69,15 @@ function App() {
     </ThemeProvider>
     )
   return (
-    <div className="App">
-        <Nav />
-      <Switch>
-        <Route path="/home" render={() => <Home />}/>
-        <Route path="/stocks" render={() => <StockPage design="stock" />}/>
-      </Switch>
-    </div>
+    <ThemeProvider theme={mode === "dark" ? darkTheme : lightTheme}>
+      <div data-mode={mode} className="App">
+          <Nav />
+        <Switch>
+          <Route path="/home" render={() => <Home />}/>
+          <Route path="/stocks" render={() => <StockPage design="stock" />}/>
+        </Switch>
+      </div>
+    </ThemeProvider>
   );
 }
 

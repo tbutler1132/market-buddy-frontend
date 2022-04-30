@@ -56,7 +56,7 @@ function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFo
                     <span>${latestPrice.toLocaleString()}</span>
                 </div>
                 <div className="order-type">
-                    <label>Estimated Cost</label>
+                    <label>Estimated {transactionType === "Buy" ? "Cost" : "Credit"}</label>
                     <span>${(transactionForm.shares * latestPrice * 1.01).toLocaleString()}</span>
                 </div>
                 <OrderSummaryModal 
