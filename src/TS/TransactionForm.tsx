@@ -3,6 +3,7 @@ import produce from "immer";
 import OrderSummaryModal from "./OrderSummaryModal";
 import { useGetPositionQuery } from "../app/services/MarketBuddy";
 import { useSelector } from "react-redux";
+import TextField from '@mui/material/TextField'
 
 interface TransactionFormProps {
     latestPrice: number, 
@@ -49,7 +50,7 @@ function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFo
                 </div>
                 <div className="order-type">
                     <label>Shares</label>
-                    <input type="number" onChange={(e) => updateForm(e, "shares")}/>
+                    <input min={0} type="number" onChange={(e) => updateForm(e, "shares")}/>
                 </div>
                 <div className="order-type">
                     <label>Market Price</label>
