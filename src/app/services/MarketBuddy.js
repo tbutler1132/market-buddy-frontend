@@ -5,7 +5,7 @@ const BASE_API = process.env.NODE_ENV === "development" ? 'http://localhost:7000
 export const marketBuddyApi = createApi({
     reducerPath: 'marketBuddyApi',
     baseQuery: fetchBaseQuery({ baseUrl: BASE_API }),
-    tagTypes: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData'],
+    tagTypes: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData', 'Position'],
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (credentials) => ({
@@ -54,7 +54,7 @@ export const marketBuddyApi = createApi({
                 method: 'PATCH',
                 body: updatedPosition,
             }),   
-            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData']
+            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData', 'Position']
         }),
         createPosition: builder.mutation({
             query: ( { id, newPosition } ) => ({
@@ -62,10 +62,11 @@ export const marketBuddyApi = createApi({
                 method: 'POST',
                 body: newPosition,
             }),   
-            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData']
+            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData', 'Position']
         }),
         getPosition: builder.query({
             query: ({ id, symbol }) => `users/${id}/portfolio/${symbol}`,
+            providesTags: ['Position']
         }),
     })
 })
