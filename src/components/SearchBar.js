@@ -26,7 +26,7 @@ function SearchBar() {
 
     const submitHandler = (event, value) => {
         if(event.target.innerText){
-            history.push(`/crypto/${event.target.innerText.toLowerCase()}`)
+            history.push(`/stocks/${event.target.innerText.toLowerCase()}`)
         }
         setSuggestions([])    }
 

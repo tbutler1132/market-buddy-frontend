@@ -24,24 +24,36 @@ interface OrderSummaryModalProps {
     symbol: string,
     transactionType: string,
     transactionDetails: any
-    position: any,
+    positionId: string,
     cost: number
 }
 
-function OrderSummaryModal({ symbol, transactionType, transactionDetails, position, cost }: OrderSummaryModalProps) {
+function OrderSummaryModal({ symbol, transactionType, transactionDetails, positionId, cost }: OrderSummaryModalProps) {
     const [open, setOpen] = useState(false);
     const { auth } = useSelector((state: any) => state)
     const [updatePosition] = useUpdatePositionMutation()
     const history = useHistory()
+    const { shares } = transactionDetails 
     
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    // const [updatePostition] = useUpdatePositionMutation()
 
     const submitHandler = (e: any) => {
         e.preventDefault()
-        updatePosition({id: auth.user, positionId: position._id, updatedPosition: {adjustment: Number(transactionDetails.shares), price: -Math.abs(cost)}})
-        history.push("/home")
+        if(positionId){
+            updatePosition({
+                id: auth.user, 
+                positionId: positionId, 
+                updatedPosition: 
+                    {
+                        adjustment: transactionType === "Buy" ? Number(shares) : -Math.abs(Number(shares)), 
+                        price: cost
+                    }
+                })
+            history.push("/home")
+        }else{
+            alert("New")
+        }
     }
 
     return (
@@ -61,7 +73,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                             Order Summary
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            You’re placing an order to {transactionType} {transactionDetails.s} share of {symbol} that will be converted to a limit order with a 5% collar. If your order cannot be executed within the collar, it won’t be filled. Your order will be placed after the market opens
+                            You're placing an order to {transactionType} {transactionDetails.s} share of {symbol} that will be converted to a limit order with a 5% collar. If your order cannot be executed within the collar, it won’t be filled. Your order will be placed after the market opens
                         </Typography>
                         <button type='submit'>Place order</button>
                     </form>

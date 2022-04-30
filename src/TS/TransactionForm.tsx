@@ -1,9 +1,18 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import produce from "immer";
 import OrderSummaryModal from "./OrderSummaryModal";
+import { useGetPositionQuery } from "../app/services/MarketBuddy";
+import { useSelector } from "react-redux";
 
+interface TransactionFormProps {
+    latestPrice: number, 
+    symbol: string, 
+    transactionType: string,
+}
 
-function TransactionForm({ latestPrice, symbol, position }: {latestPrice: number, symbol: string, position: any}) {
+function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFormProps) {
+    const { auth } = useSelector((state: any) => state)
+
     const [transactionForm, dispatch] = useReducer(
         produce((draft, action) => {
             switch (action.type) {
@@ -19,6 +28,8 @@ function TransactionForm({ latestPrice, symbol, position }: {latestPrice: number
         }
     )
 
+    const { data: userPosition, isLoading: positionIsLoading } = useGetPositionQuery({id: auth.user, symbol: symbol.toUpperCase()})
+
     const updateForm = (e: any, type: string) => {
         dispatch({
             type: "shares",
@@ -26,12 +37,10 @@ function TransactionForm({ latestPrice, symbol, position }: {latestPrice: number
         })
     }
 
+    if(positionIsLoading) return <div>Loading...</div>
     return (
         <div className="transaction-form">
             <form >
-                {/* <div className="order-type">
-                    <label>Order Type</label>
-                </div> */}
                 <div className="order-type">
                     <label>Invest In</label>
                     <select>
@@ -50,7 +59,12 @@ function TransactionForm({ latestPrice, symbol, position }: {latestPrice: number
                     <label>Estimated Cost</label>
                     <span>${(transactionForm.shares * latestPrice * 1.01).toLocaleString()}</span>
                 </div>
-                <OrderSummaryModal position={position} cost={transactionForm.shares * latestPrice} transactionDetails={transactionForm} symbol={symbol} transactionType="Buy"/>
+                <OrderSummaryModal 
+                positionId={userPosition?._id} 
+                cost={transactionType === "Buy" ? -Math.abs(transactionForm.shares * latestPrice * 1.01) : transactionForm.shares * latestPrice} 
+                transactionDetails={transactionForm} 
+                symbol={symbol} 
+                transactionType={transactionType}/>
             </form>
         </div>
     );

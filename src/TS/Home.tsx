@@ -1,6 +1,8 @@
 import News from './News';
 import { useSelector } from 'react-redux';
 import CollectionContainer from './CollectionContainer';
+import Movers from './Movers';
+import TrendingLists from './TrendingLists';
 
 import StockGraph from './StockGraph';
 import { useGetCurrentPortfolioValueQuery, useGetHistoricalPortfolioValueQuery, useGetUserQuery, useGetPortfolioDataQuery } from '../app/services/MarketBuddy';
@@ -43,8 +45,11 @@ function Home() {
                     <h1>${data.value.toLocaleString()}</h1>
                     <StockGraph width={500} height={400} type="value" data={formatChartData(historicalPortfolioValue.historicalPortfolioValue, data)} />
                     <div className="css-1">
-                        <h3>Buying power: ${currentUser.cash.toLocaleString()}</h3>
+                        <h3>Buying power: ${Number(currentUser.cash.toFixed(2)).toLocaleString()}</h3>
                     </div>
+                    <Movers type="Gainers" numberOfCards={3}/>
+                    <Movers type="Losers" numberOfCards={3}/>
+                    <TrendingLists />
                      <News />
                     </div>
                 <div className="col-5">

@@ -13,6 +13,7 @@ function TransactionContainer({ stockId, latestPrice }: {stockId: string, latest
         setTransactionType(type)
     }
 
+
     if(positionIsLoading) return null
     return (
         <div className="sidebar-content tsc">
@@ -20,10 +21,15 @@ function TransactionContainer({ stockId, latestPrice }: {stockId: string, latest
                 <div className="_9PELkfdg02DcCLivR8Uqp">
                     <div className="transaction-toggle">
                         <span onClick={() => clickHandler("Buy")} className={`t-toggle ${transactionType === "Buy" ? "css-1migmwn" : null}`}>Buy {stockId.toUpperCase()}</span>
-                        <span onClick={() => clickHandler("Sell")} className={`t-toggle ${transactionType === "Sell" ? "css-1migmwn" : null}`}>Sell {stockId.toUpperCase()}</span>
+                        {userPosition 
+                            ?
+                                <span onClick={() => clickHandler("Sell")} className={`t-toggle ${transactionType === "Sell" ? "css-1migmwn" : null}`}>Sell {stockId.toUpperCase()}</span>
+                            :
+                                null 
+                        }
                     </div>
                 </div>
-                <TransactionForm position={userPosition} symbol={stockId} latestPrice={latestPrice}/>
+                <TransactionForm transactionType={transactionType} symbol={stockId} latestPrice={latestPrice}/>
                 <footer>
                 </footer>
             </div>  
