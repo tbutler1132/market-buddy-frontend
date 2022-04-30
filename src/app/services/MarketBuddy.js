@@ -5,7 +5,7 @@ const BASE_API = process.env.NODE_ENV === "development" ? 'http://localhost:7000
 export const marketBuddyApi = createApi({
     reducerPath: 'marketBuddyApi',
     baseQuery: fetchBaseQuery({ baseUrl: BASE_API }),
-    tagTypes: ['Cash', 'PortfolioValue', 'PortfolioData'],
+    tagTypes: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData'],
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (credentials) => ({
@@ -41,7 +41,8 @@ export const marketBuddyApi = createApi({
             providesTags: ['PortfolioValue']
         }),
         getHistoricalPortfolioValue: builder.query({
-            query: (id) => `users/${id}/historicalPortfolioValue`,
+            query: ({ id, range }) => `users/${id}/historicalPortfolioValue?range=${range}`,
+            providesTags: ['HistoricalPortfolioData']
         }),
         getPortfolioData: builder.query({
             query: (id) => `users/${id}/portfolioData`,
@@ -53,7 +54,7 @@ export const marketBuddyApi = createApi({
                 method: 'PATCH',
                 body: updatedPosition,
             }),   
-            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData']
+            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData']
         }),
         createPosition: builder.mutation({
             query: ( { id, newPosition } ) => ({
@@ -61,7 +62,7 @@ export const marketBuddyApi = createApi({
                 method: 'POST',
                 body: newPosition,
             }),   
-            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData']
+            invalidatesTags: ['Cash', 'PortfolioValue', 'PortfolioData', 'HistoricalPortfolioData']
         }),
         getPosition: builder.query({
             query: ({ id, symbol }) => `users/${id}/portfolio/${symbol}`,
@@ -73,7 +74,7 @@ export const {
     useLoginMutation,
     useDemoMutation,
     useGetCurrentPortfolioValueQuery,
-    useGetHistoricalPortfolioValueQuery,
+    useLazyGetHistoricalPortfolioValueQuery,
     useGetPortfolioDataQuery,
     useCreateListMutation,
     useGetListsQuery,

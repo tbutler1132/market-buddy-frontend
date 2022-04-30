@@ -5,11 +5,13 @@ import Movers from './Movers';
 import TrendingLists from './TrendingLists';
 import { useState } from 'react';
 import StockGraph from './StockGraph';
-import { useGetCurrentPortfolioValueQuery, useGetHistoricalPortfolioValueQuery, useGetUserQuery, useGetPortfolioDataQuery } from '../app/services/MarketBuddy';
+import { useGetCurrentPortfolioValueQuery, useLazyGetHistoricalPortfolioValueQuery, useGetUserQuery, useGetPortfolioDataQuery } from '../app/services/MarketBuddy';
 import ChartNav from './ChartNav';
 import { useEffect } from 'react';
 
 const formatChartData = (data: any, currentData: any) => {
+
+    console.log(data, "Data")
 
     let arr: { name: any; value: any; }[] = []
 
@@ -31,21 +33,26 @@ function Home() {
     const [timeRange, setTimeRange] = useState("1m")
     const { auth } = useSelector((state: any) => state)
     const { data, isLoading } = useGetCurrentPortfolioValueQuery(auth.user)   
-    const { data: historicalPortfolioValue, isLoading: historicalPortfolioValueIsLoading } = useGetHistoricalPortfolioValueQuery(auth.user)
+    const [getHistoricalData, results] = useLazyGetHistoricalPortfolioValueQuery()
     const { data: currentUser, isLoading: currentUserIsLoading } = useGetUserQuery(auth.user)
     const { data: portfolioData, isLoading: portfolioDataIsLoading } = useGetPortfolioDataQuery(auth.user)
+
+    useEffect(() => {
+        getHistoricalData({id: auth.user, range: "1m"})
+    }, [auth, getHistoricalData])
         
     const timeRangeClickHandler = (range: any) => {
         setTimeRange(range)
+        getHistoricalData({id: auth.user, range: range})
     }
         
-    if(isLoading || historicalPortfolioValueIsLoading || currentUserIsLoading || portfolioDataIsLoading) return null
+    if(isLoading || results.isLoading || currentUserIsLoading || portfolioDataIsLoading || results.isUninitialized) return null
     return (
         <div className="main-container">
             <div className="row">
                 <div className="col-12">
                     <h1>${data.value.toLocaleString()}</h1>
-                    <StockGraph width={500} height={400} type="value" data={formatChartData(historicalPortfolioValue, data)} />
+                    <StockGraph width={500} height={400} type="value" data={formatChartData(results.data, data)} />
                     <ChartNav chartRanges={chartRanges} setTimeRange={timeRangeClickHandler} timeRange={timeRange}/>
                     <div className="css-1">
                         <h3>Buying power: ${Number(currentUser.cash.toFixed(2)).toLocaleString()}</h3>
