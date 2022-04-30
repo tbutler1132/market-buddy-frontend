@@ -3,7 +3,6 @@ import produce from "immer";
 import OrderSummaryModal from "./OrderSummaryModal";
 import { useGetPositionQuery } from "../app/services/MarketBuddy";
 import { useSelector } from "react-redux";
-import TextField from '@mui/material/TextField'
 
 interface TransactionFormProps {
     latestPrice: number, 
@@ -58,11 +57,11 @@ function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFo
                 </div>
                 <div className="order-type">
                     <label>Estimated {transactionType === "Buy" ? "Cost" : "Credit"}</label>
-                    <span>${(transactionForm.shares * latestPrice * 1.01).toLocaleString()}</span>
+                    <span>${(transactionForm.shares * latestPrice).toLocaleString()}</span>
                 </div>
                 <OrderSummaryModal 
                 positionId={userPosition?._id} 
-                cost={transactionType === "Buy" ? -Math.abs(transactionForm.shares * latestPrice * 1.01) : transactionForm.shares * latestPrice} 
+                cost={transactionType === "Buy" ? -Math.abs(transactionForm.shares * latestPrice) : transactionForm.shares * latestPrice} 
                 transactionDetails={transactionForm} 
                 symbol={symbol} 
                 transactionType={transactionType}/>

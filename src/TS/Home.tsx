@@ -52,8 +52,6 @@ function Home() {
         setTimeRange(range)
         getHistoricalData({id: auth.user, range: range})
     }
-
-    console.log(results.data)
         
     if(isLoading || results.isLoading || currentUserIsLoading || portfolioDataIsLoading || results.isUninitialized) return null
     return (

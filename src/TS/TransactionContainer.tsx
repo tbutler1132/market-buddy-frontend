@@ -2,11 +2,12 @@ import { useGetPositionQuery } from "../app/services/MarketBuddy";
 import { useSelector } from 'react-redux';
 import TransactionForm from "./TransactionForm";
 import { useState } from "react";
+import { useGetUserQuery } from "../app/services/MarketBuddy";
 
 function TransactionContainer({ stockId, latestPrice }: {stockId: string, latestPrice: number}) {
     const { auth } = useSelector((state: any) => state)
     const [transactionType, setTransactionType] = useState("Buy")
-
+    const { data: user, isLoading: userLoading } = useGetUserQuery(auth.user)
     const { data: userPosition, isLoading: positionIsLoading } = useGetPositionQuery({id: auth.user, symbol: stockId.toUpperCase()})
 
     const clickHandler = (type: string) => {
@@ -31,6 +32,9 @@ function TransactionContainer({ stockId, latestPrice }: {stockId: string, latest
                 </div>
                 <TransactionForm transactionType={transactionType} symbol={stockId} latestPrice={latestPrice}/>
                 <footer>
+                    <div className="footer-container">
+                        Buying power: ${user.cash.toLocaleString()}
+                    </div>
                 </footer>
             </div>  
         </div>

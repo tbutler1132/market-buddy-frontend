@@ -6,7 +6,10 @@ import { useUpdatePositionMutation, useCreatePositionMutation } from '../app/ser
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button'
-// import { useUpdatePositionMutation } from '../app/services/MarketBuddy';
+import { useGetUserQuery } from "../app/services/MarketBuddy";
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+// import CloseIcon from '@mui/icons-material/CloseIcon';
 
 const style = {
     position: 'absolute',
@@ -32,18 +35,26 @@ interface OrderSummaryModalProps {
 
 function OrderSummaryModal({ symbol, transactionType, transactionDetails, positionId, cost }: OrderSummaryModalProps) {
     const [open, setOpen] = useState(false);
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
     const { auth } = useSelector((state: any) => state)
-    const { mode } = useSelector((state: any) => state.styles)
-    const [updatePosition] = useUpdatePositionMutation()
+    const [updatePosition, results] = useUpdatePositionMutation()
     const [createPosition] = useCreatePositionMutation()
     const history = useHistory()
     const { shares } = transactionDetails 
+    const { data: currentUser, isLoading: currentUserIsLoading } = useGetUserQuery(auth.user)
     
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     const submitHandler = (e: any) => {
         e.preventDefault()
+        
+        if(Math.abs(cost) > currentUser.cash && transactionType === "Buy"){
+            if(transactionType === "Buy"){
+                alert("You don't have the necessary funds to make this transaction")
+                return
+            }
+        }
         if(positionId){
             updatePosition({
                 id: auth.user, 
@@ -54,6 +65,16 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                         price: cost
                     }
             })
+            .then((payload: any) => {
+                if(payload.error){
+                    setSnackbarOpen(true)
+                    setOpen(false)
+                    return
+                }else{
+                    history.push("/home")
+                }
+            })
+            .catch((error) => console.error('rejected', error))
         }else{
             createPosition({
                 id: auth.user,
@@ -65,8 +86,28 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                 }
             })
         }
-        history.push("/home")
     }
+
+    const handleSnackbarClose = (event: any) => {
+        console.log("HIt")
+        setSnackbarOpen(false);
+      };
+
+    const action = (
+        <>
+          <Button color="secondary" size="small" onClick={handleSnackbarClose}>
+            UNDO
+          </Button>
+          <Button
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleSnackbarClose}
+          >
+            Close
+          </Button>
+        </>
+      );
 
     return (
         <div className='order-summary-container'>
@@ -91,6 +132,13 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                     </form>
                 </Box>
             </Modal>
+            <Snackbar
+            open={snackbarOpen}
+            autoHideDuration={2500}
+            onClose={handleSnackbarClose}
+            message="Error"
+            action={action}
+            />
         </div>
     );
 }
