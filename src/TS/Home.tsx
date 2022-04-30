@@ -9,6 +9,14 @@ import { useGetCurrentPortfolioValueQuery, useLazyGetHistoricalPortfolioValueQue
 import ChartNav from './ChartNav';
 import { useEffect } from 'react';
 
+const graphColor = (data: any) => {
+    if (data[data.length - 1]?.value >= data[0]?.value){
+      return "#228B22"
+    } else {
+      return '#C70039'
+    }
+}
+
 const formatChartData = (data: any, currentData: any) => {
 
     let arr: { name: any; value: any; }[] = []
@@ -44,6 +52,8 @@ function Home() {
         setTimeRange(range)
         getHistoricalData({id: auth.user, range: range})
     }
+
+    console.log(results.data)
         
     if(isLoading || results.isLoading || currentUserIsLoading || portfolioDataIsLoading || results.isUninitialized) return null
     return (
@@ -51,7 +61,7 @@ function Home() {
             <div className="row">
                 <div data-mode={mode} className="col-12">
                     <h1>${data.value.toLocaleString()}</h1>
-                    <StockGraph width={500} height={400} type="value" data={formatChartData(results.data, data)} />
+                    <StockGraph color={graphColor(results.data)} width={500} height={400} type="value" data={formatChartData(results.data, data)} />
                     <ChartNav chartRanges={chartRanges} setTimeRange={timeRangeClickHandler} timeRange={timeRange}/>
                     <div className="css-2">
                         <h3>Buying power: ${Number(currentUser.cash.toFixed(2)).toLocaleString()}</h3>

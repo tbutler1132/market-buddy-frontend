@@ -11,6 +11,14 @@ import ChartNav from "./ChartNav";
 
 const chartRanges = ["ytd", "5d", "1m", "3m", "1y", "5y"]
 
+const graphColor = (data: any) => {
+    if (data[data.length - 1]?.price >= data[0]?.price){
+      return "#228B22"
+    } else {
+      return '#C70039'
+    }
+}
+
 function Stock() {
     const { auth } = useSelector((state: any) => state)
 
@@ -44,7 +52,7 @@ function Stock() {
                 <div data-mode={mode} className="col-12">
                     <h1>{data.companyName}</h1>
                     <h3>${price.toLocaleString()}</h3>
-                    <StockGraph width={500} height={400} type="price" data={results.data}/>
+                    <StockGraph color={graphColor(results.data)} width={500} height={400} type="price" data={results.data}/>
                     <ChartNav chartRanges={chartRanges} setTimeRange={timeRangeClickHandler} timeRange={timeRange}/>
                     {/* <nav>
                         <div className="YLzQdbd6ixTG1LWujco0N">

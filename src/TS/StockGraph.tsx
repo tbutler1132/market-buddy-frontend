@@ -1,6 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts'
 
 const graphColor = (data: any) => {
+    console.log(data)
     if (data[data.length - 1]?.price >= data[0]?.price){
       return "#228B22"
     } else {
@@ -13,16 +14,17 @@ interface StockGraphProps {
     data: any,
     width: number,
     height: number,
+    color: string
 }
 
 
-function StockGraph({ type, data, width, height }: StockGraphProps) {
+function StockGraph({ type, data, width, height, color }: StockGraphProps) {
 
     return (
       <>
         <div >
           <LineChart width={width} height={height} data={data}>
-            <Line dot={false} type={"step"} dataKey={type} stroke={graphColor(data)} />
+            <Line dot={false} type={"step"} dataKey={type} stroke={color} />
             <XAxis hide dataKey="name" />
             <YAxis domain={['auto', 'auto']} hide/>
             <Tooltip wrapperStyle={{color: "black"}} formatter={(value: number, name: string) => ['$' + value.toFixed(2), "Price"]} separator=': '/>
