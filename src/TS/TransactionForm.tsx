@@ -27,30 +27,32 @@ function TransactionForm({ latestPrice, symbol, position }: {latestPrice: number
     }
 
     return (
-        <form >
-            <div className="order-type">
-                <label>Order Type</label>
-            </div>
-            <div className="order-type">
-                <label>Invest In</label>
-                <select>
-                    <option>Shares</option>
-                </select>
-            </div>
-            <div className="order-type">
-                <label>Shares</label>
-                <input type="number" onChange={(e) => updateForm(e, "shares")}/>
-            </div>
-            <div className="order-type">
-                <label>Market Price</label>
-                <span>${latestPrice.toLocaleString()}</span>
-            </div>
-            <div className="order-type">
-                <label>Estimated Cost</label>
-                <span>${(transactionForm.shares * latestPrice * 1.01).toLocaleString()}</span>
-            </div>
-            <OrderSummaryModal position={position} cost={transactionForm.shares * latestPrice} transactionDetails={transactionForm} symbol={symbol} transactionType="Buy"/>
-        </form>
+        <div className="transaction-form">
+            <form >
+                {/* <div className="order-type">
+                    <label>Order Type</label>
+                </div> */}
+                <div className="order-type">
+                    <label>Invest In</label>
+                    <select>
+                        <option>Shares</option>
+                    </select>
+                </div>
+                <div className="order-type">
+                    <label>Shares</label>
+                    <input type="number" onChange={(e) => updateForm(e, "shares")}/>
+                </div>
+                <div className="order-type">
+                    <label>Market Price</label>
+                    <span>${latestPrice.toLocaleString()}</span>
+                </div>
+                <div className="order-type">
+                    <label>Estimated Cost</label>
+                    <span>${(transactionForm.shares * latestPrice * 1.01).toLocaleString()}</span>
+                </div>
+                <OrderSummaryModal position={position} cost={transactionForm.shares * latestPrice} transactionDetails={transactionForm} symbol={symbol} transactionType="Buy"/>
+            </form>
+        </div>
     );
 }
 

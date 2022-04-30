@@ -5,6 +5,7 @@ import Modal from '@mui/material/Modal';
 import { useUpdatePositionMutation } from '../app/services/MarketBuddy'
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Button from '@mui/material/Button'
 // import { useUpdatePositionMutation } from '../app/services/MarketBuddy';
 
 const style = {
@@ -45,7 +46,9 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
 
     return (
         <div>
-            <span style={{cursor: "pointer"}} onClick={handleOpen}>Review Order</span>
+            <div className="order-summary-button">
+                <Button variant='outlined' color='warning' style={{cursor: "pointer"}} onClick={handleOpen}>Review Order</Button>
+            </div>
             <Modal
             open={open}
             onClose={handleClose}

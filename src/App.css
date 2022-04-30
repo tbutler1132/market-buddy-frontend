@@ -142,6 +142,60 @@
   color: white
 }
 
+.css-1migmwn{
+  color: rgb(255,80,0);
+  border-bottom: solid;
+  transition: all .2s ease-in-out;
+}
+
+.t-toggle {
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.order-type {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 50px;
+}
+
+.order-type > input {
+  height: 12px;
+}
+
+.sidebar-content.tsc {
+  height: fit-content;
+}
+
+.order-type > select {
+  height: 20px;
+}
+
+.order-summary-button {
+  border-top: solid;
+  border-width: thin;
+  border-color: gainsboro;
+  padding: 20px 0 20px 0;
+}
+
+.transaction-form {
+  border-bottom: solid;
+  border-width: thin;
+  border-color: gainsboro;
+  margin: 15px 25px 15px 25px;
+}
+
+.transaction-toggle {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: gainsboro;
+  height: 50px;
+  align-items: center;
+}
+
 
 .card[data-mode="dark"] {
   color: white
