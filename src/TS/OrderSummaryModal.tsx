@@ -44,7 +44,14 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
     const { shares } = transactionDetails 
     const { data: currentUser, isLoading: currentUserIsLoading } = useGetUserQuery(auth.user)
     
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+        if(!transactionDetails.shares){
+            setSnackbarMessage("Please input shares")
+            setSnackbarOpen(true)
+            return
+        }
+        setOpen(true)
+    };
     const handleClose = () => setOpen(false);
 
     const submitHandler = (e: any) => {
@@ -89,7 +96,6 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
     }
 
     const handleSnackbarClose = (event: any) => {
-        console.log("HIt")
         setSnackbarOpen(false);
       };
 
@@ -98,7 +104,8 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
           <Button
             size="small"
             aria-label="close"
-            color="inherit"
+            color={snackbarMessage === "Success" ? "success" : "warning"}
+            variant='contained'
             onClick={handleSnackbarClose}
           >
             Close
@@ -123,7 +130,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                             Order Summary
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            You're placing an order to {transactionType} {transactionDetails.s} share of {symbol} that will be converted to a limit order with a 5% collar. If your order cannot be executed within the collar, it won’t be filled. Your order will be placed after the market opens
+                            You're placing an order to {transactionType.toLowerCase()} {transactionDetails.shares} share(s) of {symbol}.
                         </Typography>
                         <Button variant='contained' type='submit'>Place order</Button>
                     </form>

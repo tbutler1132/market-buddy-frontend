@@ -49,7 +49,7 @@ function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFo
                 </div>
                 <div className="order-type">
                     <label>Shares</label>
-                    <input min={0} type="number" onChange={(e) => updateForm(e, "shares")}/>
+                    <input required min={0} type="number" onChange={(e) => updateForm(e, "shares")}/>
                 </div>
                 <div className="order-type">
                     <label>Market Price</label>
