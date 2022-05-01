@@ -42,7 +42,7 @@ function Nav() {
                     ?
                         <div className="logout-button">
                             <Button
-                            onClick={signupHandler}>Demo</Button>
+                            onClick={signupHandler}>Login</Button>
                         </div> 
                     :
                         null
