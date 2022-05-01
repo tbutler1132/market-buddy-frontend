@@ -1,5 +1,6 @@
 [Live Demo](https://eloquent-hamilton-1cc3f5.netlify.app)
-[Backend Code][[https://github.com/tbutler1132/market-buddy-backend]
+
+[Backend Code]([https://github.com/tbutler1132/market-buddy-backend)
   
 
 ## Email
