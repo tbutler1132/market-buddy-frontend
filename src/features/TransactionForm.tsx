@@ -94,7 +94,8 @@ function TransactionForm({  symbol, transactionType }: TransactionFormProps) {
                         Buying power: ${user.cash.toLocaleString()}
                         </>
                     :
-                        <Button onClick={sellAll}>Sell All</Button>
+                        null
+                        // <Button onClick={sellAll}>Sell All</Button>
                 }
             </div>
         </footer>
