@@ -35,6 +35,7 @@ interface OrderSummaryModalProps {
 
 function OrderSummaryModal({ symbol, transactionType, transactionDetails, positionId, cost }: OrderSummaryModalProps) {
     const [open, setOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState("")
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const { auth } = useSelector((state: any) => state)
     const [updatePosition, results] = useUpdatePositionMutation()
@@ -48,13 +49,6 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
 
     const submitHandler = (e: any) => {
         e.preventDefault()
-        
-        if(Math.abs(cost) > currentUser.cash && transactionType === "Buy"){
-            if(transactionType === "Buy"){
-                alert("You don't have the necessary funds to make this transaction")
-                return
-            }
-        }
         if(positionId){
             updatePosition({
                 id: auth.user, 
@@ -67,11 +61,17 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
             })
             .then((payload: any) => {
                 if(payload.error){
+                    // console.log(payload.error)
+                    setSnackbarMessage(payload.error.data)
                     setSnackbarOpen(true)
                     setOpen(false)
                     return
                 }else{
-                    history.push("/home")
+                    setSnackbarMessage('Success')
+                    setSnackbarOpen(true)
+                    setOpen(false)
+                    return
+                    // history.push("/home")
                 }
             })
             .catch((error) => console.error('rejected', error))
@@ -95,9 +95,6 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
 
     const action = (
         <>
-          <Button color="secondary" size="small" onClick={handleSnackbarClose}>
-            UNDO
-          </Button>
           <Button
             size="small"
             aria-label="close"
@@ -136,7 +133,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
             open={snackbarOpen}
             autoHideDuration={2500}
             onClose={handleSnackbarClose}
-            message="Error"
+            message={snackbarMessage}
             action={action}
             />
         </div>
