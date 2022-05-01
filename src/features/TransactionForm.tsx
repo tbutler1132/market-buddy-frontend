@@ -61,6 +61,15 @@ function TransactionForm({  symbol, transactionType }: TransactionFormProps) {
                     <label>Shares</label>
                     <input required min={0} type="number" onChange={(e) => updateForm(e, "shares")}/>
                 </div>
+                {transactionType === "Sell"
+                    ?
+                        <div className="order-type">
+                            <label>You own:</label>
+                            <span>{userPosition.shares}</span>
+                        </div>
+                    :
+                        null
+                }
                 <div className="order-type">
                     <label>Market Price</label>
                     <span>${price.toLocaleString()}</span>
