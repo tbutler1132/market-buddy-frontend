@@ -65,7 +65,7 @@ function TransactionForm({  symbol, transactionType }: TransactionFormProps) {
                     ?
                         <div className="order-type">
                             <label>You own:</label>
-                            <span>{userPosition.shares}</span>
+                            <span>{userPosition?.shares}</span>
                         </div>
                     :
                         null
