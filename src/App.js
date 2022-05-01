@@ -7,12 +7,12 @@ import { toggleDarkMode } from './app/stylesSlice';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
 import InvertedDogCartoon from './assets/images/inverted_dog_cartoon.png'
-import StockPage from './TS/StockPage';
-import PublicHome from './TS/PublicHome';
-import Home from './TS/Home';
-import Nav from './TS/Nav.tsx'
-import ListPage from './TS/ListPage';
-import DemoLogin from './TS/DemoLogin';
+import StockPage from './features/StockPage';
+import PublicHome from './features/PublicHome';
+import Home from './features/Home'
+import Nav from './features/Nav.tsx'
+import ListPage from './features/ListPage';
+import DemoLogin from './features/DemoLogin';
 
 
 const darkTheme = createTheme({
@@ -28,7 +28,6 @@ const lightTheme = createTheme({
 });
 
 function App() {
-  
   const user = useSelector((state) => state.auth.user)
   const { mode } = useSelector((state) => state.styles)
   const dispatch = useDispatch()

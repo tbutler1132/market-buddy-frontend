@@ -3,16 +3,17 @@ import produce from "immer";
 import OrderSummaryModal from "./OrderSummaryModal";
 import { useGetPositionQuery } from "../app/services/MarketBuddy";
 import { useSelector } from "react-redux";
+import { useGetLatestPriceQuery } from "../app/services/IEXCloud"
 
 interface TransactionFormProps {
-    latestPrice: number, 
     symbol: string, 
     transactionType: string,
 }
 
-function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFormProps) {
+function TransactionForm({  symbol, transactionType }: TransactionFormProps) {
     const { auth } = useSelector((state: any) => state)
     const { data: userPosition, isLoading: positionIsLoading } = useGetPositionQuery({id: auth.user, symbol: symbol.toUpperCase()})
+    const { data: price, isLoading: priceLoading } = useGetLatestPriceQuery(symbol)
 
     const [transactionForm, dispatch] = useReducer(
         produce((draft, action) => {
@@ -36,10 +37,10 @@ function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFo
         })
     }
 
-    if(positionIsLoading) return <div>Loading...</div>
+    if(positionIsLoading || priceLoading) return <div>Loading...</div>
     return (
         <div className="transaction-form">
-            <form >
+            <form>
                 <div className="order-type">
                     <label>Invest In</label>
                     <select>
@@ -52,15 +53,15 @@ function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFo
                 </div>
                 <div className="order-type">
                     <label>Market Price</label>
-                    <span>${latestPrice.toLocaleString()}</span>
+                    <span>${price.toLocaleString()}</span>
                 </div>
                 <div className="order-type">
                     <label>Estimated {transactionType === "Buy" ? "Cost" : "Credit"}</label>
-                    <span>${(transactionForm.shares * latestPrice).toLocaleString()}</span>
+                    <span>${(transactionForm.shares * price).toLocaleString()}</span>
                 </div>
                 <OrderSummaryModal 
                 positionId={userPosition?._id} 
-                cost={transactionType === "Buy" ? -Math.abs(transactionForm.shares * latestPrice) : transactionForm.shares * latestPrice} 
+                cost={transactionType === "Buy" ? -Math.abs(transactionForm.shares * price) : transactionForm.shares * price} 
                 transactionDetails={transactionForm} 
                 symbol={symbol} 
                 transactionType={transactionType}/>

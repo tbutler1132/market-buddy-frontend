@@ -4,9 +4,9 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useUpdatePositionMutation, useCreatePositionMutation } from '../app/services/MarketBuddy'
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button'
-import { useGetUserQuery } from "../app/services/MarketBuddy";
+// import { useGetUserQuery } from "../app/services/MarketBuddy";
 import Snackbar from '@mui/material/Snackbar';
 
 const style = {
@@ -36,7 +36,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
     const [snackbarMessage, setSnackbarMessage] = useState("")
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const { auth } = useSelector((state: any) => state)
-    const [updatePosition, results] = useUpdatePositionMutation()
+    const [updatePosition] = useUpdatePositionMutation()
     const [createPosition] = useCreatePositionMutation()
     // const history = useHistory()
     const { shares } = transactionDetails 

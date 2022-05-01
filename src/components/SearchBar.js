@@ -3,7 +3,6 @@ import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useSelector } from 'react-redux';
 
 const BASE_API = process.env.NODE_ENV === "development" ? 'http://localhost:7000/' : 'https://market-buddy-server.herokuapp.com/'
 
@@ -11,7 +10,6 @@ function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('')
     const [suggestions, setSuggestions] = useState([])
     const history = useHistory()
-    const { mode } = useSelector((state) => state.styles)
     
     const fetchResults = (event, values) => {
         setSearchTerm(event.target.value)
@@ -29,8 +27,6 @@ function SearchBar() {
         }
         setSuggestions([])   
     }
-
-
 
     return (
         <div className="search-input">  

@@ -460,6 +460,10 @@ button.collection-button[data-mode="dark"] {
   padding: 0 0 10px 0;
 }
 
+.title-headline h4 {
+  font-size: 18px;
+}
+
 .css-1{
   -webkit-tap-highlight-color: transparent;
   font-size: 13px;

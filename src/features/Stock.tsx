@@ -108,7 +108,7 @@ function Stock() {
                 </div>
                 {auth.user 
                     ?
-                        <TransactionContainer latestPrice={price} stockId={stockId}/>
+                        <TransactionContainer stockId={stockId}/>
                     :
                         null
                 }

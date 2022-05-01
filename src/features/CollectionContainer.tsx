@@ -1,7 +1,12 @@
 import Collection from './Collection';
 import { useSelector } from 'react-redux';
 
-function CollectionContainer({ data, header }: {data: any, header: string}) {
+interface CollectionContainerProps {
+    header: string,
+    data: {}[]
+}
+
+function CollectionContainer({ data, header }: CollectionContainerProps) {
     const { mode } = useSelector((state: any) => state.styles)
 
     const renderStocks = () => {
