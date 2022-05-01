@@ -139,7 +139,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                             Order Summary
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            You're placing an order to {transactionType.toLowerCase()} {transactionDetails.shares} share(s) of {symbol}.
+                            You're placing an order to {transactionType.toLowerCase()} {transactionDetails.shares} share(s) of {symbol.toUpperCase()}.
                         </Typography>
                         <Button variant='contained' type='submit'>Place order</Button>
                     </form>

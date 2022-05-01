@@ -31,7 +31,7 @@ function TransactionContainer({ stockId }: TransactionContainerProps) {
                         }
                     </div>
                 </div>
-                <TransactionForm transactionType={transactionType} symbol={stockId} />
+                <TransactionForm  transactionType={transactionType} symbol={stockId} />
             </div>  
         </div>
     );
