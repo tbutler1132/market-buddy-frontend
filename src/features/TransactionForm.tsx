@@ -1,9 +1,10 @@
 import { useReducer } from "react";
 import produce from "immer";
 import OrderSummaryModal from "./OrderSummaryModal";
-import { useGetPositionQuery } from "../app/services/MarketBuddy";
+import { useGetPositionQuery, useGetUserQuery } from "../app/services/MarketBuddy";
 import { useSelector } from "react-redux";
 import { useGetLatestPriceQuery } from "../app/services/IEXCloud"
+import Button from '@mui/material/Button'
 
 interface TransactionFormProps {
     symbol: string, 
@@ -14,6 +15,7 @@ function TransactionForm({  symbol, transactionType }: TransactionFormProps) {
     const { auth } = useSelector((state: any) => state)
     const { data: userPosition, isLoading: positionIsLoading } = useGetPositionQuery({id: auth.user, symbol: symbol.toUpperCase()})
     const { data: price, isLoading: priceLoading } = useGetLatestPriceQuery(symbol)
+    const { data: user, isLoading: userLoading } = useGetUserQuery(auth.user)
 
     const [transactionForm, dispatch] = useReducer(
         produce((draft, action) => {
@@ -37,8 +39,16 @@ function TransactionForm({  symbol, transactionType }: TransactionFormProps) {
         })
     }
 
-    if(positionIsLoading || priceLoading) return <div>Loading...</div>
+    const sellAll = (e: any) => {
+        dispatch({
+            type: "shares",
+            payload: userPosition.shares
+        })
+    }
+
+    if(positionIsLoading || priceLoading || userLoading) return <div>Loading...</div>
     return (
+        <>
         <div className="transaction-form">
             <form>
                 <div className="order-type">
@@ -67,6 +77,19 @@ function TransactionForm({  symbol, transactionType }: TransactionFormProps) {
                 transactionType={transactionType}/>
             </form>
         </div>
+        <footer>
+            <div className="footer-container">
+                {transactionType === "Buy"
+                    ?
+                        <>
+                        Buying power: ${user.cash.toLocaleString()}
+                        </>
+                    :
+                        <Button onClick={sellAll}>Sell All</Button>
+                }
+            </div>
+        </footer>
+        </>
     );
 }
 
