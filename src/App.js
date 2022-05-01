@@ -7,6 +7,7 @@ import { toggleDarkMode } from './app/stylesSlice';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 import DogCartoon from './assets/images/Dog_Cartoon.jpeg'
+import InvertedDogCartoon from './assets/images/inverted_dog_cartoon.png'
 
 import StockPage from './TS/StockPage';
 
@@ -62,7 +63,7 @@ function App() {
           <Route path="/lists" render={() => <ListPage user={user}/>}/>
           <div className="signin-page">
           <Route exact path="/demo" render={() => <DemoLogin />}/> 
-          <img src={DogCartoon} alt=""/>
+          <img src={mode === "dark" ? InvertedDogCartoon : DogCartoon} height={800} width={600} alt=""/>
           </div>
         </Switch>
       </div>
