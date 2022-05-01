@@ -21,19 +21,12 @@ const graphColor = (data: any) => {
 
 function Stock() {
     const { auth } = useSelector((state: any) => state)
-
     const [timeRange, setTimeRange] = useState("ytd")
-
     let { stockId }: {stockId: string} = useParams()
-
     const { data, isLoading } = useGetCompanyInfoQuery(stockId)
-
     const { data: price, isLoading: priceLoading } = useGetLatestPriceQuery(stockId)
-
     const [getHistoricalData, results] = useLazyGetHistoricalDataQuery()
-
     const { data: financialData, isLoading: financialDataLoading, isError } = useGetFinancialDataQuery(stockId)
-
     const { mode } = useSelector((state: any) => state.styles)
 
     useEffect(() => {
@@ -54,16 +47,6 @@ function Stock() {
                     <h3>${price.toLocaleString()}</h3>
                     <StockGraph color={graphColor(results.data)} width={500} height={400} type="price" data={results.data}/>
                     <ChartNav chartRanges={chartRanges} setTimeRange={timeRangeClickHandler} timeRange={timeRange}/>
-                    {/* <nav>
-                        <div className="YLzQdbd6ixTG1LWujco0N">
-                            <button onClick={timeRangeClickHandler} value="ytd" className={timeRange === "ytd" ? "css-klp03n" : "css-16sjopo"}>YTD</button>
-                            <button onClick={timeRangeClickHandler} value="5d" className={timeRange === "5d" ? "css-klp03n" : "css-16sjopo"}>5D</button>
-                            <button onClick={timeRangeClickHandler} value="1m" className={timeRange === "1m" ? "css-klp03n" : "css-16sjopo"}>1M</button>
-                            <button onClick={timeRangeClickHandler} value="3m" className={timeRange === "3m" ? "css-klp03n" : "css-16sjopo"}>3M</button>
-                            <button onClick={timeRangeClickHandler} value="1y" className={timeRange === "1y" ? "css-klp03n" : "css-16sjopo"}>1Y</button>
-                            <button onClick={timeRangeClickHandler} value="5y" className={timeRange === "5y" ? "css-klp03n" : "css-16sjopo"}>5Y</button>
-                        </div>
-                    </nav> */}
                     <section id="company-about-section" className="_2wuDJhUh9lal-48SV5IIfk">
                         <h2>About</h2>
                         <hr />

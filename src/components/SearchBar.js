@@ -11,7 +11,6 @@ function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('')
     const [suggestions, setSuggestions] = useState([])
     const history = useHistory()
-
     const { mode } = useSelector((state) => state.styles)
     
     const fetchResults = (event, values) => {
@@ -28,22 +27,23 @@ function SearchBar() {
         if(event.target.innerText){
             history.push(`/stocks/${event.target.innerText.toLowerCase()}`)
         }
-        setSuggestions([])    }
+        setSuggestions([])   
+    }
 
 
 
     return (
-            <div className="search-input">  
-                <Autocomplete 
-                clearOnEscape
-                freeSolo
-                filterOptions={(x) => x} 
-                options={suggestions.map((option) => option.symbol)}
-                onChange={submitHandler}
-                renderInput={(params) => <TextField  color="success" focused variant='outlined' onChange={fetchResults} {...params} label="Search Stocks"/>}
-                />
-            </div> 
-    );
+        <div className="search-input">  
+            <Autocomplete 
+            clearOnEscape
+            freeSolo
+            filterOptions={(x) => x} 
+            options={suggestions.map((option) => option.symbol)}
+            onChange={submitHandler}
+            renderInput={(params) => <TextField  color="success" focused variant='outlined' onChange={fetchResults} {...params} label="Search Stocks"/>}
+            />
+        </div> 
+    )
 }
 
 export default SearchBar;

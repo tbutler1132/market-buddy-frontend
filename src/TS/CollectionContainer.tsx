@@ -2,7 +2,6 @@ import Collection from './Collection';
 import { useSelector } from 'react-redux';
 
 function CollectionContainer({ data, header }: {data: any, header: string}) {
-
     const { mode } = useSelector((state: any) => state.styles)
 
     const renderStocks = () => {

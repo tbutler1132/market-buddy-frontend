@@ -4,12 +4,9 @@ import { CircularProgress, Table, TableBody, TableCell, TableContainer, TableHea
 import { useHistory } from "react-router-dom";
 
 function List({ type }: {type: string}) {
-
     let { list }: {list: string} = useParams()
     const { data, isLoading } = useGetCollectionQuery({type, name: list})
     const history = useHistory()
-
-    console.log(data)
 
     if(isLoading) return <CircularProgress />
     return (

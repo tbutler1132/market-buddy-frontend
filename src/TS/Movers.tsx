@@ -1,7 +1,6 @@
 import { useGetDailyGainersQuery }from '../app/services/IEXCloud'
 import { CircularProgress } from '@material-ui/core'
 import { useSelector } from 'react-redux'
-
 import StockCard from './StockCard'
 
 interface MoversProps {
@@ -15,7 +14,6 @@ const numberOfCardsDisplayed = (data: any, num: number) => {
 
 function Movers({ type, numberOfCards }: MoversProps) {
     const { data, isLoading } = useGetDailyGainersQuery(type)
-
     const { mode } = useSelector((state: any) => state.styles)
 
     const renderStockCards = () => {

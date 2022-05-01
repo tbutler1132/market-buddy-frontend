@@ -3,11 +3,8 @@ import { useGetListsQuery } from "../app/services/MarketBuddy";
 import { useSelector } from "react-redux";
 
 function StockListContainer() {
-
     const { auth } = useSelector((state: any) => state)
     const { mode } = useSelector((state: any) => state.styles)
-
-
     const { data, isLoading } = useGetListsQuery(auth.user._id)
 
     const renderLists = () => {
@@ -15,7 +12,6 @@ function StockListContainer() {
             <p>{list.title}</p>    
         )
     }
-
 
     if(isLoading) return null
     return (

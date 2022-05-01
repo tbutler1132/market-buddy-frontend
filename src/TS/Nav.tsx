@@ -3,7 +3,6 @@ import Button from "@mui/material/Button";
 import { toggleDarkMode } from '../app/stylesSlice'
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
 import SearchBar from '../components/SearchBar';
 
 

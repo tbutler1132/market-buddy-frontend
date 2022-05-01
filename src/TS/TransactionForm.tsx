@@ -12,6 +12,7 @@ interface TransactionFormProps {
 
 function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFormProps) {
     const { auth } = useSelector((state: any) => state)
+    const { data: userPosition, isLoading: positionIsLoading } = useGetPositionQuery({id: auth.user, symbol: symbol.toUpperCase()})
 
     const [transactionForm, dispatch] = useReducer(
         produce((draft, action) => {
@@ -27,9 +28,7 @@ function TransactionForm({ latestPrice, symbol, transactionType }: TransactionFo
             shares: ""
         }
     )
-
-    const { data: userPosition, isLoading: positionIsLoading } = useGetPositionQuery({id: auth.user, symbol: symbol.toUpperCase()})
-
+    
     const updateForm = (e: any, type: string) => {
         dispatch({
             type: "shares",

@@ -6,9 +6,7 @@ interface NewsProps {
     companySymbol?: string
 }
 
-
 function News({ companySymbol = "aapl" }: NewsProps) {
-
     const { data, isLoading } = useGetNewsQuery(companySymbol)
     const { mode } = useSelector((state: any) => state.styles)
 

@@ -5,7 +5,12 @@ import Movers from './Movers';
 import TrendingLists from './TrendingLists';
 import { useState } from 'react';
 import StockGraph from './StockGraph';
-import { useGetCurrentPortfolioValueQuery, useLazyGetHistoricalPortfolioValueQuery, useGetUserQuery, useGetPortfolioDataQuery } from '../app/services/MarketBuddy';
+import { 
+    useGetCurrentPortfolioValueQuery, 
+    useLazyGetHistoricalPortfolioValueQuery, 
+    useGetUserQuery, 
+    useGetPortfolioDataQuery 
+} from '../app/services/MarketBuddy';
 import ChartNav from './ChartNav';
 import { useEffect } from 'react';
 

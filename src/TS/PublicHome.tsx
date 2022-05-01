@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux'
 
 
 function PublicHome() {
-
     const { data, isLoading } = useGetMostActiveStocksQuery("_")
     const { mode } = useSelector((state: any) => state.styles)
 
@@ -19,7 +18,7 @@ function PublicHome() {
             <div className="row">
                 <div data-mode={mode} className="col-12">
                     <h1>Welcome to Market Buddy</h1>
-                    <img src={GraphImage} alt="" />
+                    <img src={GraphImage} alt=""/>
                     <Movers type="Gainers" numberOfCards={3}/>
                     <Movers type="Losers" numberOfCards={3}/>
                     <TrendingLists />

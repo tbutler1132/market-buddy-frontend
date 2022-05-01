@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 function TrendingLists() {
-
     const { data, isLoading } = useGetTagsQuery("_")
     const history = useHistory()
     const { mode } = useSelector((state: any) => state.styles)

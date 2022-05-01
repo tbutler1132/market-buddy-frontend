@@ -8,8 +8,6 @@ import { useHistory } from 'react-router-dom';
 import Button from '@mui/material/Button'
 import { useGetUserQuery } from "../app/services/MarketBuddy";
 import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-// import CloseIcon from '@mui/icons-material/CloseIcon';
 
 const style = {
     position: 'absolute',
@@ -40,9 +38,9 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
     const { auth } = useSelector((state: any) => state)
     const [updatePosition, results] = useUpdatePositionMutation()
     const [createPosition] = useCreatePositionMutation()
-    const history = useHistory()
+    // const history = useHistory()
     const { shares } = transactionDetails 
-    const { data: currentUser, isLoading: currentUserIsLoading } = useGetUserQuery(auth.user)
+    // const { data: currentUser, isLoading: currentUserIsLoading } = useGetUserQuery(auth.user)
     
     const handleOpen = () => {
         if(!transactionDetails.shares){
@@ -68,7 +66,6 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
             })
             .then((payload: any) => {
                 if(payload.error){
-                    // console.log(payload.error)
                     setSnackbarMessage(payload.error.data)
                     setSnackbarOpen(true)
                     setOpen(false)
@@ -78,7 +75,6 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                     setSnackbarOpen(true)
                     setOpen(false)
                     return
-                    // history.push("/home")
                 }
             })
             .catch((error) => console.error('rejected', error))
@@ -97,7 +93,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
 
     const handleSnackbarClose = (event: any) => {
         setSnackbarOpen(false);
-      };
+    }
 
     const action = (
         <>
@@ -111,7 +107,7 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
             Close
           </Button>
         </>
-      );
+    );
 
     return (
         <div className='order-summary-container'>

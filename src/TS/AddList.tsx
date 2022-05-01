@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button'
 import { useCreateListMutation } from '../app/services/MarketBuddy';
 import { useSelector } from 'react-redux';
 import { useForm }from 'react-hook-form'
@@ -26,7 +25,6 @@ function AddList() {
     const handleClose = () => setOpen(false);
     const { register, resetField, handleSubmit } = useForm();
     const { auth } = useSelector((state: any) => state)
-
     const [createList] = useCreateListMutation()
 
     const onSubmit = (data: any) => {

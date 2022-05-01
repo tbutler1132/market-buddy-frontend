@@ -1,14 +1,5 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts'
 
-const graphColor = (data: any) => {
-    console.log(data)
-    if (data[data.length - 1]?.price >= data[0]?.price){
-      return "#228B22"
-    } else {
-      return '#C70039'
-    }
-}
-
 interface StockGraphProps {
     type: string
     data: any,
@@ -16,7 +7,6 @@ interface StockGraphProps {
     height: number,
     color: string
 }
-
 
 function StockGraph({ type, data, width, height, color }: StockGraphProps) {
 

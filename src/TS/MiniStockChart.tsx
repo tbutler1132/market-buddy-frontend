@@ -11,7 +11,6 @@ const graphColor = (data: any) => {
 }
 
 function MiniStockChart({ stockId }: {stockId: string}) {
-
     const [getHistoricalData, results] = useLazyGetHistoricalDataQuery()
 
     useEffect(() => {

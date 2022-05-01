@@ -8,7 +8,6 @@ interface StockCardProps {
 
 function StockCard({stock, type, mode }: StockCardProps) {
 
-
     return (
         <div data-mode={mode} className="stock-card">
             <Link style={{ textDecoration: 'none', color: mode === 'dark' ? 'white' : 'black' }} to={`/stocks/${stock.symbol.toLowerCase()}`} >

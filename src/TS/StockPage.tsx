@@ -4,7 +4,6 @@ import {
     useRouteMatch,
     } 
 from 'react-router-dom'
-
 import Stock from './Stock'
 
 interface stockPageProps {
@@ -12,7 +11,6 @@ interface stockPageProps {
 }
 
 function StockPage({ design }: stockPageProps) {
-
     let match = useRouteMatch()
 
     return (
