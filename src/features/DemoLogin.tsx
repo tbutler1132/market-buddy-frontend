@@ -27,7 +27,7 @@ function DemoLogin() {
         <div className="login">
             <h1>Demo</h1>
             <form className="login-form" onSubmit={submitHandler}>
-                <Button variant="contained" type="submit">Enter</Button>
+                <Button variant="contained" color="success" type="submit">Begin</Button>
             </form>
         </div>
     );

@@ -63,7 +63,8 @@ function Home() {
         <div className="main-container">
             <div className="row">
                 <div data-mode={mode} className="col-12">
-                    <h1>${data.value.toLocaleString()}</h1>
+                    <h1>Warren's Portfolio</h1>
+                    <h2>${data.value.toLocaleString()}</h2>
                     <StockGraph color={graphColor(results.data)} width={500} height={400} type="value" data={formatChartData(results.data, data)} />
                     <ChartNav chartRanges={chartRanges} setTimeRange={timeRangeClickHandler} timeRange={timeRange}/>
                     <div className="css-2">
