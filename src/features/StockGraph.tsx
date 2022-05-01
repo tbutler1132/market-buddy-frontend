@@ -17,7 +17,7 @@ function StockGraph({ type, data, width, height, color }: StockGraphProps) {
             <Line dot={false} type={"step"} dataKey={type} stroke={color} />
             <XAxis hide dataKey="name" />
             <YAxis domain={['auto', 'auto']} hide/>
-            <Tooltip wrapperStyle={{color: "black"}} formatter={(value: number, name: string) => ['$' + value.toFixed(2), "Price"]} separator=': '/>
+            <Tooltip wrapperStyle={{color: "black"}} formatter={(value: number, name: string) => ['$' + value.toFixed(2), name[0].toUpperCase() + name.slice(1)]} separator=': '/>
           </LineChart>
         </div>
       </>

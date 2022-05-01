@@ -88,6 +88,19 @@ function OrderSummaryModal({ symbol, transactionType, transactionDetails, positi
                     cost: cost
                 }
             })
+            .then((payload: any) => {
+                if(payload.error){
+                    setSnackbarMessage(payload.error.data)
+                    setSnackbarOpen(true)
+                    setOpen(false)
+                    return
+                }else{
+                    setSnackbarMessage('Success')
+                    setSnackbarOpen(true)
+                    setOpen(false)
+                    return
+                }
+            })
         }
     }
 

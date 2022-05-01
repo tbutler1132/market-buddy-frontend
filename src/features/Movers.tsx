@@ -25,7 +25,7 @@ function Movers({ type, numberOfCards }: MoversProps) {
     return (
         <div data-mode={mode} className="movers-container">
             <h1>Daily {type}</h1>
-            <h5>Stocks making the biggest moves today</h5>
+            <h4>Stocks making the biggest moves today</h4>
             <div className="stock-card-container">
                 {renderStockCards()}
             </div>
