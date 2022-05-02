@@ -24,15 +24,10 @@ function SearchBar() {
     }
 
     const submitHandler = (event, newValue) => {
-        console.log(newValue, "HIT")
         if(newValue){
             history.push(`/stocks/${newValue.toLowerCase()}`)
         }
         setSuggestions([])   
-    }
-
-    const inputChangeHandler = (e) => {
-        // console.log(e.target.value, "in")
     }
 
     return (
@@ -40,7 +35,6 @@ function SearchBar() {
             <Autocomplete 
             clearOnEscape
             freeSolo
-            onInputChange={inputChangeHandler}
             filterOptions={(x) => x} 
             options={suggestions.map((option) => option.symbol)}
             onChange={(e, newValue) => submitHandler(e, newValue)}
