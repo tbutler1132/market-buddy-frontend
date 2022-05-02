@@ -4,6 +4,7 @@ import {useHistory} from 'react-router-dom'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
+
 const BASE_API = process.env.NODE_ENV === "development" ? 'http://localhost:7000/' : 'https://market-buddy-server.herokuapp.com/'
 
 function SearchBar() {
@@ -22,10 +23,15 @@ function SearchBar() {
     }
 
     const submitHandler = (event, value) => {
+        console.log("hit", event.target.value)
         if(event.target.innerText){
             history.push(`/stocks/${event.target.innerText.toLowerCase()}`)
         }
         setSuggestions([])   
+    }
+
+    const inputChangeHandler = (e) => {
+        // console.log(e.target.value, "in")
     }
 
     return (
@@ -33,10 +39,11 @@ function SearchBar() {
             <Autocomplete 
             clearOnEscape
             freeSolo
+            onInputChange={inputChangeHandler}
             filterOptions={(x) => x} 
             options={suggestions.map((option) => option.symbol)}
             onChange={submitHandler}
-            renderInput={(params) => <TextField  color="success" focused variant='outlined' onChange={fetchResults} {...params} label="Search Stocks"/>}
+            renderInput={(params) => <TextField color="success" focused variant='outlined' onChange={fetchResults} {...params} label="Search Stocks"/>}
             />
         </div> 
     )
