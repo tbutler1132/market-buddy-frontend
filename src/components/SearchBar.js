@@ -10,6 +10,7 @@ const BASE_API = process.env.NODE_ENV === "development" ? 'http://localhost:7000
 function SearchBar() {
     const [searchTerm, setSearchTerm] = useState('')
     const [suggestions, setSuggestions] = useState([])
+    const [value, setValue] = useState('')
     const history = useHistory()
     
     const fetchResults = (event, values) => {
@@ -22,10 +23,10 @@ function SearchBar() {
         }
     }
 
-    const submitHandler = (event, value) => {
-        console.log("hit", event.target.value)
-        if(event.target.innerText){
-            history.push(`/stocks/${event.target.innerText.toLowerCase()}`)
+    const submitHandler = (event, newValue) => {
+        console.log(newValue, "HIT")
+        if(newValue){
+            history.push(`/stocks/${newValue.toLowerCase()}`)
         }
         setSuggestions([])   
     }
@@ -42,7 +43,7 @@ function SearchBar() {
             onInputChange={inputChangeHandler}
             filterOptions={(x) => x} 
             options={suggestions.map((option) => option.symbol)}
-            onChange={submitHandler}
+            onChange={(e, newValue) => submitHandler(e, newValue)}
             renderInput={(params) => <TextField color="success" focused variant='outlined' onChange={fetchResults} {...params} label="Search Stocks"/>}
             />
         </div> 
